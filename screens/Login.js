@@ -22,7 +22,7 @@ export default Login;
 
 const styles= StyleSheet.create({
     inputContainer:{
-        marginTop:350, //take space from top fix! center the login View
+        marginTop:300, //take space from top fix! center the login View
         marginHorizontal:24, //take left and right space
         padding:16, 
     },
