@@ -1,6 +1,6 @@
 import { StyleSheet, View,Text } from "react-native";
 import PrimaryButton from "../components/buttons/PrimaryButton";
-import CalculateArea from "../components/calculationSections/CalculateArea";
+import AreaSection from "../components/calculateSection/AreaSection";
 
 function CalculationScreen({navigation}){
 
@@ -9,11 +9,9 @@ function CalculationScreen({navigation}){
     }
     return(
         <View>
-            <CalculateArea/>
+            <AreaSection/>
             <PrimaryButton onPress={pressHandler}> Calculate </PrimaryButton>
         </View>
-        
-
     );
     
 }
