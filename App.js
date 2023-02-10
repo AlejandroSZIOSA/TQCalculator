@@ -6,6 +6,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack'
 
 import LoginScreen from './screens/LoginScreen';
 import CalculationScreen from './screens/CalculationScreen';
+import ResultScreen from './screens/ResultScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -35,6 +36,14 @@ export default function App() {
                 title:'Calculate'
               }}
               />
+              <Stack.Screen
+              name="ResultSC" 
+              component={ResultScreen} 
+              options={{
+                title:'Results'
+              }}
+              />
+
           
           </Stack.Navigator>
         </NavigationContainer>

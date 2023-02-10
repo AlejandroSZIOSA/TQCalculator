@@ -1,5 +1,5 @@
 import { TextInput, View,StyleSheet } from "react-native";
-import LoginButton from "../components/LoginButton";
+import PrimaryButton from "../components/buttons/PrimaryButton";
 
 function LoginScreen({navigation}){
 
@@ -17,7 +17,9 @@ function LoginScreen({navigation}){
                 style={styles.textInput} 
                 placeholder="Password" 
             /> 
-            <LoginButton onPress={pressHandler}> Login </LoginButton> 
+            
+                <PrimaryButton onPress={pressHandler}> Login </PrimaryButton> 
+        
         </View> 
     )
 }

@@ -1,10 +1,18 @@
 import { StyleSheet, View,Text } from "react-native";
+import PrimaryButton from "../components/buttons/PrimaryButton";
+import CalculateArea from "../components/calculationSections/CalculateArea";
 
-function CalculationScreen(){
+function CalculationScreen({navigation}){
+
+    function pressHandler(){
+        navigation.navigate('ResultSC');
+    }
     return(
         <View>
-            <Text> calculation</Text>
+            <CalculateArea/>
+            <PrimaryButton onPress={pressHandler}> Calculate </PrimaryButton>
         </View>
+        
 
     );
     
