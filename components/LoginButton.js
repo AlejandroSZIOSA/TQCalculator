@@ -1,19 +1,17 @@
 import { View,Text, Pressable,StyleSheet } from "react-native";
 import Colors from "../constants/colors";
 
-function PrimaryButton({children}){
-    function pressHandler(){
-        console.log("pressed")
-    }
+function LoginButton({children,onPress}){
+    
     return (
-    <Pressable onPress={pressHandler}>
+    <Pressable onPress={onPress}>
         <View style={styles.buttonContainer}>
             <Text style={styles.buttonText}>{children}</Text>
         </View>
     </Pressable>
     )
 }
-export default PrimaryButton;
+export default LoginButton;
 
 const styles=StyleSheet.create({
     buttonContainer: {

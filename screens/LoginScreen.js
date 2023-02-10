@@ -1,8 +1,11 @@
 import { TextInput, View,StyleSheet } from "react-native";
-import PrimaryButton from "../components/PrimaryButton";
+import LoginButton from "../components/LoginButton";
 
+function LoginScreen({navigation}){
 
-function Login(){
+    function pressHandler(){
+        navigation.navigate('CalculateSC');
+    }
     return(
         <View style={styles.inputContainer} >
             <TextInput 
@@ -14,11 +17,11 @@ function Login(){
                 style={styles.textInput} 
                 placeholder="Password" 
             /> 
-            <PrimaryButton> Login </PrimaryButton> 
+            <LoginButton onPress={pressHandler}> Login </LoginButton> 
         </View> 
     )
 }
-export default Login;
+export default LoginScreen;
 
 const styles= StyleSheet.create({
     inputContainer:{

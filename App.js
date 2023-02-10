@@ -4,7 +4,8 @@ import Colors from './constants/colors';
 import { NavigationContainer } from "@react-navigation/native";
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
 
-import Login from './screens/Login';
+import LoginScreen from './screens/LoginScreen';
+import CalculationScreen from './screens/CalculationScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,12 +22,20 @@ export default function App() {
             }}
           >
             <Stack.Screen 
-              name="LoginScreen" 
-              component={Login} 
+              name="LoginSc" 
+              component={LoginScreen} 
               options={{
                 title:'Login'
               }}
               />
+              <Stack.Screen
+              name="CalculateSC" 
+              component={CalculationScreen} 
+              options={{
+                title:'Calculate'
+              }}
+              />
+          
           </Stack.Navigator>
         </NavigationContainer>
     
