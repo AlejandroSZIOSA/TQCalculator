@@ -1,6 +1,5 @@
 import { TextInput, View,StyleSheet } from "react-native";
 import PrimaryButton from "../components/PrimaryButton";
-import Colors from "../constants/colors";
 
 function Login(){
     return(
@@ -21,19 +20,10 @@ function Login(){
 export default Login;
 
 const styles= StyleSheet.create({
-    rootContainer:{
-        flex:1,
-        backgroundColor: Colors.primaryGreen1,
-        //alignContent:'center'
-    },
     inputContainer:{
-        marginTop:100, //take space from top
+        marginTop:350, //take space from top fix! center the login View
         marginHorizontal:24, //take left and right space
-        padding:16, //
-        backgroundColor:Colors.primaryGreen1
-    },
-    InnerInputContainer:{
-        padding:10,
+        padding:16, 
     },
     textInput:{
         height:50, 
