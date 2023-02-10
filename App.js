@@ -1,12 +1,15 @@
 import { StyleSheet,View } from 'react-native';
 import Colors from './constants/colors';
 
+import { NavigationContainer } from "@react-navigation/native";
 import Login from './screens/Login';
 
 export default function App() {
   return(
     <View style={styles.rootScreen}>
-        <Login/>
+        <NavigationContainer>
+          <Login/>
+        </NavigationContainer>
     </View>
   );
 }
