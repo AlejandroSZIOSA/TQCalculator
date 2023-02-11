@@ -1,24 +1,25 @@
 import { View,Text,TextInput,StyleSheet } from "react-native";
 import Colors from "../../constants/colors";
 import SecondaryButton from "../buttons/SecondaryButton";
+import IntructionText from "../ui/IntructionText";
 
-function AreaSection(){
+function Area(){
     return(
         <View style={styles.container}>
-            <Text style={styles.textTitle}> Area</Text>
+            <IntructionText title ="Area"/> 
             <View style={styles.innerContainer}>
               <TextInput
                 style={styles.textInput}
                 placeholder="Length" 
               />
-            <Text style={styles.textTitle}> x </Text>
+            <IntructionText title ="x"/>
               <TextInput
                 style={styles.textInput}
                 placeholder="Height" 
               />
             </View>
             <View style={styles.innerContainer2}>
-              <Text style={styles.textTitle}> = </Text>
+              <IntructionText title ="="/>
               <Text style={styles.textResult}> Result (m2)</Text>
             </View>
             <View style={styles.buttonContainer}>
@@ -28,11 +29,12 @@ function AreaSection(){
         </View>
     )
 }
-export default AreaSection;
+export default Area;
 const styles= StyleSheet.create({
     container:{
         alignItems:'center',
-        backgroundColor:Colors.primaryDarkBlue
+        backgroundColor:Colors.primaryDarkBlue,
+        margin:10
     },
     innerContainer:{
         flexDirection:'row',
@@ -41,10 +43,6 @@ const styles= StyleSheet.create({
         flexDirection:'row',
         padding:10,
         width:'65%'
-    },
-    textTitle:{
-        fontSize:30,
-        color:'white'
     },
     textResult:{
         fontSize:30,
