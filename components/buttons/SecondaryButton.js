@@ -1,15 +1,29 @@
 import { View, Text,Pressable,StyleSheet } from "react-native";
+import Colors from "../../constants/colors";
 
+//Reset - Set Buttons
 function SecondaryButton({children}){
     return(
-        <View>
+        <View style={styles.buttonContainer}>
           <Pressable>
-            <Text> {children} </Text>
+            <Text style={styles.buttonText}> {children} </Text>
           </Pressable>
         </View>
     )
 }
 export default SecondaryButton;
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
+    buttonContainer:{
+      backgroundColor:Colors.primaryLightBlue,
+      width:96,
+      height:33,
+      borderRadius:10,
+      borderWidth:2,
+      borderColor:'black',
+      alignItems:'center'
+    },
+    buttonText:{
+      fontSize:24
+    }
 
 })
