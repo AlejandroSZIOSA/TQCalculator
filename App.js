@@ -33,7 +33,7 @@ export default function App() {
               name="CalculateSC" 
               component={CalculationScreen} 
               options={{
-                title:'Calculate'
+                title:'Seeds Calculator'
               }}
               />
               <Stack.Screen

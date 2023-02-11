@@ -19,12 +19,16 @@ function Area(){
               />
             </View>
             <View style={styles.innerContainer2}>
-              <IntructionText title ="="/>
-              <Text style={styles.textResult}> Result (m2)</Text>
+              <IntructionText title = "="/>
+              <Text style={styles.textResult}> Result(m2)</Text>
             </View>
             <View style={styles.buttonContainer}>
-              <SecondaryButton>Reset</SecondaryButton>
-              <SecondaryButton>Set</SecondaryButton>
+              <View style={styles.innerButtonContainer}>
+                <SecondaryButton>Reset</SecondaryButton>
+              </View>
+              <View style={styles.innerButtonContainer}>
+                <SecondaryButton>Set</SecondaryButton>
+              </View>
             </View>
         </View>
     )
@@ -54,10 +58,13 @@ const styles= StyleSheet.create({
       backgroundColor:'white',
       borderRadius:5,
       margin:10,
-      width: '35%', //fix problem with Text Input size
+      width: '35%', //fix! problem with Text Input size
     },
     buttonContainer:{
       flexDirection:'row',
-      padding:10
+      padding:10,
+    },
+    innerButtonContainer:{
+      marginHorizontal:10 //fix! separation buttons problem
     }
 })
