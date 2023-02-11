@@ -17,7 +17,7 @@ export default function App() {
             screenOptions={{
               headerStyle:{backgroundColor:Colors.primaryGreen4},
               headerTitleStyle:{
-                fontSize: 30,
+              fontSize: 30,
               },
               contentStyle:{ backgroundColor:Colors.primaryGreen1}
             }}
@@ -43,11 +43,8 @@ export default function App() {
                 title:'Results'
               }}
               />
-
-          
           </Stack.Navigator>
         </NavigationContainer>
-    
   );
 }
 const styles = StyleSheet.create({

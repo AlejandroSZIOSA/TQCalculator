@@ -1,5 +1,6 @@
 import { StyleSheet,Text,View } from "react-native";
 import PrimaryButton from "../components/buttons/PrimaryButton";
+import ResultText from "../components/ui/ResultText";
 
 function ResultScreen({navigation}){
     function pressRestartHandler(){
@@ -7,13 +8,11 @@ function ResultScreen({navigation}){
     }
     return(
         <View>
-            <Text> Results </Text>
+            <ResultText title="For"/>
             <PrimaryButton onPress={pressRestartHandler}>Restart</PrimaryButton>
         </View>
     )
-
 }
 export default ResultScreen;
-
 const style = StyleSheet.create({
 })

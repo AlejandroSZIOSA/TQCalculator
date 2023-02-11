@@ -10,12 +10,14 @@ function Area(){
             <View style={styles.innerContainer}>
               <TextInput
                 style={styles.textInput}
-                placeholder="Length" 
+                placeholder="Length(m)" 
+                maxLength={3}
               />
             <IntructionText title ="x"/>
               <TextInput
                 style={styles.textInput}
-                placeholder="Height" 
+                placeholder="Height(m)" 
+                maxLength={3}
               />
             </View>
             <View style={styles.innerContainer2}>
@@ -38,6 +40,7 @@ const styles= StyleSheet.create({
     container:{
         alignItems:'center',
         backgroundColor:Colors.primaryDarkBlue,
+        padding:10,
         margin:10
     },
     innerContainer:{
