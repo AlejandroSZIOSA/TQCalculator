@@ -1,18 +1,26 @@
-import { StyleSheet,Text,View } from "react-native";
+import { StyleSheet,View } from "react-native";
 import PrimaryButton from "../components/buttons/PrimaryButton";
-import ResultText from "../components/resultSection/ResultText";
+import AreaResultView from "../components/resultSection/AreaResultView";
+import SeedResultView from "../components/resultSection/SeedResultView";
+import SeedTypeView from "../components/resultSection/SeedTypeView";
 
 function ResultScreen({navigation}){
     function pressRestartHandler(){
         navigation.navigate('CalculateSC')
     }
     return(
-        <View>
-            <ResultText title="For"/>
+        <View style={styles.container}>
+            <AreaResultView/>
+            <SeedResultView/>
+            <SeedTypeView/>
             <PrimaryButton onPress={pressRestartHandler}>Restart</PrimaryButton>
         </View>
     )
 }
 export default ResultScreen;
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
+    container:{
+        alignItems:'center',
+        //margin:12
+    }
 })

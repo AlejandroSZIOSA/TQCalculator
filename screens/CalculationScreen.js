@@ -1,4 +1,4 @@
-import { StyleSheet, View,Text } from "react-native";
+import { View } from "react-native";
 import PrimaryButton from "../components/buttons/PrimaryButton";
 import AreaView from "../components/calculateSection/AreaView";
 import SelectionView from "../components/calculateSection/SelectionView";
@@ -18,7 +18,3 @@ function CalculationScreen({navigation}){
     );    
 }
 export default CalculationScreen;
-
-const style = StyleSheet.create({
-
-})
