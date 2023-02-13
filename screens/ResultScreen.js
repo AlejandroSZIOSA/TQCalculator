@@ -20,7 +20,7 @@ function ResultScreen({navigation}){
 export default ResultScreen;
 const styles = StyleSheet.create({
     container:{
-        alignItems:'center',
+        alignContent:'center',
         //margin:12
     }
 })
