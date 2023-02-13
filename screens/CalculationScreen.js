@@ -1,7 +1,6 @@
-import { View,StyleSheet } from "react-native";
+import { View} from "react-native";
 import PrimaryButton from "../components/buttons/PrimaryButton";
 import AreaView from "../components/calculateSection/AreaView";
-import BtnCalculateView from "../components/calculateSection/BtnCalculateView";
 import SelectionView from "../components/calculateSection/SelectionView";
 
 function CalculationScreen({navigation}){
@@ -20,10 +19,3 @@ function CalculationScreen({navigation}){
     );    
 }
 export default CalculationScreen;
-const styles= StyleSheet.create({
-    container:{
-        alignContent:'center',
-        //margin:12
-    }
-
-})
