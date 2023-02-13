@@ -1,9 +1,9 @@
 import { View,Text,TextInput,StyleSheet } from "react-native";
 import Colors from "../../constants/colors";
 import SecondaryButton from "../buttons/SecondaryButton";
-import IntructionText from "../ui/IntructionText";
+import IntructionText from "./IntructionText";
 
-function Area(){
+function AreaView(){
     return(
         <View style={styles.container}>
             <IntructionText title ="Area"/> 
@@ -35,7 +35,7 @@ function Area(){
         </View>
     )
 }
-export default Area;
+export default AreaView;
 const styles= StyleSheet.create({
     container:{
         alignItems:'center',

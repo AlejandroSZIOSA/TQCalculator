@@ -1,9 +1,9 @@
 import { View,Text,StyleSheet } from "react-native";
 import Colors from "../../constants/colors";
 import SecondaryButton from "../buttons/SecondaryButton";
-import IntructionText from "../ui/IntructionText";
+import IntructionText from "./IntructionText";
 
-function Selection({title}){
+function SelectionView({title}){
     return(
         <View style={styles.container}>
             <IntructionText title={title} />
@@ -11,7 +11,7 @@ function Selection({title}){
         </View>
     )
 }
-export default Selection;
+export default SelectionView;
 
 const styles= StyleSheet.create({
     container:{

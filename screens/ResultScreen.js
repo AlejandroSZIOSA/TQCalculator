@@ -1,6 +1,6 @@
 import { StyleSheet,Text,View } from "react-native";
 import PrimaryButton from "../components/buttons/PrimaryButton";
-import ResultText from "../components/ui/ResultText";
+import ResultText from "../components/resultSection/ResultText";
 
 function ResultScreen({navigation}){
     function pressRestartHandler(){
