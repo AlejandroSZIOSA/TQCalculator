@@ -1,17 +1,25 @@
 import { View,Text,TextInput,StyleSheet } from "react-native";
+import { useState } from "react";
 import Colors from "../../constants/colors";
 import SecondaryButton from "../buttons/SecondaryButton";
 import IntructionText from "./IntructionText";
 
 function AreaView(){
+    //const[text, OnChangeText] = useState("Lenght(m)")
+    const [lenghtNumber, setLenghtNumber] = useState("");
+
     return(
         <View style={styles.container}>
             <IntructionText title ="Area"/> 
             <View style={styles.innerContainer}>
               <TextInput
+                editable
                 style={styles.textInput}
                 placeholder="Length(m)" 
                 maxLength={3}
+                value={lenghtNumber}
+                onChangeText={(value)=>{setLenghtNumber(value)}}
+                keyboardType="numeric"
               />
             <IntructionText title ="x"/>
               <TextInput
