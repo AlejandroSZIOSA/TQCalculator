@@ -16,10 +16,12 @@ export default PrimaryButton;
 const styles=StyleSheet.create({
     buttonContainer: {
         backgroundColor:Colors.primaryLightBlue,
+        padding:15,
         borderRadius:15,
         paddingVertical:15,
         paddingHorizontal:16,
-        marginHorizontal:100 //fix problem with button size
+        marginHorizontal:100, //fix problem with button size
+        margin:10//fix problem with the border area
     },
     buttonText:{
         fontSize:20,

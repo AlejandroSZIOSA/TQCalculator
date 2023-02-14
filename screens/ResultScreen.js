@@ -9,7 +9,7 @@ function ResultScreen({navigation}){
         navigation.navigate('CalculateSC')
     }
     return(
-        <View style={styles.container}>
+        <View style={styles.rootContainer}>
             <AreaResultView/>
             <SeedResultView/>
             <SeedTypeView/>
@@ -19,8 +19,8 @@ function ResultScreen({navigation}){
 }
 export default ResultScreen;
 const styles = StyleSheet.create({
-    container:{
-        alignContent:'center',
-        //margin:12
-    }
+    rootContainer:{
+        //alignContent:'center',
+        margin:10,
+    },
 })

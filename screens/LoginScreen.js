@@ -9,14 +9,16 @@ function LoginScreen({navigation}){
         <View style={styles.inputContainer} >
             <TextInput 
                 style={styles.textInput}
-                maxLength={10} 
+                maxLength={10}
                 placeholder="User Name" 
             />
             <TextInput 
                 style={styles.textInput} 
                 placeholder="Password" 
             /> 
-            <PrimaryButton onPress={pressHandler}> Login </PrimaryButton> 
+            <View>
+                <PrimaryButton onPress={pressHandler}>Login</PrimaryButton> 
+            </View>
         </View> 
     )
 }

@@ -5,11 +5,11 @@ import ResultText from "./ResultText";
 function SeedTypeView(){
     return(
         <View style={styles.container}>
-            <View style={{paddingBottom:20}}>
+            <View style={{paddingBottom:10}}>
                 <ResultText title="Of"/>
             </View>
             <View style={styles.seedTypeContainer}>
-                <Text style={styles.textSeedType}>Seed Type</Text>
+                <Text style={styles.seedTypeText}>Seed Type</Text>
             </View>
         </View>
     )
@@ -19,14 +19,14 @@ export default SeedTypeView;
 const styles= StyleSheet.create({
     container:{
         alignItems:'center',
-        margin:10,
+        marginVertical:10,
     },
     seedTypeContainer:{
         backgroundColor:Colors.primaryGreen3,
         paddingHorizontal:90,
         paddingVertical:30
     },
-    textSeedType:{
+    seedTypeText:{
         color:'#FAFF00',
         fontSize:48
     }

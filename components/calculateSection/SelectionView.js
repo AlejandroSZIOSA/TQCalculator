@@ -17,7 +17,7 @@ export default SelectionView;
 const styles= StyleSheet.create({
     container:{
         backgroundColor: Colors.primaryGreen3,
-        margin:10,
+        marginVertical:10,
         alignItems:'center'
     }
 })

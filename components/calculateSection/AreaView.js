@@ -41,7 +41,7 @@ const styles= StyleSheet.create({
         alignItems:'center',
         backgroundColor:Colors.primaryDarkBlue,
         padding:10,
-        margin:10
+        marginBottom:10 // fix a problem!
     },
     innerContainer:{
         flexDirection:'row',

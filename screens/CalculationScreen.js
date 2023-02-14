@@ -1,4 +1,4 @@
-import { View} from "react-native";
+import { View,StyleSheet} from "react-native";
 import PrimaryButton from "../components/buttons/PrimaryButton";
 import AreaView from "../components/calculateSection/AreaView";
 import SelectionView from "../components/calculateSection/SelectionView";
@@ -9,13 +9,18 @@ function CalculationScreen({navigation}){
         navigation.navigate('ResultSC');
     }
     return(
-        <View >
+        <View style={styles.rootContainer}>
             <AreaView/>
             <SelectionView title="Select a Growing Zone"/>
-            <SelectionView title="Select Seed Type"/>
-            <PrimaryButton> Clear all</PrimaryButton>
+            <SelectionView title="Select Seed Type"/>            
             <PrimaryButton onPress={pressHandler}> Calculate</PrimaryButton>
         </View>
     );    
 }
 export default CalculationScreen;
+
+const styles=StyleSheet.create({
+    rootContainer:{
+        margin:10
+    }
+})

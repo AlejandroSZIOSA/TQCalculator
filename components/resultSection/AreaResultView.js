@@ -22,7 +22,7 @@ export default AreaResultView;
 const styles = StyleSheet.create({
     container:{
         alignItems:'center',
-        margin:10
+        //margin:10
     },
     innerContainer:{
         flexDirection:'row'
