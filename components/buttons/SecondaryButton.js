@@ -2,10 +2,10 @@ import { View, Text,Pressable,StyleSheet } from "react-native";
 import Colors from "../../constants/colors";
 
 //Reset - Set Buttons
-function SecondaryButton({children}){
+function SecondaryButton({children,onPress,disabled}){
     return(
         <View style={styles.buttonContainer}>
-          <Pressable>
+          <Pressable onPress={onPress} disabled={disabled}>
             <Text style={styles.buttonText}> {children} </Text>
           </Pressable>
         </View>
