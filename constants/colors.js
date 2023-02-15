@@ -6,6 +6,7 @@ const Colors = {
     primaryGreen5 :'#DAD7CD',
     primaryWhite:'#FFFFFF',
     primaryLightBlue: '#00A8E2',
-    primaryDarkBlue: '#4054B2'
+    primaryDarkBlue: '#4054B2',
+    primaryYellow:'#FAFF00'
 };
 export default Colors;

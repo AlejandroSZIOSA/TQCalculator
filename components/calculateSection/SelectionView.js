@@ -1,6 +1,7 @@
 import { View,StyleSheet } from "react-native";
 import Colors from "../../constants/colors";
 import SecondaryButton from "../buttons/SecondaryButton";
+import Picker from "../picker/Picker";
 import IntructionText from "./IntructionText";
 
 function SelectionView({title}){
@@ -8,6 +9,7 @@ function SelectionView({title}){
         <View style={styles.container}>
             {/*component inside a component */}
             <IntructionText title={title} />
+            <Picker/>
             <SecondaryButton>Reset</SecondaryButton>
         </View>
     )
