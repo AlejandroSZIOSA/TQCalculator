@@ -4,7 +4,7 @@ import Colors from "../../constants/colors";
 import ModalPicker from "./ModalPicker";
 
 function Picker(){
-    const [chooseData,setChooseData] = useState('Select item')
+    const [chooseData,setChooseData] = useState('Press here')
     const [isModalVisible,setisModalVisible] = useState(false)
 
     const changeModalVisibility = (bool) => {
@@ -37,21 +37,23 @@ function Picker(){
 }
 const styles= StyleSheet.create({
     container:{
-      backgroundColor: 'white',
-      alignItems:'stretch',
+      backgroundColor:Colors.primaryYellow,
+      alignItems:'center',
       justifyContent:'center',
-      //marginVertical:100,
-      //paddingHorizontal:50
+      marginVertical:15,
+      paddingHorizontal:10,
+      borderWidth:2,
+      borderColor:'black',
+      borderRadius:10 
     },
     text:{
-      //marginVertical:20,
-      paddingHorizontal:120,
-      fontSize:25
+      //marginHorizontal:100,
+      //paddingHorizontal:110,
+      fontSize:30
     },
     TouchableOpacity:{
-      backgroundColor:Colors.primaryYellow,
       alignSelf:'stretch',
       //paddingHorizontal:100,
-    },  
+    },
 })
 export default Picker;
