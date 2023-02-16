@@ -52,7 +52,7 @@ const styles= StyleSheet.create({
       fontSize:30
     },
     TouchableOpacity:{
-      alignSelf:'stretch',
+      alignSelf:'center',
       //paddingHorizontal:100,
     },
 })

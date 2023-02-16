@@ -4,8 +4,8 @@ import Colors from "../../constants/colors";
 import SecondaryButton from "../buttons/SecondaryButton";
 import IntructionText from "./IntructionText";
 import calculateArea from "../../operations/calculateArea";
-function AreaView(){
-    
+
+function AreaView(){    
     const [lenghtNumber, setLenghtNumber] = useState("");
     const [heightNumber, setHeightNumber] = useState("")
     const [totalArea,setTotalArea] = useState("Result(m2)")

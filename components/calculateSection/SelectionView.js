@@ -4,12 +4,13 @@ import SecondaryButton from "../buttons/SecondaryButton";
 import Picker from "../picker/Picker";
 import IntructionText from "./IntructionText";
 
+// picker data here as Prop
 function SelectionView({title}){
     return(
         <View style={styles.container}>
-            {/*component inside a component */}
+            {/*component inside components */}
             <IntructionText title={title} />
-            <Picker/>
+                <Picker/>
             <SecondaryButton>Reset</SecondaryButton>
         </View>
     )
