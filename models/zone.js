@@ -1,7 +1,8 @@
 class Zone{
-    constructor(name,seedsIds){
+    constructor(id,name,seedsIds){
+        this.id=id;
         this.name=name;
-        this.seedsIds=seedsIds
+        this.seedsIds=seedsIds;
     }
 }
 export default Zone

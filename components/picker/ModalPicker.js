@@ -1,25 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { StyleSheet,Text,View,TouchableOpacity,Dimensions,ScrollView} from "react-native";
 import Colors from "../../constants/colors";
+import { ZONE } from "../../data/dummy-data";
 
 const OPTIONS =[{state:'Stockholm'},{state:'Malmö'},{state:'Örebro'},{state:'Örby'} ]
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 
-function ModalPicker(props){
+function ModalPicker(props,selectedData){
+    //useEfect here
+    
     const onPressItem = (option) =>{
+        console.log(selectedData)
         props.changeModalVisibility(false)
         props.setData(option)
+        
     }
-    const option = OPTIONS.map((item, index)=>{
+    const option = ZONE.map((item, index)=>{
         return(
             <TouchableOpacity
                 style={styles.option}
                 key={index}
-                onPress={()=>onPressItem(item.state)}
+                onPress={()=>onPressItem(item.name)}
             >
                 <Text style={styles.text}>
-                    {item.state}
+                    {item.name}
                 </Text>
             </TouchableOpacity>
         )

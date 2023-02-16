@@ -4,13 +4,15 @@ import SecondaryButton from "../buttons/SecondaryButton";
 import Picker from "../picker/Picker";
 import IntructionText from "./IntructionText";
 
-// picker data here as Prop
+//Picker data as Prop here
 function SelectionView({title}){
+    console.log(title)
+    // if title is growing zone
     return(
         <View style={styles.container}>
-            {/*component inside components */}
+            {/*Nested Components */}
             <IntructionText title={title} />
-                <Picker/>
+                <Picker selectedData={title}/>
             <SecondaryButton>Reset</SecondaryButton>
         </View>
     )
