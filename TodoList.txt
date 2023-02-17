@@ -2,3 +2,10 @@
 -implement a customized splash screen: https://docs.expo.dev/versions/latest/sdk/splash-screen/
 -area calculate:https://www.freecodecamp.org/news/how-to-convert-a-string-to-a-number-in-javascript/
 -create Data struct
+{(props.setData==="Select Seed Type") ? option2 : option1}
+
+-Separate Picker functionality "Picker functions " no funciono
+
+- crear 2 picker separados + context
+
+-investigar Contex
