@@ -5,19 +5,19 @@ import Picker from "../picker/Picker";
 import IntructionText from "./IntructionText";
 
 //Picker data as Prop here
-function SelectionView({title}){
-    console.log(title)
+function SelectionZoneView({title}){
+    //console.log(title)
     // if title is growing zone
     return(
         <View style={styles.container}>
             {/*Nested Components */}
             <IntructionText title={title} />
-                <Picker selectedData={title}/>
+                <Picker selectedZone={title}/>
             <SecondaryButton>Reset</SecondaryButton>
         </View>
     )
 }
-export default SelectionView;
+export default SelectionZoneView;
 
 const styles= StyleSheet.create({
     container:{

@@ -3,16 +3,27 @@ import { StyleSheet,Text,Modal, TouchableOpacity, View } from "react-native";
 import Colors from "../../constants/colors";
 import ModalPicker from "./ModalPicker";
 
-function Picker({selectedData}){
-    console.log(selectedData)
-    const [chooseData,setChooseData] = useState('Press here')
+function Picker({selectedZone}){
+
+  //test
+    const debug =(value) => {
+      console.log(value);
+    }
+
+    const [chooseData,setChooseData] = useState('press here')
     const [isModalVisible,setisModalVisible] = useState(false)
+
+    // create 2 modals
+    // picker1 actived
 
     const changeModalVisibility = (bool) => {
     setisModalVisible(bool)
+    debug(selectedZone);
     }
+
     const setData = (option)=>{
     setChooseData(option)
+    debug(option);
     }
     return(
     <View style={styles.container}>
@@ -31,7 +42,6 @@ function Picker({selectedData}){
         <ModalPicker
          changeModalVisibility={changeModalVisibility}
          setData={setData}
-         selectedData={selectedData}
         />
       </Modal>
     </View>

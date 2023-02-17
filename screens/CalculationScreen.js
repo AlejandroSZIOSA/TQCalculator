@@ -1,7 +1,7 @@
 import { View,StyleSheet} from "react-native";
 import PrimaryButton from "../components/buttons/PrimaryButton";
 import AreaView from "../components/calculateSection/AreaView";
-import SelectionView from "../components/calculateSection/SelectionView";
+import SelectionZoneView from "../components/calculateSection/SelectionZoneView";
 
 import { ZONE } from "../data/dummy-data";
 function CalculationScreen({navigation}){
@@ -15,8 +15,8 @@ function CalculationScreen({navigation}){
     return(
         <View style={styles.rootContainer}>
             <AreaView/>
-            <SelectionView title="Select a Growing Zone" />       
-            <SelectionView title="Select Seed Type"/> 
+            <SelectionZoneView title="Select a Growing Zone" />       
+            <SelectionZoneView title="Select Seed Type"/> 
             <PrimaryButton onPress={pressHandler}> Calculate</PrimaryButton>
         </View>
     );    

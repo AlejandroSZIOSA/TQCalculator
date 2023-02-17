@@ -2,20 +2,25 @@ import React, { useEffect } from "react";
 import { StyleSheet,Text,View,TouchableOpacity,Dimensions,ScrollView} from "react-native";
 import Colors from "../../constants/colors";
 import { ZONE } from "../../data/dummy-data";
-
-const OPTIONS =[{state:'Stockholm'},{state:'Malmö'},{state:'Örebro'},{state:'Örby'} ]
+import { SEED } from "../../data/dummy-data";
+import { selectSeed } from "./picker-functions";
+//const OPTIONS =[{state:'Stockholm'},{state:'Malmö'},{state:'Örebro'},{state:'Örby'} ]
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 
-function ModalPicker(props,selectedData){
-    //useEfect here
+function ModalPicker(props){
     
     const onPressItem = (option) =>{
-        console.log(selectedData)
+        //console.log(selectedData)
         props.changeModalVisibility(false)
         props.setData(option)
+        //console.log(props.setData)
+        //console.log(option)
         
     }
+
+    //selectSeed(ZONE)
+
     const option = ZONE.map((item, index)=>{
         return(
             <TouchableOpacity
@@ -29,6 +34,7 @@ function ModalPicker(props,selectedData){
             </TouchableOpacity>
         )
     })
+
     return(
         <TouchableOpacity
             onPress={() => props.changeModalVisibility(false)}
@@ -36,7 +42,7 @@ function ModalPicker(props,selectedData){
         >
             <View style={[styles.modal,{width:WIDTH -20,height:HEIGHT/3}]}>
                 <ScrollView>
-                    {option}
+                    { option}
                 </ScrollView>
             </View>
         </TouchableOpacity>
