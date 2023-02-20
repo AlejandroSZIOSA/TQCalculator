@@ -6,6 +6,8 @@
 
 -Separate Picker functionality "Picker functions " no funciono
 
+
+
 - crear 2 picker separados + context
 
 -investigar Contex

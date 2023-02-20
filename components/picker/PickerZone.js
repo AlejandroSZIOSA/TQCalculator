@@ -1,35 +1,47 @@
-import { useState} from "react";
-import { StyleSheet,Text,Modal, TouchableOpacity, View } from "react-native";
+import { useEffect, useState} from "react";
+import { StyleSheet,Text,Modal, TouchableOpacity, View, Button } from "react-native";
 import Colors from "../../constants/colors";
-import ModalPicker from "./ModalPicker";
+import SecondaryButton from "../buttons/SecondaryButton";
+import ModalPickerZone from "./ModalPickerZone";
 
-function Picker({selectedZone}){
-
-  //test
-    const debug =(value) => {
-      console.log(value);
-    }
+function PickerZone({selectedZone}){
 
     const [chooseData,setChooseData] = useState('press here')
     const [isModalVisible,setisModalVisible] = useState(false)
+    const [isTouchAreaDisabled,setIsTouchAreaDisabled]= useState(false)
+    const [isResetBtnEnabled,setIsResetBtnEnabled]= useState(false)
+    // separate button secundary ..no funciono
+// regresar el valor de  touch area disabled
 
-    // create 2 modals
-    // picker1 actived
+useEffect( ()=>{
+  setIsResetBtnEnabled(true);
+  
+},[chooseData])
 
+function resetBtn(){
+  console.log("button pressed");
+  //setIsTouchAreaDisabled(false); //problem
+}
+//test
+const debug =(value) => {
+  console.log(value);
+}
     const changeModalVisibility = (bool) => {
     setisModalVisible(bool)
     debug(selectedZone);
     }
-
     const setData = (option)=>{
     setChooseData(option)
+    setIsTouchAreaDisabled(true);
     debug(option);
     }
     return(
+    <View>
     <View style={styles.container}>
       <TouchableOpacity
         style={styles.TouchableOpacity}
         onPress={()=> changeModalVisibility(true)}
+        disabled={isTouchAreaDisabled}
       >
         <Text style={styles.text}> {chooseData } </Text>
       </TouchableOpacity>
@@ -39,11 +51,16 @@ function Picker({selectedZone}){
         visible={isModalVisible}
         nRequestClose={()=>changeModalVisibility(false)}
       >
-        <ModalPicker
+        <ModalPickerZone
          changeModalVisibility={changeModalVisibility}
          setData={setData}
         />
       </Modal>
+    </View>
+    <View>
+      <SecondaryButton  disabled={isResetBtnEnabled} onPress={resetBtn}> Reset
+        </SecondaryButton>
+    </View>
     </View>
     )
 }
@@ -68,4 +85,4 @@ const styles= StyleSheet.create({
       //paddingHorizontal:100,
     },
 })
-export default Picker;
+export default PickerZone;

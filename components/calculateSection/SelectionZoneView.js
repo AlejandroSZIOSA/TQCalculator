@@ -1,19 +1,26 @@
 import { View,StyleSheet } from "react-native";
 import Colors from "../../constants/colors";
 import SecondaryButton from "../buttons/SecondaryButton";
-import Picker from "../picker/Picker";
 import IntructionText from "./IntructionText";
+
+import PickerZone from "../picker/PickerZone";
 
 //Picker data as Prop here
 function SelectionZoneView({title}){
     //console.log(title)
     // if title is growing zone
+    //const [isResetBtnEnabled,setIsResetBtnEnabled]= useState(false) //from child to parent
+    //const [isPickerDisabled, setIsPickerDisabled] = useState(false)
+
     return(
         <View style={styles.container}>
             {/*Nested Components */}
             <IntructionText title={title} />
-                <Picker selectedZone={title}/>
-            <SecondaryButton>Reset</SecondaryButton>
+                <PickerZone
+                selectedZone={title}
+                //changeResetBtnStatus={setIsResetBtnEnabled}
+                //disableTouchArea={isPickerDisabled}
+                />
         </View>
     )
 }

@@ -1,14 +1,11 @@
-import React, { useEffect } from "react";
 import { StyleSheet,Text,View,TouchableOpacity,Dimensions,ScrollView} from "react-native";
 import Colors from "../../constants/colors";
 import { ZONE } from "../../data/dummy-data";
-import { SEED } from "../../data/dummy-data";
-import { selectSeed } from "./picker-functions";
 //const OPTIONS =[{state:'Stockholm'},{state:'Malmö'},{state:'Örebro'},{state:'Örby'} ]
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 
-function ModalPicker(props){
+function ModalPickerZone(props){
     
     const onPressItem = (option) =>{
         //console.log(selectedData)
@@ -34,7 +31,6 @@ function ModalPicker(props){
             </TouchableOpacity>
         )
     })
-
     return(
         <TouchableOpacity
             onPress={() => props.changeModalVisibility(false)}
@@ -67,4 +63,4 @@ const styles = StyleSheet.create({
         fontWeight:'bold'
     }
 })
-export default ModalPicker;
+export default ModalPickerZone;

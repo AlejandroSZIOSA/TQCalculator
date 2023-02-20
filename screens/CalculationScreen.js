@@ -4,7 +4,6 @@ import AreaView from "../components/calculateSection/AreaView";
 import SelectionSeedView from "../components/calculateSection/SelectionSeedView";
 import SelectionZoneView from "../components/calculateSection/SelectionZoneView";
 
-import { ZONE } from "../data/dummy-data";
 function CalculationScreen({navigation}){
     //console.log(ZONE)
 
