@@ -8,7 +8,7 @@ import calculateArea from "../../operations/calculateArea";
 function AreaView(){    
     const [lenghtNumber, setLenghtNumber] = useState("");
     const [heightNumber, setHeightNumber] = useState("")
-    const [totalArea,setTotalArea] = useState("Result(m2)")
+    const [totalArea,setTotalArea] = useState("Result")
 
     const [enableTextInput,setEnableTextInput]= useState(true)
     const [disableSetBtn, setDisableSetBtn]= useState(false)
@@ -54,7 +54,12 @@ function AreaView(){
             </View>
             <View style={styles.innerContainer2}>
               <IntructionText title = "="/>
-              <Text style={styles.textResult}> {totalArea}</Text>
+              <View>
+                <Text style={styles.textResult}> {totalArea}</Text>
+              </View>
+              <View>
+                <IntructionText title = "m²"/>
+              </View>
             </View>
             <View style={styles.buttonContainer}>
               <View style={styles.innerButtonContainer}>
@@ -87,7 +92,8 @@ const styles= StyleSheet.create({
     innerContainer2:{
         flexDirection:'row',
         padding:10,
-        width:'65%'
+        width:'65%',
+        justifyContent:'center'
     },
     textResult:{
         fontSize:30,

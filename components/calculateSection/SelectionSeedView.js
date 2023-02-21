@@ -1,8 +1,9 @@
-import { useState } from "react";
+
 import { View,StyleSheet } from "react-native";
 import Colors from "../../constants/colors";
-import SecondaryButton from "../buttons/SecondaryButton";
-import Picker from "../picker/PickerZone";
+
+import PickerSeed from "../picker/PickerSeed";
+
 import IntructionText from "./IntructionText";
 
 //Picker data as Prop here
@@ -13,7 +14,8 @@ function SelectionSeedView({title}){
         <View style={styles.container}>
             {/*Nested Components */}
             <IntructionText title={title} />
-            <SecondaryButton >Reset</SecondaryButton>
+            <PickerSeed/>
+            
         </View>
     )
 }
