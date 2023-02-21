@@ -11,3 +11,8 @@
 - crear 2 picker separados + context
 
 -investigar Contex
+
+<DataContext.Provider value={{
+      isZoneSelected:isZoneSelected,
+      zoneSelectedToTrue: changeZoneSelectedToTrue
+    }}>

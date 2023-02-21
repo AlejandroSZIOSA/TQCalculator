@@ -15,17 +15,23 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   const[isZoneSelected,setIsZoneSelected]=useState(false);
+  const[isSeedSelected,setIsSeedSelected]=useState(false);
 
   const changeZoneSelectedToTrue = () =>{
-    setIsZoneSelected(true);
+   setIsZoneSelected(true);
   };
-
-
+  const changeSeedSelectedToTrue = () =>{
+    setIsSeedSelected(true);
+   };
   return(
-    <DataContext.Provider value={{
+    <DataContext.Provider
+    value={{
       isZoneSelected:isZoneSelected,
-      zoneSelectedToTrue: changeZoneSelectedToTrue
-    }}>
+      zoneSelectedToTrue: changeZoneSelectedToTrue,
+      isSeedSelected:isSeedSelected,
+      seedSelectedToTrue:changeSeedSelectedToTrue
+    }}
+    >
         <NavigationContainer>
           <Stack.Navigator 
             screenOptions={{

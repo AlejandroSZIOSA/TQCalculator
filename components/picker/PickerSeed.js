@@ -1,19 +1,24 @@
 import { useState} from "react";
 import { StyleSheet,Text,Modal, TouchableOpacity, View } from "react-native";
 import Colors from "../../constants/colors";
-
+import { useContext } from "react";
+import DataContext from "../../context/DataContext";
 import ModalPickerSeed from "./ModalPickerSeed";
-
+import { useEffect } from "react";
 
 function PickerSeed({selectedZone,isPickerDisabled}){
 
     const [chooseData,setChooseData] = useState('press here')
     const [isModalVisible,setisModalVisible] = useState(false)
 
+    const ctx = useContext(DataContext);
     //console.log(isPickerDisabled)
 //test
+useEffect( ()=>{
+  ctx.seedSelectedToTrue();
+},[setData])
 
-
+console.log(ctx.isSeedSelected)
 
 const debug =(value) => {
   console.log(value);

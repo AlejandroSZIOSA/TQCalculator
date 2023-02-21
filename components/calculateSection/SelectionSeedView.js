@@ -6,9 +6,6 @@ import PickerSeed from "../picker/PickerSeed";
 
 import IntructionText from "./IntructionText";
 
-import { useContext } from "react";
-import DataContext from "../../context/DataContext";
-
 import SecondaryButton from "../buttons/SecondaryButton";
 
 //Picker data as Prop here
