@@ -1,15 +1,20 @@
-import {useState} from "react";
+import { useState} from "react";
 import { StyleSheet,Text,Modal, TouchableOpacity, View } from "react-native";
 import Colors from "../../constants/colors";
+
 import ModalPickerSeed from "./ModalPickerSeed";
 
 
-function PickerSeed({selectedZone}){
+function PickerSeed({selectedZone,isPickerDisabled}){
 
     const [chooseData,setChooseData] = useState('press here')
     const [isModalVisible,setisModalVisible] = useState(false)
 
+    //console.log(isPickerDisabled)
 //test
+
+
+
 const debug =(value) => {
   console.log(value);
 }
@@ -27,7 +32,7 @@ const debug =(value) => {
       <TouchableOpacity
         style={styles.TouchableOpacity}
         onPress={()=> changeModalVisibility(true)}
-        //disabled={isTouchAreaDisabled}
+        disabled={isPickerDisabled}
       >
         <Text style={styles.text}> {chooseData } </Text>
       </TouchableOpacity>

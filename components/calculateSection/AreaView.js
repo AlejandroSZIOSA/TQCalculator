@@ -23,7 +23,7 @@ function AreaView(){
     function resetButtonHandler(){
       setLenghtNumber("")
       setHeightNumber("")
-      setTotalArea("Result(m2)")
+      setTotalArea("Result")
 
       setDisableSetBtn(false)
       setEnableTextInput(true)
@@ -101,7 +101,7 @@ const styles= StyleSheet.create({
         backgroundColor: Colors.primaryGreen4,
     },
     textInput:{
-      fontSize:30,
+      fontSize:28,
       backgroundColor:'white',
       borderRadius:5,
       margin:10,

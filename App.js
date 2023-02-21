@@ -7,11 +7,25 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import LoginScreen from './screens/LoginScreen';
 import CalculationScreen from './screens/CalculationScreen';
 import ResultScreen from './screens/ResultScreen';
+import {useState } from 'react';
+
+import DataContext from './context/DataContext';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  const[isZoneSelected,setIsZoneSelected]=useState(false);
+
+  const changeZoneSelectedToTrue = () =>{
+    setIsZoneSelected(true);
+  };
+
+
   return(
+    <DataContext.Provider value={{
+      isZoneSelected:isZoneSelected,
+      zoneSelectedToTrue: changeZoneSelectedToTrue
+    }}>
         <NavigationContainer>
           <Stack.Navigator 
             screenOptions={{
@@ -45,7 +59,8 @@ export default function App() {
               />
           </Stack.Navigator>
         </NavigationContainer>
-  );
+      </DataContext.Provider>
+  );  
 }
 const styles = StyleSheet.create({
     rootScreen:{

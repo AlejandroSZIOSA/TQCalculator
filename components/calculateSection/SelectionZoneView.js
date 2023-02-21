@@ -4,10 +4,14 @@ import SecondaryButton from "../buttons/SecondaryButton";
 import IntructionText from "./IntructionText";
 
 import PickerZone from "../picker/PickerZone";
+import DataContext from "../../context/DataContext";
+import { useContext } from "react";
 
 //Picker data as Prop here
 function SelectionZoneView({title}){
     
+    //const ctx = useContext(DataContext);
+    //console.log(ctx.isZoneSelected)
     return(
         <View style={styles.container}>
             {/*Nested Components */}

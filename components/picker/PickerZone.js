@@ -1,7 +1,9 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import { StyleSheet,Text,Modal, TouchableOpacity, View } from "react-native";
 import Colors from "../../constants/colors";
 
+import { useContext } from "react";
+import DataContext from "../../context/DataContext";
 import ModalPickerZone from "./ModalPickerZone";
 
 function PickerZone({selectedZone}){
@@ -14,6 +16,13 @@ function PickerZone({selectedZone}){
 // regresar el valor de  touch area disabled
 
 
+const ctx = useContext(DataContext);
+
+useEffect( ()=>{
+  ctx.zoneSelectedToTrue();
+},[setData])
+
+
 //test
 const debug =(value) => {
   console.log(value);
@@ -21,12 +30,15 @@ const debug =(value) => {
     const changeModalVisibility = (bool) => {
     setisModalVisible(bool)
     debug(selectedZone);
+    
     }
     const setData = (option)=>{
     setChooseData(option)
     //setIsTouchAreaDisabled(true);
     debug(option);
+    
     }
+    debug(ctx.isZoneSelected)
     return(
     <View style={styles.container}>
       <TouchableOpacity
