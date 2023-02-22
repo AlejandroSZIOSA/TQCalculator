@@ -20,25 +20,24 @@ function CalculationScreen({navigation}){
     const [isBtnDisabled,setIsBtnDisabled]=useState(false)
 
     const[operationStatus,setOperationStatus]=useState(0);
-
-    //const userOperationHandler = currentUserOperation => {
-    //  setUserOperationStatus(currentUserOperation)  
-    //};
     
+    /*
+        StatusCodes:
+        0 = nothing yet
+        1 = AreaView is ready
+        2 = SelectonZoneView is ready
+        3 = All User operations are ready
+
+    */
+
     const onChangeStatusCode = (currentStatusCode) =>{
         setOperationStatus(currentStatusCode)
-        console.log(currentStatusCode)
+        //console.log(currentStatusCode)
     };
-
 
     function pressHandler(){
         navigation.navigate('ResultSC');
     }
-    // picker data here as Prop
-    // Nested Components
-
-
-
     
     return(
         <View style={styles.rootContainer}>

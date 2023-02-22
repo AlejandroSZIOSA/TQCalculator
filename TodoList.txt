@@ -6,13 +6,16 @@
 
 -Separate Picker functionality "Picker functions " no funciono
 
+- crear 2 picker separados + context = done
 
+-investigar Contex = done
 
-- crear 2 picker separados + context
+-research "Touchable opacity / Modal"
 
--investigar Contex
+- Save Zone Selected by the user in a useContext, ?  
 
-<DataContext.Provider value={{
-      isZoneSelected:isZoneSelected,
-      zoneSelectedToTrue: changeZoneSelectedToTrue
-    }}>
+-Pass data  as Parameter To Result Screen, with Navigation Controller, ?
+
+- Re-render(restart) Pickers Programatic from a parent Component,  ?
+
+-Make the SeedPicker can filter seeds from a Selected Zone, ?
