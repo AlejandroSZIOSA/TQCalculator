@@ -5,7 +5,7 @@ import SecondaryButton from "../buttons/SecondaryButton";
 import IntructionText from "./IntructionText";
 import calculateArea from "../../operations/calculateArea";
 
-function AreaView(){    
+function AreaView({onChangeStatusCode}){    
     const [lenghtNumber, setLenghtNumber] = useState("");
     const [heightNumber, setHeightNumber] = useState("")
     const [totalArea,setTotalArea] = useState("Result")
@@ -13,12 +13,16 @@ function AreaView(){
     const [enableTextInput,setEnableTextInput]= useState(true)
     const [disableSetBtn, setDisableSetBtn]= useState(false)
     
+
+    //let msg ='adios'
+
     function setButtonHandler(){
         let lenght = parseInt(lenghtNumber,10)
         let height = parseInt(heightNumber,10)
         setTotalArea(calculateArea(lenght,height))
         setDisableSetBtn(true)
         setEnableTextInput(false)
+        onChangeStatusCode(1)
     }
     function resetButtonHandler(){
       setLenghtNumber("")

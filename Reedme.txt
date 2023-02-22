@@ -1,0 +1,4 @@
+Problem fixed!
+
+-Making Contex funcional. changing states with a function :)
+-Passing data from child to a parent component with a function :)

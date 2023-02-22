@@ -17,19 +17,36 @@ function CalculationScreen({navigation}){
     const [isPickerZoneDisabled,setIsPickerZoneDisabled]=useState(false)
     const [isPickerSeedDisabled,setIsPickerSeedDisabled]=useState(false)
     
+    const [isBtnDisabled,setIsBtnDisabled]=useState(false)
+
+    const[operationStatus,setOperationStatus]=useState(0);
+
+    //const userOperationHandler = currentUserOperation => {
+    //  setUserOperationStatus(currentUserOperation)  
+    //};
+    
+    const onChangeStatusCode = (currentStatusCode) =>{
+        setOperationStatus(currentStatusCode)
+        console.log(currentStatusCode)
+    };
+
+
     function pressHandler(){
         navigation.navigate('ResultSC');
     }
     // picker data here as Prop
     // Nested Components
+
+
+
     
     return(
         <View style={styles.rootContainer}>
-            <AreaView/>
+            <AreaView onChangeStatusCode={onChangeStatusCode}/>
             <SelectionZoneView title="Select a Growing Zone" isPickerDisabled={isPickerZoneDisabled} /> 
-            <SelectionSeedView title="Select Seed Type" isPickerDisabled={isPickerSeedDisabled}/> 
+            <SelectionSeedView title="Select a Seed Type" isPickerDisabled={isPickerSeedDisabled}/> 
             
-            <PrimaryButton onPress={pressHandler}> Calculate</PrimaryButton>
+            <PrimaryButton onPress={pressHandler} disabled={isBtnDisabled}> Calculate</PrimaryButton>
         </View>
     );    
 }
