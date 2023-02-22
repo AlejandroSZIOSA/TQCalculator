@@ -2,10 +2,10 @@ import { View,Text, Pressable,StyleSheet } from "react-native";
 import Colors from "../../constants/colors";
 
 // Login - Restart - Calculate Buttons 
-function PrimaryButton({children,onPress}){
+function PrimaryButton({children,onPress,disabled}){
     return (
         <View style={styles.buttonContainer}>
-          <Pressable onPress={onPress}>
+          <Pressable onPress={onPress} disabled={disabled}>
             <Text style={styles.buttonText}>{children}</Text>
           </Pressable>
         </View>

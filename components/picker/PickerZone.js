@@ -6,7 +6,7 @@ import { useContext } from "react";
 import DataContext from "../../context/DataContext";
 import ModalPickerZone from "./ModalPickerZone";
 
-function PickerZone({selectedZone}){
+function PickerZone({selectedZone,isPickerDisabled}){
 
     const [chooseData,setChooseData] = useState('press here')
     const [isModalVisible,setisModalVisible] = useState(false)
@@ -18,10 +18,6 @@ function PickerZone({selectedZone}){
 
 const ctx = useContext(DataContext);
 
-useEffect( ()=>{
-  ctx.zoneSelectedToTrue();
-},[setData])
-
 
 //test
 const debug =(value) => {
@@ -29,22 +25,23 @@ const debug =(value) => {
 }
     const changeModalVisibility = (bool) => {
     setisModalVisible(bool)
-    debug(selectedZone);
-    
+    //debug(selectedZone);
     }
     const setData = (option)=>{
     setChooseData(option)
     //setIsTouchAreaDisabled(true);
     debug(option);
-    
+    ctx.zoneSelectedToTrue();
     }
+
     debug(ctx.isZoneSelected)
+    
     return(
     <View style={styles.container}>
       <TouchableOpacity
         style={styles.TouchableOpacity}
         onPress={()=> changeModalVisibility(true)}
-        //disabled={isTouchAreaDisabled}
+        disabled={isPickerDisabled}
       >
         <Text style={styles.text}> {chooseData } </Text>
       </TouchableOpacity>

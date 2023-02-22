@@ -7,19 +7,12 @@ import PickerSeed from "../picker/PickerSeed";
 import IntructionText from "./IntructionText";
 
 import SecondaryButton from "../buttons/SecondaryButton";
+import { useContext } from "react";
 
 //Picker data as Prop here
 function SelectionSeedView({title,isPickerDisabled}){
-    //console.log(title)
-    // if title is growing zone
-
-    //const {data, changeData} = useContext(DataContext); // passingan object :)
     
-    //changeData(2)
-    //console.log(data)
 
-    //console.log(context)
-    //console.log(isPickerEnabled)
     return(
         <View style={styles.container}>
             {/*Nested Components */}

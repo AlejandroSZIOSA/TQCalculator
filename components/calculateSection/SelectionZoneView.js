@@ -8,15 +8,16 @@ import DataContext from "../../context/DataContext";
 import { useContext } from "react";
 
 //Picker data as Prop here
-function SelectionZoneView({title}){
+function SelectionZoneView({title,isPickerDisabled}){
     
-    //const ctx = useContext(DataContext);
-    //console.log(ctx.isZoneSelected)
+    const ctx = useContext(DataContext);
+    console.log(ctx.isZoneSelected)
     return(
         <View style={styles.container}>
             {/*Nested Components */}
             <IntructionText title={title} />
                 <PickerZone
+                isPickerDisabled={isPickerDisabled}
                 selectedZone={title}
                 />
         </View>

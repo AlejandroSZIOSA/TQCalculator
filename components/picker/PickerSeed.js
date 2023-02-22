@@ -13,24 +13,24 @@ function PickerSeed({selectedZone,isPickerDisabled}){
 
     const ctx = useContext(DataContext);
     //console.log(isPickerDisabled)
-//test
-useEffect( ()=>{
-  ctx.seedSelectedToTrue();
-},[setData])
 
-console.log(ctx.isSeedSelected)
+//test
+
+
+//console.log(ctx.isSeedSelected)
 
 const debug =(value) => {
   console.log(value);
 }
     const changeModalVisibility = (bool) => {
     setisModalVisible(bool)
-    debug(selectedZone);
+    //debug(selectedZone);
     }
     const setData = (option)=>{
     setChooseData(option)
     //setIsTouchAreaDisabled(true);
     debug(option);
+    ctx.seedSelectedToTrue();
     }
     return(
     <View style={styles.container}>
