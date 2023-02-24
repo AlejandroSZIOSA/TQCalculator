@@ -1,6 +1,5 @@
 import { View,StyleSheet } from "react-native";
 import Colors from "../../constants/colors";
-import SecondaryButton from "../buttons/SecondaryButton";
 import IntructionText from "./IntructionText";
 
 import PickerZone from "../picker/PickerZone";
@@ -11,6 +10,7 @@ import { useContext } from "react";
 function SelectionZoneView({title,isPickerDisabled}){
     
     const ctx = useContext(DataContext);
+    
     console.log(ctx.isZoneSelected)
     return(
         <View style={styles.container}>

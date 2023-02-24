@@ -3,16 +3,16 @@ import { useState } from "react";
 import { View,StyleSheet} from "react-native";
 import PrimaryButton from "../components/buttons/PrimaryButton";
 
-import SelectionSeedView from "../components/calculateSection/SelectionSeedView";
-import SelectionZoneView from "../components/calculateSection/SelectionZoneView";
+import Colors from "../constants/colors";
+import IntructionText from "../components/calculateSection/IntructionText";
 
+import PickerZone from "../components/picker/PickerZone"
+import PickerSeed from "../components/picker/PickerSeed";
 
 import AreaView from "../components/calculateSection/AreaView";
 
 function CalculationScreen({navigation}){
-    //Area calculation Section
    
- 
     //selection sections
     const [isPickerZoneDisabled,setIsPickerZoneDisabled]=useState(false)
     const [isPickerSeedDisabled,setIsPickerSeedDisabled]=useState(false)
@@ -32,7 +32,7 @@ function CalculationScreen({navigation}){
 
     const onChangeStatusCode = (currentStatusCode) =>{
         setOperationStatus(currentStatusCode)
-        //console.log(currentStatusCode)
+        console.log(`Operation status: ${currentStatusCode}`)
     };
 
     function pressHandler(){
@@ -42,8 +42,23 @@ function CalculationScreen({navigation}){
     return(
         <View style={styles.rootContainer}>
             <AreaView onChangeStatusCode={onChangeStatusCode}/>
-            <SelectionZoneView title="Select a Growing Zone" isPickerDisabled={isPickerZoneDisabled} /> 
-            <SelectionSeedView title="Select a Seed Type" isPickerDisabled={isPickerSeedDisabled}/> 
+            
+            <View style={styles.selectionZoneContainer}>
+            {/*Nested Components */}
+            <IntructionText title={"Select a Growing Zone"} />
+                <PickerZone
+                isPickerDisabled={isPickerZoneDisabled}
+                selectedZone={"Select a Growing Zone"}
+                />
+            </View> 
+
+            <View style={styles.selectionSeedContainer}>
+            <IntructionText title={"Select a Seed Type"} />
+            <PickerSeed 
+                isPickerDisabled={isPickerSeedDisabled}
+                selectedZone="Select a Seed Type"
+                />             
+            </View>
             
             <PrimaryButton onPress={pressHandler} disabled={isBtnDisabled}> Calculate</PrimaryButton>
         </View>
@@ -55,4 +70,14 @@ const styles=StyleSheet.create({
     rootContainer:{
         margin:10
     },
+    selectionZoneContainer:{
+        backgroundColor: Colors.primaryGreen3,
+        marginVertical:10,
+        alignItems:'center'
+    },
+    selectionSeedContainer:{
+        backgroundColor: Colors.primaryGreen3,
+        marginVertical:10,
+        alignItems:'center'
+    }
 })

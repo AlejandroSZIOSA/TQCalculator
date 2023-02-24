@@ -68,9 +68,3 @@ export default function App() {
       </DataContext.Provider>
   );  
 }
-const styles = StyleSheet.create({
-    rootScreen:{
-      flex:1,
-      backgroundColor: Colors.primaryGreen1,
-    }
-});
