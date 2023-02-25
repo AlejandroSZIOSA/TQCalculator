@@ -13,6 +13,8 @@ function AreaCalculateView({onChangeStatusCode}){
     const [enableTextInput,setEnableTextInput]= useState(true)
     const [disableSetBtn, setDisableSetBtn]= useState(false)
     
+
+
     function setButtonHandler(){
         let lenght = parseInt(lenghtNumber,10)
         let height = parseInt(heightNumber,10)
@@ -84,7 +86,6 @@ function AreaCalculateView({onChangeStatusCode}){
     )
 }
 export default AreaCalculateView;
-
 const styles= StyleSheet.create({
     container:{
         alignItems:'center',

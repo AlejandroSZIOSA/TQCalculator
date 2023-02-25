@@ -4,36 +4,31 @@ import Colors from "../../constants/colors";
 import { useContext } from "react";
 import DataContext from "../../context/DataContext";
 import ModalPickerSeed from "./ModalPickerSeed";
-import { useEffect } from "react";
 
-function PickerSeed({isPickerDisabled}){
+function PickerSeed({onChangeStatusCode}){
 
-    const [chooseData,setChooseData] = useState('press here')
-    const [isModalVisible,setisModalVisible] = useState(false)
+  const [chooseData,setChooseData] = useState('press here')
+  const [isModalVisible,setisModalVisible] = useState(false)
 
-    const ctx = useContext(DataContext);
-    //console.log(isPickerDisabled)
+  const ctx = useContext(DataContext);
 
-
-const debug =(value) => {
-  console.log(value);
-}
-    const changeModalVisibility = (bool) => {
-    setisModalVisible(bool)
-    //debug(selectedZone);
-    }
-    const setData = (option)=>{
-    setChooseData(option)
-    //setIsTouchAreaDisabled(true);
-    debug(option);
-    ctx.seedSelectedToTrue();
-    }
-    return(
+  const changeModalVisibility = (bool) => {
+  setisModalVisible(bool)
+  //debug(selectedZone);
+  }
+  const setData = (option)=>{
+  setChooseData(option)
+  //debug(option);
+  ctx.seedSelectedToTrue(); //Context works well! :)
+  onChangeStatusCode(3,option)
+  }
+  
+  return(
     <View style={styles.container}>
       <TouchableOpacity
         style={styles.TouchableOpacity}
         onPress={()=> changeModalVisibility(true)}
-        disabled={isPickerDisabled}
+        //disabled={isPickerDisabled}
       >
         <Text style={styles.text}> {chooseData } </Text>
       </TouchableOpacity>
@@ -44,8 +39,8 @@ const debug =(value) => {
         nRequestClose={()=>changeModalVisibility(false)}
       >
         <ModalPickerSeed
-         changeModalVisibility={changeModalVisibility}
-         setData={setData}
+          changeModalVisibility={changeModalVisibility}
+          setData={setData}
         />
       </Modal>
     </View>

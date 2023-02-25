@@ -4,28 +4,26 @@ import Colors from "../../constants/colors";
 import { useState } from "react";
 import ModalPickerZone from "./ModalPickerZone";
 
-function PickerZone({isPickerDisabled,onChangeStatusCode}){
+function PickerZone({onChangeStatusCode}){
 
-    const [chooseData,setChooseData] = useState('press here')
-    const [isModalVisible,setIsModalVisible] = useState(false)
-    //const [isTouchAreaDisabled,setIsTouchAreaDisabled]= useState(false)
-    //const [isResetBtnEnabled,setIsResetBtnEnabled]= useState(false)
-
-    const changeModalVisibility = (bool) => {
-    setIsModalVisible(bool)
-    //debug(selectedZone);
-    }
-    const setData = (option)=>{
-    setChooseData(option)
-    onChangeStatusCode(2,option)
-    }
-    
-    return(
+  const [chooseData,setChooseData] = useState('press here')
+  const [isModalVisible,setIsModalVisible] = useState(false)
+  
+  const changeModalVisibility = (bool) => {
+  setIsModalVisible(bool)
+  //debug(selectedZone);
+  }
+  //this first , when User select something 
+  const setData = (option)=>{
+  setChooseData(option)
+  onChangeStatusCode(2,option)
+  }
+  return(
     <View style={styles.container}>
       <TouchableOpacity
         style={styles.TouchableOpacity}
         onPress={()=> changeModalVisibility(true)}
-        disabled={isPickerDisabled}
+        //disabled={isPickerDisabled}
       >
         <Text style={styles.text}> {chooseData } </Text>
       </TouchableOpacity>
@@ -41,7 +39,7 @@ function PickerZone({isPickerDisabled,onChangeStatusCode}){
         />
       </Modal>
     </View>
-    )
+  )
 }
 const styles= StyleSheet.create({
     container:{

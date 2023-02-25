@@ -1,5 +1,4 @@
 import { View, Text,Pressable,StyleSheet } from "react-native";
-import { isEnabled } from "react-native/Libraries/Performance/Systrace";
 import Colors from "../../constants/colors";
 
 //Reset - Set Buttons
@@ -16,7 +15,7 @@ export default SecondaryButton;
 
 const styles = StyleSheet.create({
     buttonContainer:{
-      //backgroundColor: {disabled:true ? 'red' : 'blue'},
+      //backgroundColor: {disabled:false ? 'red' : 'blue'},
       backgroundColor:Colors.primaryLightBlue,
       width:96,
       height:33,
@@ -26,7 +25,8 @@ const styles = StyleSheet.create({
       alignItems:'center',
     },
     buttonText:{
-      color:'white',
+      //color:{disabled:false ? 'red' : 'blue'},
+      //color:'white',
       fontSize:24
     }
 })

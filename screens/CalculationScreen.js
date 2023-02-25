@@ -13,13 +13,12 @@ import AreaCalculateView from "../components/calculateSection/AreaCalculateView"
 
 let resultArea;
 let selectedZone;
-//let selectedSeed;
+let selectedSeed;
 
 function CalculationScreen({navigation}){
 
     const [isBtnDisabled,setIsBtnDisabled]=useState(false)
 
-    const [isPickerZoneDisabled,setIsPickerZoneDisabled]=useState(false)
     const [isPickerSeedDisabled,setIsPickerSeedDisabled]=useState(false)
 
     const[operationStatus,setOperationStatus]=useState(0);
@@ -31,8 +30,7 @@ function CalculationScreen({navigation}){
         2 = Selection Of Growing zone is ready
         3 = All User operations are ready
     */
-    
-    const onChangeStatusCode = (currentStatusCode, data) =>{
+    const onChangeStatusCode = (currentStatusCode,data) =>{
         switch(currentStatusCode){
             case 0:
                 //debug
@@ -49,18 +47,30 @@ function CalculationScreen({navigation}){
                 setOperationStatus(currentStatusCode)
                 selectedZone= data
 
-                console.log(`Operation Area status: ${currentStatusCode}`);
+                console.log(`Operation Zone status: ${currentStatusCode}`);
                 console.log(selectedZone);
+            break;
             case 3:
-                console.log("all operations are ready")
+                setOperationStatus(currentStatusCode)
+                selectedSeed= data
+
+                console.log(`Operation Seed status: ${currentStatusCode}`);
+                console.log(selectedSeed);
+
             break;
             default: console.log("No operation code");
         };
     };
 
+    function controlAllOperationsReady(){
+        //
+    }
+    //console.log(operationStatus)
+    
     function pressHandler(){
         navigation.navigate('ResultSC');
     }
+
     return(
         <View style={styles.rootContainer}>
             <AreaCalculateView onChangeStatusCode={onChangeStatusCode}/>
@@ -68,15 +78,16 @@ function CalculationScreen({navigation}){
             <View style={styles.selectionZoneContainer}>
                 <IntructionText title={"Select a Growing Zone"} />
                 <PickerZone
-                isPickerDisabled={isPickerZoneDisabled}
-                onChangeStatusCode={onChangeStatusCode}
+                    //isPickerDisabled={isPickerZoneDisabled}
+                    onChangeStatusCode={onChangeStatusCode}
                 />
             </View> 
 
             <View style={styles.selectionSeedContainer}>
                 <IntructionText title={"Select a Seed Type"} />
                 <PickerSeed 
-                isPickerDisabled={isPickerSeedDisabled}
+                    //isPickerDisabled={isPickerSeedDisabled}
+                    onChangeStatusCode={onChangeStatusCode}
                 />             
             </View>
             
