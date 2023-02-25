@@ -5,9 +5,9 @@ import Colors from "../../constants/colors";
 function PrimaryButton({children,onPress,disabled}){
     return (
         <View style={styles.buttonContainer}>
-          <Pressable onPress={onPress} disabled={disabled}>
-            <Text style={styles.buttonText}>{children}</Text>
-          </Pressable>
+            <Pressable onPress={onPress} disabled={disabled}>
+                <Text style={styles.buttonText}>{children}</Text>
+            </Pressable>
         </View>
     )
 }

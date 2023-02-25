@@ -6,7 +6,7 @@ import DataContext from "../../context/DataContext";
 import ModalPickerSeed from "./ModalPickerSeed";
 import { useEffect } from "react";
 
-function PickerSeed({selectedZone,isPickerDisabled}){
+function PickerSeed({isPickerDisabled}){
 
     const [chooseData,setChooseData] = useState('press here')
     const [isModalVisible,setisModalVisible] = useState(false)
@@ -14,10 +14,6 @@ function PickerSeed({selectedZone,isPickerDisabled}){
     const ctx = useContext(DataContext);
     //console.log(isPickerDisabled)
 
-//test
-
-
-//console.log(ctx.isSeedSelected)
 
 const debug =(value) => {
   console.log(value);

@@ -9,54 +9,74 @@ import IntructionText from "../components/calculateSection/IntructionText";
 import PickerZone from "../components/picker/PickerZone"
 import PickerSeed from "../components/picker/PickerSeed";
 
-import AreaView from "../components/calculateSection/AreaView";
+import AreaCalculateView from "../components/calculateSection/AreaCalculateView";
+
+let resultArea;
+let selectedZone;
+//let selectedSeed;
 
 function CalculationScreen({navigation}){
-   
-    //selection sections
-    const [isPickerZoneDisabled,setIsPickerZoneDisabled]=useState(false)
-    const [isPickerSeedDisabled,setIsPickerSeedDisabled]=useState(false)
-    
+
     const [isBtnDisabled,setIsBtnDisabled]=useState(false)
 
+    const [isPickerZoneDisabled,setIsPickerZoneDisabled]=useState(false)
+    const [isPickerSeedDisabled,setIsPickerSeedDisabled]=useState(false)
+
     const[operationStatus,setOperationStatus]=useState(0);
-    
+
     /*
-        StatusCodes:
+        Status Operations Codes:
         0 = nothing yet
-        1 = AreaView is ready
-        2 = SelectonZoneView is ready
+        1 = Area Calculation is ready
+        2 = Selection Of Growing zone is ready
         3 = All User operations are ready
-
     */
+    
+    const onChangeStatusCode = (currentStatusCode, data) =>{
+        switch(currentStatusCode){
+            case 0:
+                //debug
+                console.log(`Operation code (${currentStatusCode}) + ${data}`);
+            break;
+            case 1: 
+                setOperationStatus(currentStatusCode);
+                resultArea=data;
+                
+                console.log(`Operation Area status: ${currentStatusCode}`);
+                console.log(resultArea);
+            break;
+            case 2: 
+                setOperationStatus(currentStatusCode)
+                selectedZone= data
 
-    const onChangeStatusCode = (currentStatusCode) =>{
-        setOperationStatus(currentStatusCode)
-        console.log(`Operation status: ${currentStatusCode}`)
+                console.log(`Operation Area status: ${currentStatusCode}`);
+                console.log(selectedZone);
+            case 3:
+                console.log("all operations are ready")
+            break;
+            default: console.log("No operation code");
+        };
     };
 
     function pressHandler(){
         navigation.navigate('ResultSC');
     }
-    
     return(
         <View style={styles.rootContainer}>
-            <AreaView onChangeStatusCode={onChangeStatusCode}/>
+            <AreaCalculateView onChangeStatusCode={onChangeStatusCode}/>
             
             <View style={styles.selectionZoneContainer}>
-            {/*Nested Components */}
-            <IntructionText title={"Select a Growing Zone"} />
+                <IntructionText title={"Select a Growing Zone"} />
                 <PickerZone
                 isPickerDisabled={isPickerZoneDisabled}
-                selectedZone={"Select a Growing Zone"}
+                onChangeStatusCode={onChangeStatusCode}
                 />
             </View> 
 
             <View style={styles.selectionSeedContainer}>
-            <IntructionText title={"Select a Seed Type"} />
-            <PickerSeed 
+                <IntructionText title={"Select a Seed Type"} />
+                <PickerSeed 
                 isPickerDisabled={isPickerSeedDisabled}
-                selectedZone="Select a Seed Type"
                 />             
             </View>
             

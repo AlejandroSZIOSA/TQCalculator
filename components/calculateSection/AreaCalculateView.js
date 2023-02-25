@@ -5,7 +5,7 @@ import SecondaryButton from "../buttons/SecondaryButton";
 import IntructionText from "./IntructionText";
 import calculateArea from "../../operations/calculateArea";
 
-function AreaView({onChangeStatusCode}){    
+function AreaCalculateView({onChangeStatusCode}){    
     const [lenghtNumber, setLenghtNumber] = useState("");
     const [heightNumber, setHeightNumber] = useState("")
     const [totalArea,setTotalArea] = useState("Result")
@@ -13,24 +13,25 @@ function AreaView({onChangeStatusCode}){
     const [enableTextInput,setEnableTextInput]= useState(true)
     const [disableSetBtn, setDisableSetBtn]= useState(false)
     
-
-    //let msg ='adios'
-
     function setButtonHandler(){
         let lenght = parseInt(lenghtNumber,10)
         let height = parseInt(heightNumber,10)
-        setTotalArea(calculateArea(lenght,height))
+        let areaResult=calculateArea(lenght,height)
+        setTotalArea(areaResult)
         setDisableSetBtn(true)
         setEnableTextInput(false)
-        onChangeStatusCode(1)
+        onChangeStatusCode(1,areaResult)
+        //console.log(areaResult)
+        
     }
     function resetButtonHandler(){
       setLenghtNumber("")
       setHeightNumber("")
       setTotalArea("Result")
-
       setDisableSetBtn(false)
       setEnableTextInput(true)
+
+      onChangeStatusCode(0,"No data")
     }
     return(
         <View style={styles.container}>
@@ -82,7 +83,8 @@ function AreaView({onChangeStatusCode}){
         </View>
     )
 }
-export default AreaView;
+export default AreaCalculateView;
+
 const styles= StyleSheet.create({
     container:{
         alignItems:'center',

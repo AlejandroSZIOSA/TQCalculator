@@ -1,40 +1,24 @@
-import {useEffect, useState} from "react";
 import { StyleSheet,Text,Modal, TouchableOpacity, View } from "react-native";
 import Colors from "../../constants/colors";
 
-import { useContext } from "react";
-import DataContext from "../../context/DataContext";
+import { useState } from "react";
 import ModalPickerZone from "./ModalPickerZone";
 
-function PickerZone({selectedZone,isPickerDisabled}){
+function PickerZone({isPickerDisabled,onChangeStatusCode}){
 
     const [chooseData,setChooseData] = useState('press here')
-    const [isModalVisible,setisModalVisible] = useState(false)
+    const [isModalVisible,setIsModalVisible] = useState(false)
     //const [isTouchAreaDisabled,setIsTouchAreaDisabled]= useState(false)
     //const [isResetBtnEnabled,setIsResetBtnEnabled]= useState(false)
-    // separate button secundary ..no funciono
-// regresar el valor de  touch area disabled
 
-
-const ctx = useContext(DataContext);
-
-
-//test
-const debug =(value) => {
-  console.log(value);
-}
     const changeModalVisibility = (bool) => {
-    setisModalVisible(bool)
+    setIsModalVisible(bool)
     //debug(selectedZone);
     }
     const setData = (option)=>{
     setChooseData(option)
-    //setIsTouchAreaDisabled(true);
-    debug(option);
-    ctx.zoneSelectedToTrue();
+    onChangeStatusCode(2,option)
     }
-
-    debug(ctx.isZoneSelected)
     
     return(
     <View style={styles.container}>
@@ -52,8 +36,8 @@ const debug =(value) => {
         nRequestClose={()=>changeModalVisibility(false)}
       >
         <ModalPickerZone
-         changeModalVisibility={changeModalVisibility}
-         setData={setData}
+        changeModalVisibility={changeModalVisibility}
+        setData={setData}
         />
       </Modal>
     </View>

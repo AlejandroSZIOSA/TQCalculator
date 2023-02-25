@@ -10,10 +10,10 @@ function SeedResultView(){
             </View>
             <View style={styles.innerContainner}>
                 <View style={styles.numberContainer}>
-                  <Text style={styles.textNumber}>1000</Text>
+                    <Text style={styles.textNumber}>1000</Text>
                 </View>
                 <View style={styles.unitContainer}>
-                  <Text style={styles.textUnit}>GR</Text>
+                    <Text style={styles.textUnit}>GR</Text>
                 </View>
             </View>
         </View>
@@ -32,7 +32,6 @@ const styles = StyleSheet.create({
         paddingHorizontal:75,
         alignContent:'center',
         backgroundColor:Colors.primaryDarkBlue
-        
     },
     unitContainer:{
         paddingLeft:10

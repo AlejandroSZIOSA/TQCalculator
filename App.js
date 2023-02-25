@@ -1,4 +1,3 @@
-import { StyleSheet} from 'react-native';
 import Colors from './constants/colors';
 
 import { NavigationContainer } from "@react-navigation/native";
@@ -18,11 +17,11 @@ export default function App() {
   const[isSeedSelected,setIsSeedSelected]=useState(false);
 
   const changeZoneSelectedToTrue = () =>{
-   setIsZoneSelected(true);
+    setIsZoneSelected(true);
   };
   const changeSeedSelectedToTrue = () =>{
     setIsSeedSelected(true);
-   };
+  };
   return(
     <DataContext.Provider
     value={{
@@ -32,7 +31,7 @@ export default function App() {
       seedSelectedToTrue:changeSeedSelectedToTrue
     }}
     >
-        <NavigationContainer>
+      <NavigationContainer>
           <Stack.Navigator 
             screenOptions={{
               headerStyle:{backgroundColor:Colors.primaryGreen4},
@@ -65,6 +64,6 @@ export default function App() {
               />
           </Stack.Navigator>
         </NavigationContainer>
-      </DataContext.Provider>
+    </DataContext.Provider>
   );  
 }

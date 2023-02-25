@@ -1,7 +1,9 @@
 import { StyleSheet,Text,View,TouchableOpacity,Dimensions,ScrollView} from "react-native";
+
 import Colors from "../../constants/colors";
 import { SEED } from "../../data/dummy-data";
 //const OPTIONS =[{state:'Stockholm'},{state:'Malmö'},{state:'Örebro'},{state:'Örby'} ]
+
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 
