@@ -32,38 +32,38 @@ export default function App() {
     }}
     >
       <NavigationContainer>
-          <Stack.Navigator 
-            screenOptions={{
-              headerStyle:{backgroundColor:Colors.primaryGreen4},
-              headerTitleStyle:{
-              fontSize: 30,
-              },
-              contentStyle:{ backgroundColor:Colors.primaryGreen1}
+        <Stack.Navigator 
+          screenOptions={{
+            headerStyle:{backgroundColor:Colors.primaryGreen4},
+            headerTitleStyle:{
+            fontSize: 30,
+            },
+          contentStyle:{ backgroundColor:Colors.primaryGreen1}
+          }}
+        >
+          <Stack.Screen 
+            name="LoginSc" 
+            component={LoginScreen} 
+            options={{
+              title:'Login'
             }}
-          >
-            <Stack.Screen 
-              name="LoginSc" 
-              component={LoginScreen} 
-              options={{
-                title:'Login'
-              }}
-              />
-              <Stack.Screen
-              name="CalculateSC" 
-              component={CalculationScreen} 
-              options={{
-                title:'Seeds Calculator'
-              }}
-              />
-              <Stack.Screen
-              name="ResultSC" 
-              component={ResultScreen} 
-              options={{
-                title:'Results'
-              }}
-              />
-          </Stack.Navigator>
-        </NavigationContainer>
+          />
+          <Stack.Screen
+            name="CalculateSC" 
+            component={CalculationScreen} 
+            options={{
+              title:'Seeds Calculator'
+            }}
+          />
+          <Stack.Screen
+            name="ResultSC" 
+            component={ResultScreen} 
+            options={{
+            title:'Results'
+            }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
     </DataContext.Provider>
   );  
 }

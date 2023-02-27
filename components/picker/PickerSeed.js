@@ -44,27 +44,27 @@ function PickerSeed({onChangeStatusCode}){
         />
       </Modal>
     </View>
-    )
+  )
 }
 const styles= StyleSheet.create({
-    container:{
-      backgroundColor:Colors.primaryYellow,
-      alignItems:'center',
-      justifyContent:'center',
-      marginVertical:15,
-      paddingHorizontal:10,
-      borderWidth:2,
-      borderColor:'black',
-      borderRadius:10 
-    },
-    text:{
-      //marginHorizontal:100,
-      //paddingHorizontal:110,
-      fontSize:30
-    },
-    TouchableOpacity:{
-      alignSelf:'center',
-      //paddingHorizontal:100,
-    },
+  container:{
+    backgroundColor:Colors.primaryYellow,
+    alignItems:'center',
+    justifyContent:'center',
+    marginVertical:15,
+    paddingHorizontal:10,
+    borderWidth:2,
+    borderColor:'black',
+    borderRadius:10 
+  },
+  text:{
+    //marginHorizontal:100,
+    //paddingHorizontal:110,
+    fontSize:30
+  },
+  TouchableOpacity:{
+    alignSelf:'center',
+    //paddingHorizontal:100,
+  },
 })
 export default PickerSeed;

@@ -8,6 +8,7 @@ function ResultScreen({navigation}){
   function pressRestartHandler(){
     navigation.navigate('CalculateSC')
   }
+
 return(
   <View style={styles.rootContainer}>
     <AreaResultView/>
