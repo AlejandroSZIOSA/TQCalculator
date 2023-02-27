@@ -8,12 +8,12 @@ import ModalPickerSeed from "./ModalPickerSeed";
 function PickerSeed({onChangeStatusCode}){
 
   const [chooseData,setChooseData] = useState('press here')
-  const [isModalVisible,setisModalVisible] = useState(false)
+  const [isModalVisible,setIsModalVisible] = useState(false)
 
   const ctx = useContext(DataContext);
 
   const changeModalVisibility = (bool) => {
-  setisModalVisible(bool)
+  setIsModalVisible(bool)
   //debug(selectedZone);
   }
   const setData = (option)=>{

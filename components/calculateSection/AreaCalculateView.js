@@ -6,52 +6,55 @@ import IntructionText from "./IntructionText";
 import calculateArea from "../../operations/calculateArea";
 
 function AreaCalculateView({onChangeStatusCode}){    
-  const [lengthNumber, setLengthNumber] = useState("");
-  const [heightNumber, setHeightNumber] = useState("")
-  const [totalArea,setTotalArea] = useState(0)
+  const [lengthEntry, setLengthEntry] = useState("")
+  const [heightEntry, setHeightEntry] = useState("")
+  const [totalArea,setTotalArea] = useState(0);
 
-  const [enableTextInput,setEnableTextInput]= useState(true)
-  const [disableSetBtn, setDisableSetBtn]= useState(false)
+  const [isTextInputEnabled,setIsTextInputEnabled]= useState(true)
+  const [isSetBtnDisabled, setIsSetBtnDisabled]= useState(false)
   
   function setButtonHandler(){
-    let length = parseInt(lengthNumber,10)
-    let height = parseInt(heightNumber,10)
-    let areaResult=calculateArea(length,height)
+    const length = parseInt(lengthEntry,10)
+    const height = parseInt(heightEntry,10)
+    const areaResult=calculateArea(length,height)
+
     setTotalArea(areaResult)
-    setDisableSetBtn(true)
-    setEnableTextInput(false)
+    setIsSetBtnDisabled(true)
+    setIsTextInputEnabled(false)
     onChangeStatusCode(1,areaResult)
     //console.log(areaResult)
   }
   function resetButtonHandler(){
-    setLengthNumber("")
-    setHeightNumber("")
+    setLengthEntry("")
+    setHeightEntry("")
     setTotalArea(0)
-    setDisableSetBtn(false)
-    setEnableTextInput(true)
+    setIsSetBtnDisabled(false)
+    setIsTextInputEnabled(true)
     onChangeStatusCode(0,"No data")
   }
+
+  //todo: Validate text inputs .... "Test useRef" in Text inputs
   return(
     <View style={styles.container}>
       <IntructionText title ="Area"/> 
       <View style={styles.innerContainer}>
         <TextInput
-          editable={enableTextInput}
+          editable={isTextInputEnabled}
           style={styles.textInput}
-          placeholder="Length(m)" //implement ternary conditional
+          placeholder="Length(m)"
           maxLength={3}
-          value={lengthNumber}
-          onChangeText={(value)=>{setLengthNumber(value)}}
+          value={lengthEntry}
+          onChangeText={(value)=>{setLengthEntry(value)}}
           keyboardType="numeric"
         />
         <IntructionText title ="x"/>
         <TextInput
-          editable={enableTextInput}
+          editable={isTextInputEnabled}
           style={styles.textInput}
           placeholder="Height(m)" 
           maxLength={3}
-          value={heightNumber}
-          onChangeText={(value)=>{setHeightNumber(value)}}
+          value={heightEntry}
+          onChangeText={(value)=>{setHeightEntry(value)}}
           keyboardType="numeric"
         />
       </View>
@@ -73,7 +76,7 @@ function AreaCalculateView({onChangeStatusCode}){
         </View>
       <View style={styles.innerButtonContainer}>
         <SecondaryButton 
-          disabled={disableSetBtn}
+          disabled={isSetBtnDisabled}
           onPress={setButtonHandler}
         >Set</SecondaryButton>
       </View>
@@ -100,7 +103,6 @@ const styles= StyleSheet.create({
   },
   textResult:{
     fontSize:30,
-    color:'black',
     //backgroundColor: Colors.primaryGreen4,
   },
   textInput:{
