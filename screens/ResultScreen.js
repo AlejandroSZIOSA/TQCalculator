@@ -9,14 +9,14 @@ function ResultScreen({navigation}){
     navigation.navigate('CalculateSC')
   }
 
-return(
-  <View style={styles.rootContainer}>
-    <AreaResultView/>
-    <SeedResultView/>
-    <SeedTypeView/>
-    <PrimaryButton onPress={pressRestartHandler}>Restart</PrimaryButton>
-  </View>
-)
+  return(
+    <View style={styles.rootContainer}>
+      <AreaResultView/>
+      <SeedResultView/>
+      <SeedTypeView/>
+      <PrimaryButton onPress={pressRestartHandler}>Finish</PrimaryButton>
+    </View>
+  )
 }
 export default ResultScreen;
 const styles = StyleSheet.create({

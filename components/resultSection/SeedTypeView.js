@@ -12,7 +12,7 @@ function SeedTypeView(){
         <Text style={styles.seedTypeText}>Seed Type</Text>
       </View>
     </View>
-    )
+  )
 }
 export default SeedTypeView;
 
@@ -23,7 +23,7 @@ const styles= StyleSheet.create({
   },
   seedTypeContainer:{
     backgroundColor:Colors.primaryGreen3,
-    paddingHorizontal:90,
+    paddingHorizontal:60,
     paddingVertical:30
   },
   seedTypeText:{

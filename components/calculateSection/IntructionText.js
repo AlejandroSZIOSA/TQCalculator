@@ -1,4 +1,5 @@
 import { Text,StyleSheet } from "react-native";
+
 function IntructionText({title}){
   return <Text style={styles.textTitle}> {title} </Text>
 }

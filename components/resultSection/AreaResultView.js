@@ -12,7 +12,7 @@ function AreaResultView(){
           <Text style={styles.textNumber}>100</Text>
         </View>
         <View style={styles.unitContainer}>
-          <Text style={styles.textUnit}>M2</Text>
+          <Text style={styles.textUnit}>m2</Text>
         </View>
       </View>
     </View>

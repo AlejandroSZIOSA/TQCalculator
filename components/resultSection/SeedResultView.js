@@ -8,12 +8,12 @@ function SeedResultView(){
       <View style={{paddingBottom:20}}>
         <ResultText title="You will need"/>
       </View>
-      <View style={styles.innerContainner}>
+      <View style={styles.innerContainer}>
         <View style={styles.numberContainer}>
           <Text style={styles.textNumber}>1000</Text>
         </View>
         <View style={styles.unitContainer}>
-          <Text style={styles.textUnit}>GR</Text>
+          <Text style={styles.textUnit}>gr</Text>
         </View>
       </View>
     </View>
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     alignItems:'center',
     margin:10
   },
-  innerContainner:{
+  innerContainer:{
     flexDirection:'row',
   },
   numberContainer:{
