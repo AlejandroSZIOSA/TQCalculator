@@ -23,6 +23,11 @@ function CalculationScreen({navigation}){
 
   const[operationStatus,setOperationStatus]=useState(0);
 
+
+// useEffect(() => { 
+  //   console.log(dataEncapsuled);
+  // },[dataEncapsuled]);
+
   /*
     Status Operations Codes:
     0 = nothing yet
@@ -30,12 +35,13 @@ function CalculationScreen({navigation}){
     2 = Selection Of Growing zone is ready
     3 = All User operations are ready
   */
+  
   const onChangeStatusCode = (currentStatusCode,data) =>{
     switch(currentStatusCode){
       case 0:
         //debug
         console.log(`Operation code (${currentStatusCode}) + ${data}`);
-      break;
+        break;
       case 1: 
         setOperationStatus(currentStatusCode);
         resultArea=data;
@@ -45,18 +51,17 @@ function CalculationScreen({navigation}){
       break;
       case 2: 
         setOperationStatus(currentStatusCode)
-        selectedZone= data
-
+        selectedZone=data
+        
         console.log(`Operation Zone status: ${currentStatusCode}`);
         console.log(selectedZone);
       break;
       case 3:
         setOperationStatus(currentStatusCode)
-        selectedSeed= data
+        selectedSeed=data
 
         console.log(`Operation Seed status: ${currentStatusCode}`);
         console.log(selectedSeed);
-
       break;
       default: console.log("No operation code");
       };
@@ -68,7 +73,11 @@ function CalculationScreen({navigation}){
   //console.log(operationStatus)
   
   function pressHandler(){
-    navigation.navigate('ResultSC');
+    navigation.navigate('ResultSC',{
+      areaTotal: resultArea,
+      seedType: selectedSeed,
+    });
+    //setDataEncapsuled({resultAreaData: resultArea,selectedZoneData: selectedZone}) //works!
   }
 
   return(

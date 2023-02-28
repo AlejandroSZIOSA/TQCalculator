@@ -4,8 +4,12 @@ import AreaResultView from "../components/resultSection/AreaResultView";
 import SeedResultView from "../components/resultSection/SeedResultView";
 import SeedTypeView from "../components/resultSection/SeedTypeView";
 
-function ResultScreen({navigation}){
+function ResultScreen({navigation,route}){
+  const {areaTotal, seedType}=route.params;
+
   function pressRestartHandler(){
+    console.log(areaTotal);
+    console.log(seedType);
     navigation.navigate('CalculateSC')
   }
 

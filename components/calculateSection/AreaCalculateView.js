@@ -106,7 +106,7 @@ const styles= StyleSheet.create({
     //backgroundColor: Colors.primaryGreen4,
   },
   textInput:{
-    fontSize:28,
+    fontSize:27,
     backgroundColor:'white',
     borderRadius:5,
     margin:10,
