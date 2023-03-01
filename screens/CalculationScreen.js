@@ -14,6 +14,7 @@ import AreaCalculateView from "../components/calculateSection/AreaCalculateView"
 let resultArea;
 let selectedZone;
 let selectedSeed;
+let seedWeightSquareMeter; //retrieving from seed Type Picker
 
 function CalculationScreen({navigation}){
 
@@ -22,7 +23,6 @@ function CalculationScreen({navigation}){
   const [isPickerSeedDisabled,setIsPickerSeedDisabled]=useState(false)
 
   const[operationStatus,setOperationStatus]=useState(0);
-
 
 // useEffect(() => { 
   //   console.log(dataEncapsuled);
@@ -36,7 +36,7 @@ function CalculationScreen({navigation}){
     3 = All User operations are ready
   */
   
-  const onChangeStatusCode = (currentStatusCode,data) =>{
+  const onChangeStatusCode = (currentStatusCode,data,seedWeight) =>{
     switch(currentStatusCode){
       case 0:
         //debug
@@ -53,15 +53,17 @@ function CalculationScreen({navigation}){
         setOperationStatus(currentStatusCode)
         selectedZone=data
         
-        console.log(`Operation Zone status: ${currentStatusCode}`);
+        //console.log(`Operation Zone status: ${currentStatusCode}`);
         console.log(selectedZone);
       break;
       case 3:
         setOperationStatus(currentStatusCode)
         selectedSeed=data
-
+        seedWeightSquareMeter=seedWeight
+        
         console.log(`Operation Seed status: ${currentStatusCode}`);
         console.log(selectedSeed);
+        console.log(seedWeightSquareMeter);
       break;
       default: console.log("No operation code");
       };

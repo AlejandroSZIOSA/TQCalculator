@@ -5,7 +5,7 @@ import SeedResultView from "../components/resultSection/SeedResultView";
 import SeedTypeView from "../components/resultSection/SeedTypeView";
 
 function ResultScreen({navigation,route}){
-  const {areaTotal, seedType}=route.params;
+  const {areaTotal, seedType}=route.params; // route params
 
   function pressRestartHandler(){
     console.log(areaTotal);

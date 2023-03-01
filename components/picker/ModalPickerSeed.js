@@ -7,11 +7,13 @@ import { SEED } from "../../data/dummy-data";
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 
-function ModalPickerSeed(props){    
-  const onPressItem = (option) =>{
+function ModalPickerSeed(props){  
+
+  //Extracting data from a "selected seed type"
+  const onPressItem = (option,weightPerSquareMeter) =>{
   //console.log(selectedData)
     props.changeModalVisibility(false)
-    props.setData(option)
+    props.setData(option,weightPerSquareMeter)
     //console.log(props.setData)
     //console.log(option)
         
@@ -23,7 +25,7 @@ function ModalPickerSeed(props){
       <TouchableOpacity
         style={styles.option}
         key={index}
-        onPress={()=>onPressItem(item.name)}
+        onPress={()=>onPressItem(item.name,item.weightPerSquareMeter)}
       >
         <Text style={styles.text}>
           {item.name}
