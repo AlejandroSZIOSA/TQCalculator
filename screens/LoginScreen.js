@@ -27,7 +27,7 @@ export default LoginScreen;
 
 const styles= StyleSheet.create({
   inputContainer:{
-    marginTop:300, //take space from top fix! center the login View
+    marginTop:250, //take space from top fix! center the login View
     marginHorizontal:24, //take left and right space
     padding:16, 
   },

@@ -10,10 +10,10 @@ const HEIGHT = Dimensions.get('window').height;
 function ModalPickerSeed(props){  
 
   //Extracting data from a "selected seed type"
-  const onPressItem = (option,weightPerSquareMeter) =>{
+  const onPressItem = (selectedOption,seedWeightData) =>{
   //console.log(selectedData)
     props.changeModalVisibility(false)
-    props.setData(option,weightPerSquareMeter)
+    props.setData(selectedOption,seedWeightData)
     //console.log(props.setData)
     //console.log(option)
         

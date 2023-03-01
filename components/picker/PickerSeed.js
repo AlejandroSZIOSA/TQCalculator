@@ -16,11 +16,11 @@ function PickerSeed({onChangeStatusCode}){
   setIsModalVisible(bool)
   //debug(selectedZone);
   }
-  const setData = (option,weightPerSquareMeter)=>{
-  setChooseData(option)
+  const setData = (selectedOption,seedWeightData)=>{
+  setChooseData(selectedOption)
   //debug(option);
   ctx.seedSelectedToTrue(); //Context works well! :)
-  onChangeStatusCode(3,option,weightPerSquareMeter)
+  onChangeStatusCode(3,selectedOption,seedWeightData)
   }
   
   return(

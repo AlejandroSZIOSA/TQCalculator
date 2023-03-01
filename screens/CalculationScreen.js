@@ -10,11 +10,13 @@ import PickerZone from "../components/picker/PickerZone"
 import PickerSeed from "../components/picker/PickerSeed";
 
 import AreaCalculateView from "../components/calculateSection/AreaCalculateView";
+import mathCalculations from "../operations/mathCalculations";
 
 let resultArea;
+let resultSeeds;
 let selectedZone;
 let selectedSeed;
-let seedWeightSquareMeter; //retrieving from seed Type Picker
+let seedWeightSquareMeter; //retrieving data from the "Seed Type" Picker
 
 function CalculationScreen({navigation}){
 
@@ -36,34 +38,41 @@ function CalculationScreen({navigation}){
     3 = All User operations are ready
   */
   
-  const onChangeStatusCode = (currentStatusCode,data,seedWeight) =>{
+  const onChangeStatusCode = (currentStatusCode,selectedData,seedWeightData) =>{
     switch(currentStatusCode){
       case 0:
+        resultArea=0
         //debug
-        console.log(`Operation code (${currentStatusCode}) + ${data}`);
+        
+        console.log(`Operation code (${currentStatusCode}) + ${selectedData}`);
         break;
       case 1: 
         setOperationStatus(currentStatusCode);
-        resultArea=data;
+        resultArea=selectedData;
 
+        
         console.log(`Operation Area status: ${currentStatusCode}`);
         console.log(resultArea);
       break;
       case 2: 
         setOperationStatus(currentStatusCode)
-        selectedZone=data
+        selectedZone=selectedData
         
         //console.log(`Operation Zone status: ${currentStatusCode}`);
         console.log(selectedZone);
       break;
       case 3:
         setOperationStatus(currentStatusCode)
-        selectedSeed=data
-        seedWeightSquareMeter=seedWeight
-        
+        selectedSeed=selectedData
+        seedWeightSquareMeter=seedWeightData
+        resultSeeds = mathCalculations.calculateTotalSeeds(resultArea,seedWeightSquareMeter)
+
+
         console.log(`Operation Seed status: ${currentStatusCode}`);
         console.log(selectedSeed);
         console.log(seedWeightSquareMeter);
+        console.log(resultSeeds);
+        
       break;
       default: console.log("No operation code");
       };
@@ -77,6 +86,7 @@ function CalculationScreen({navigation}){
   function pressHandler(){
     navigation.navigate('ResultSC',{
       areaTotal: resultArea,
+      seedTotal: resultSeeds, //Total seeds need it.
       seedType: selectedSeed,
     });
     //setDataEncapsuled({resultAreaData: resultArea,selectedZoneData: selectedZone}) //works!

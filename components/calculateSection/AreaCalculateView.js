@@ -3,7 +3,7 @@ import { useState } from "react";
 import Colors from "../../constants/colors";
 import SecondaryButton from "../buttons/SecondaryButton";
 import IntructionText from "./IntructionText";
-import calculateArea from "../../operations/calculateArea";
+import mathCalculations from "../../operations/mathCalculations";
 
 function AreaCalculateView({onChangeStatusCode}){    
   const [lengthEntry, setLengthEntry] = useState("")
@@ -16,7 +16,7 @@ function AreaCalculateView({onChangeStatusCode}){
   function setButtonHandler(){
     const length = parseInt(lengthEntry,10)
     const height = parseInt(heightEntry,10)
-    const areaResult=calculateArea(length,height)
+    const areaResult=mathCalculations.calculateArea(length,height)
 
     setTotalArea(areaResult)
     setIsSetBtnDisabled(true)

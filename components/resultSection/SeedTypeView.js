@@ -2,14 +2,14 @@ import { View,Text,StyleSheet } from "react-native";
 import Colors from "../../constants/colors";
 import ResultText from "./ResultText";
 
-function SeedTypeView(){
+function SeedTypeView(props){
   return(
     <View style={styles.container}>
       <View style={{paddingBottom:10}}>
         <ResultText title="Of"/>
       </View>
       <View style={styles.seedTypeContainer}>
-        <Text style={styles.seedTypeText}>Seed Type</Text>
+        <Text style={styles.seedTypeText}>{props.seedType}</Text>
       </View>
     </View>
   )

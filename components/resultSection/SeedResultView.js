@@ -2,7 +2,7 @@ import { View,Text,StyleSheet } from "react-native";
 import Colors from "../../constants/colors";
 import ResultText from "./ResultText";
 
-function SeedResultView(){
+function SeedResultView(props){
   return(
     <View style={styles.container}>
       <View style={{paddingBottom:20}}>
@@ -10,7 +10,7 @@ function SeedResultView(){
       </View>
       <View style={styles.innerContainer}>
         <View style={styles.numberContainer}>
-          <Text style={styles.textNumber}>1000</Text>
+          <Text style={styles.textNumber}>{props.seedTotal}</Text>
         </View>
         <View style={styles.unitContainer}>
           <Text style={styles.textUnit}>gr</Text>
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     flexDirection:'row',
   },
   numberContainer:{
-    paddingHorizontal:75,
+    paddingHorizontal:10,
     alignContent:'center',
     backgroundColor:Colors.primaryDarkBlue
   },
