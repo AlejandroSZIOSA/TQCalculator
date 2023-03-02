@@ -39,7 +39,8 @@ const styles = StyleSheet.create({
     color:'white',
   },
   textUnit:{
-    fontSize:64,
+    fontSize:40,
+    marginVertical:10,
     color:Colors.primaryGreen5
   },
 })

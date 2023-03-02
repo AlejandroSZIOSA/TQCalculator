@@ -5,9 +5,9 @@ import { useContext } from "react";
 import DataContext from "../../context/DataContext";
 import ModalPickerSeed from "./ModalPickerSeed";
 
-function PickerSeed({onChangeStatusCode}){
+function PickerSeed({onChangeStatusCode,selectedZone}){
 
-  const [chooseData,setChooseData] = useState('press here')
+  const [chooseData,setChooseData] = useState('Press here')
   const [isModalVisible,setIsModalVisible] = useState(false)
 
   const ctx = useContext(DataContext);
@@ -19,7 +19,9 @@ function PickerSeed({onChangeStatusCode}){
   const setData = (selectedOption,seedWeightData)=>{
   setChooseData(selectedOption)
   //debug(option);
+
   ctx.seedSelectedToTrue(); //Context works well! :)
+  
   onChangeStatusCode(3,selectedOption,seedWeightData)
   }
   
@@ -41,6 +43,7 @@ function PickerSeed({onChangeStatusCode}){
         <ModalPickerSeed
           changeModalVisibility={changeModalVisibility}
           setData={setData}
+          selectedZone={selectedZone}
         />
       </Modal>
     </View>

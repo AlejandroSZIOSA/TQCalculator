@@ -6,7 +6,7 @@ import ModalPickerZone from "./ModalPickerZone";
 
 function PickerZone({onChangeStatusCode}){
 
-  const [chooseData,setChooseData] = useState('press here')
+  const [chooseData,setChooseData] = useState('Press here')
   const [isModalVisible,setIsModalVisible] = useState(false)
   
   const changeModalVisibility = (bool) => {

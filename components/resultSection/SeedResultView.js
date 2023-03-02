@@ -42,7 +42,8 @@ const styles = StyleSheet.create({
     backgroundColor:Colors.primaryDarkBlue
   },
   textUnit:{
-    fontSize:64,
+    fontSize:40,
+    marginVertical:10,
     color:Colors.primaryGreen5
   }
 })

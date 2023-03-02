@@ -103,6 +103,7 @@ const styles= StyleSheet.create({
   },
   textResult:{
     fontSize:30,
+    color:'white'
     //backgroundColor: Colors.primaryGreen4,
   },
   textInput:{

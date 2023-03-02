@@ -12,11 +12,14 @@ import PickerSeed from "../components/picker/PickerSeed";
 import AreaCalculateView from "../components/calculateSection/AreaCalculateView";
 import mathCalculations from "../operations/mathCalculations";
 
+//All these Variables will be passed as Route.params to the "Result Screen" 
 let resultArea;
 let resultSeeds;
 let selectedZone;
 let selectedSeed;
-let seedWeightSquareMeter; //retrieving data from the "Seed Type" Picker
+
+//Variable will retrieve data from the "PickerSeed"
+let seedWeightSquareMeter; 
 
 function CalculationScreen({navigation}){
 
@@ -50,7 +53,6 @@ function CalculationScreen({navigation}){
         setOperationStatus(currentStatusCode);
         resultArea=selectedData;
 
-        
         console.log(`Operation Area status: ${currentStatusCode}`);
         console.log(resultArea);
       break;
@@ -66,7 +68,6 @@ function CalculationScreen({navigation}){
         selectedSeed=selectedData
         seedWeightSquareMeter=seedWeightData
         resultSeeds = mathCalculations.calculateTotalSeeds(resultArea,seedWeightSquareMeter)
-
 
         console.log(`Operation Seed status: ${currentStatusCode}`);
         console.log(selectedSeed);
@@ -108,6 +109,7 @@ function CalculationScreen({navigation}){
           <IntructionText title={"Select a Seed Type"} />
             <PickerSeed 
               //isPickerDisabled={isPickerSeedDisabled}
+              selectedZone={selectedZone} // A very Nested Prop
               onChangeStatusCode={onChangeStatusCode}
             />             
         </View>
