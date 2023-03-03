@@ -17,12 +17,11 @@ function AreaCalculateView({onChangeStatusCode}){
     const length = parseInt(lengthEntry,10)
     const height = parseInt(heightEntry,10)
     const areaResult=mathCalculations.calculateArea(length,height)
-
+    
     setTotalArea(areaResult)
     setIsSetBtnDisabled(true)
     setIsTextInputEnabled(false)
-    onChangeStatusCode(1,areaResult)
-    //console.log(areaResult)
+    onChangeStatusCode(1,areaResult) //Callback Function
   }
   function resetButtonHandler(){
     setLengthEntry("")
@@ -30,7 +29,7 @@ function AreaCalculateView({onChangeStatusCode}){
     setTotalArea(0)
     setIsSetBtnDisabled(false)
     setIsTextInputEnabled(true)
-    onChangeStatusCode(0,"No data")
+    onChangeStatusCode(0,"No data") //Callback Function
   }
 
   //todo: Validate text inputs .... "Test useRef" in Text inputs

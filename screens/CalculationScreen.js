@@ -13,10 +13,10 @@ import AreaCalculateView from "../components/calculateSection/AreaCalculateView"
 import mathCalculations from "../operations/mathCalculations";
 
 //All these Variables will be passed as Route.params to the "Result Screen" 
-let resultArea;
-let resultSeeds;
+//let resultArea; // create a hook instead
+//let resultSeeds; // create a hook instead
 //let selectedZone; // todo: testa with a hook : fixed problem!
-let selectedSeed;
+//let selectedSeed;// create a hook instead
 
 //Variable will retrieve data from the "PickerSeed"
 let seedWeightSquareMeter; 
@@ -24,9 +24,13 @@ let seedWeightSquareMeter;
 function CalculationScreen({navigation}){
 
   const [isBtnDisabled,setIsBtnDisabled]=useState(false)
-  const [isPickerSeedDisabled,setIsPickerSeedDisabled]=useState(false)
+  //const [isPickerSeedDisabled,setIsPickerSeedDisabled]=useState(false)
   const[operationStatus,setOperationStatus]=useState(0);
-  const [zone,setZone]= useState("");
+
+  const [selectedZone,setSelectedZone]= useState("");
+  const [resultArea,setResultArea]= useState(0)
+  const[resultSeeds,setResultSeeds]= useState(0)
+  const [selectedSeed,setSelectedSeed] = useState("")
 
 // useEffect(() => { 
   //   console.log(dataEncapsuled);
@@ -34,7 +38,7 @@ function CalculationScreen({navigation}){
 
   /*
     Status Operations Codes:
-    0 = nothing yet
+    0 = restart area calculation
     1 = Area Calculation is ready
     2 = Selection Of Growing zone is ready
     3 = All User operations are ready
@@ -43,30 +47,29 @@ function CalculationScreen({navigation}){
   const onChangeStatusCode = (currentStatusCode,selectedData,seedWeightData) =>{
     switch(currentStatusCode){
       case 0:
-        resultArea=0
-        //debug
+        setResultArea(0)
         
-        console.log(`Operation code (${currentStatusCode}) + ${selectedData}`);
+        //console.log(`Operation code (${currentStatusCode}) + ${selectedData}`);
         break;
       case 1: 
         setOperationStatus(currentStatusCode);
-        resultArea=selectedData;
-
+        //resultArea=selectedData;
+        setResultArea(selectedData)
         console.log(`Operation Area status: ${currentStatusCode}`);
         console.log(resultArea);
       break;
       case 2: 
         setOperationStatus(currentStatusCode)
         // selectedZone=selectedData // make a hook :)
-        setZone(selectedData)
+        setSelectedZone(selectedData)
         //console.log(`Operation Zone status: ${currentStatusCode}`);
         //console.log(selectedZone);
       break;
       case 3:
         setOperationStatus(currentStatusCode)
-        selectedSeed=selectedData
+        setSelectedSeed(selectedData)
         seedWeightSquareMeter=seedWeightData
-        resultSeeds = mathCalculations.calculateTotalSeeds(resultArea,seedWeightSquareMeter)
+        setResultSeeds(mathCalculations.calculateTotalSeeds(resultArea,seedWeightSquareMeter))
 
         //console.log(`Operation Seed status: ${currentStatusCode}`);
         //console.log(selectedSeed);
@@ -108,7 +111,7 @@ function CalculationScreen({navigation}){
           <IntructionText title={"Select a Seed Type"} />
             <PickerSeed 
               //isPickerDisabled={isPickerSeedDisabled}
-              selectedZone={zone} // A very Nested Prop
+              selectedZone={selectedZone} // A very Nested Prop
               onChangeStatusCode={onChangeStatusCode}
             />             
         </View>
