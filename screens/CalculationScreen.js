@@ -15,7 +15,7 @@ import mathCalculations from "../operations/mathCalculations";
 //All these Variables will be passed as Route.params to the "Result Screen" 
 let resultArea;
 let resultSeeds;
-let selectedZone;
+//let selectedZone; // todo: testa with a hook : fixed problem!
 let selectedSeed;
 
 //Variable will retrieve data from the "PickerSeed"
@@ -24,10 +24,9 @@ let seedWeightSquareMeter;
 function CalculationScreen({navigation}){
 
   const [isBtnDisabled,setIsBtnDisabled]=useState(false)
-
   const [isPickerSeedDisabled,setIsPickerSeedDisabled]=useState(false)
-
   const[operationStatus,setOperationStatus]=useState(0);
+  const [zone,setZone]= useState("");
 
 // useEffect(() => { 
   //   console.log(dataEncapsuled);
@@ -58,10 +57,10 @@ function CalculationScreen({navigation}){
       break;
       case 2: 
         setOperationStatus(currentStatusCode)
-        selectedZone=selectedData
-        
+        // selectedZone=selectedData // make a hook :)
+        setZone(selectedData)
         //console.log(`Operation Zone status: ${currentStatusCode}`);
-        console.log(selectedZone);
+        //console.log(selectedZone);
       break;
       case 3:
         setOperationStatus(currentStatusCode)
@@ -69,10 +68,10 @@ function CalculationScreen({navigation}){
         seedWeightSquareMeter=seedWeightData
         resultSeeds = mathCalculations.calculateTotalSeeds(resultArea,seedWeightSquareMeter)
 
-        console.log(`Operation Seed status: ${currentStatusCode}`);
-        console.log(selectedSeed);
-        console.log(seedWeightSquareMeter);
-        console.log(resultSeeds);
+        //console.log(`Operation Seed status: ${currentStatusCode}`);
+        //console.log(selectedSeed);
+        //console.log(seedWeightSquareMeter);
+        //console.log(resultSeeds);
         
       break;
       default: console.log("No operation code");
@@ -109,7 +108,7 @@ function CalculationScreen({navigation}){
           <IntructionText title={"Select a Seed Type"} />
             <PickerSeed 
               //isPickerDisabled={isPickerSeedDisabled}
-              selectedZone={selectedZone} // A very Nested Prop
+              selectedZone={zone} // A very Nested Prop
               onChangeStatusCode={onChangeStatusCode}
             />             
         </View>
