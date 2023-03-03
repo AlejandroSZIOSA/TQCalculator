@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { View,StyleSheet} from "react-native";
 import PrimaryButton from "../components/buttons/PrimaryButton";
 
@@ -13,29 +13,35 @@ import AreaCalculateView from "../components/calculateSection/AreaCalculateView"
 import mathCalculations from "../operations/mathCalculations";
 
 //All these Variables will be passed as Route.params to the "Result Screen" 
+
 //let resultArea; // create a hook instead
-//let resultSeeds; // create a hook instead
+//var resultSeeds; // create a hook instead
 //let selectedZone; // todo: testa with a hook : fixed problem!
 //let selectedSeed;// create a hook instead
-
 //Variable will retrieve data from the "PickerSeed"
-let seedWeightSquareMeter; 
+//let seedWeightSquareMeter; 
 
 function CalculationScreen({navigation}){
 
   const [isBtnDisabled,setIsBtnDisabled]=useState(false)
   //const [isPickerSeedDisabled,setIsPickerSeedDisabled]=useState(false)
+
+
   const[operationStatus,setOperationStatus]=useState(0);
+  const [selectedZone,setSelectedZone]= useState("No Zone");
 
-  const [selectedZone,setSelectedZone]= useState("");
   const [resultArea,setResultArea]= useState(0)
+
   const[resultSeeds,setResultSeeds]= useState(0)
-  const [selectedSeed,setSelectedSeed] = useState("")
+  const [selectedSeed,setSelectedSeed] = useState("No Seeds")
 
-// useEffect(() => { 
-  //   console.log(dataEncapsuled);
-  // },[dataEncapsuled]);
+  const [seedWeightSquareMeter,setSeedWeightSquareMeter] = useState(0)
 
+  useEffect(() => {
+    const data = mathCalculations.calculateTotalSeeds(resultArea,seedWeightSquareMeter)
+    setResultSeeds(data)
+  }, [resultArea,seedWeightSquareMeter,selectedSeed])
+  
   /*
     Status Operations Codes:
     0 = restart area calculation
@@ -44,19 +50,20 @@ function CalculationScreen({navigation}){
     3 = All User operations are ready
   */
   
+  //Callback Function
   const onChangeStatusCode = (currentStatusCode,selectedData,seedWeightData) =>{
     switch(currentStatusCode){
       case 0:
         setResultArea(0)
-        
         //console.log(`Operation code (${currentStatusCode}) + ${selectedData}`);
         break;
       case 1: 
         setOperationStatus(currentStatusCode);
         //resultArea=selectedData;
         setResultArea(selectedData)
-        console.log(`Operation Area status: ${currentStatusCode}`);
-        console.log(resultArea);
+        
+        //console.log(`Operation Area status: ${currentStatusCode}`);
+        //console.log(resultArea);
       break;
       case 2: 
         setOperationStatus(currentStatusCode)
@@ -68,14 +75,14 @@ function CalculationScreen({navigation}){
       case 3:
         setOperationStatus(currentStatusCode)
         setSelectedSeed(selectedData)
-        seedWeightSquareMeter=seedWeightData
-        setResultSeeds(mathCalculations.calculateTotalSeeds(resultArea,seedWeightSquareMeter))
-
+        setSeedWeightSquareMeter(seedWeightData)
+        
         //console.log(`Operation Seed status: ${currentStatusCode}`);
-        //console.log(selectedSeed);
+        //console.log(selectedData);
         //console.log(seedWeightSquareMeter);
         //console.log(resultSeeds);
-        
+        //console.log(resultArea);
+        //console.log(selectedSeed);
       break;
       default: console.log("No operation code");
       };

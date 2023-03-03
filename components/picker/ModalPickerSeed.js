@@ -47,7 +47,8 @@ function ModalPickerSeed(props){
 
   const onPressItem = (selectedOption,seedWeightData) =>{
     props.changeModalVisibility(false)
-    //callback function
+    
+    //Callback Function
     props.setData(selectedOption,seedWeightData)
     //todo: search a prop for restart the picker
   }

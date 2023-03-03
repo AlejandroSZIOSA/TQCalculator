@@ -22,14 +22,16 @@ function PickerSeed({onChangeStatusCode,selectedZone}){
   //setIsTODisabled(true)
   //debug(selectedZone);
   }
-  //callback function
-
+  
+  //Callback Function
   const setData = (selectedOption,seedWeightData)=>{
   setChooseData(selectedOption)
   //console.log(selectedOption);
   
   ctx.seedSelectedToTrue(); //Context works well! :)
-  onChangeStatusCode(3,selectedOption,seedWeightData) //callback function
+  onChangeStatusCode(3,selectedOption,seedWeightData) // Callback function
+  console.log(seedWeightData);
+  
   }
   console.log(selectedZone);
   
