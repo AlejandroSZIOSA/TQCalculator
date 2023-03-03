@@ -1,36 +1,44 @@
 import { useState} from "react";
 import { StyleSheet,Text,Modal, TouchableOpacity, View } from "react-native";
 import Colors from "../../constants/colors";
-import { useContext } from "react";
+import { useContext,useEffect } from "react";
 import DataContext from "../../context/DataContext";
 import ModalPickerSeed from "./ModalPickerSeed";
 
 function PickerSeed({onChangeStatusCode,selectedZone}){
 
+  // useEffect(() => {
+  //   setIsTODisabled(false)
+  // }, [setChooseData])
+  
   const [chooseData,setChooseData] = useState('Press here')
   const [isModalVisible,setIsModalVisible] = useState(false)
+  //const [isTODisabled,setIsTODisabled]= useState(true)
 
   const ctx = useContext(DataContext);
 
   const changeModalVisibility = (bool) => {
   setIsModalVisible(bool)
+  //setIsTODisabled(true)
   //debug(selectedZone);
   }
+  //callback function
+
   const setData = (selectedOption,seedWeightData)=>{
   setChooseData(selectedOption)
-  //debug(option);
-
-  ctx.seedSelectedToTrue(); //Context works well! :)
+  //console.log(selectedOption);
   
-  onChangeStatusCode(3,selectedOption,seedWeightData)
+  ctx.seedSelectedToTrue(); //Context works well! :)
+  onChangeStatusCode(3,selectedOption,seedWeightData) //callback function
   }
+  console.log(selectedZone);
   
   return(
     <View style={styles.container}>
       <TouchableOpacity
         style={styles.TouchableOpacity}
         onPress={()=> changeModalVisibility(true)}
-        //disabled={isPickerDisabled}
+        //disabled={isTODisabled}
       >
         <Text style={styles.text}> {chooseData } </Text>
       </TouchableOpacity>
