@@ -15,6 +15,10 @@ function PickerSeed({onChangeStatusCode,selectedZone}){
   const [isModalVisible,setIsModalVisible] = useState(false)
   //const [isTODisabled,setIsTODisabled]= useState(true)
 
+useEffect(() => {
+  setChooseData('Press here')
+}, [selectedZone])
+
   const ctx = useContext(DataContext);
 
   const changeModalVisibility = (bool) => {
@@ -22,7 +26,7 @@ function PickerSeed({onChangeStatusCode,selectedZone}){
   //setIsTODisabled(true)
   //debug(selectedZone);
   }
-  
+
   //Callback Function
   const setData = (selectedOption,seedWeightData)=>{
   setChooseData(selectedOption)
