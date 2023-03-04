@@ -20,7 +20,6 @@ function ResultScreen({navigation,route}){
       <AreaResultView areaTotal={areaTotal}/>
       <SeedResultView seedTotal={seedTotal}/>
       <SeedTypeView seedType={seedType}/>
-      <PrimaryButton onPress={pressRestartHandler}>Finish</PrimaryButton>
     </View>
   )
 }

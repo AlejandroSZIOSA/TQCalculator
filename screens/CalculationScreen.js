@@ -14,35 +14,33 @@ import mathCalculations from "../operations/mathCalculations";
 
 //All these Variables will be passed as Route.params to the "Result Screen" 
 
-//let resultArea; // create a hook instead
-//var resultSeeds; // create a hook instead
-//let selectedZone; // todo: testa with a hook : fixed problem!
-//let selectedSeed;// create a hook instead
-//Variable will retrieve data from the "PickerSeed"
-//let seedWeightSquareMeter; 
-
 function CalculationScreen({navigation}){
 
-  const [isBtnDisabled,setIsBtnDisabled]=useState(false)
-  //const [isPickerSeedDisabled,setIsPickerSeedDisabled]=useState(false)
+  const [isBtnDisabled,setIsBtnDisabled]=useState(true)
+  const [btnOpacity,setBtnOpacity]=useState(0.5)
 
-
-  const[operationStatus,setOperationStatus]=useState(0);
+  const [operationStatus,setOperationStatus]=useState(0);
   const [selectedZone,setSelectedZone]= useState("No Zone");
-
   const [resultArea,setResultArea]= useState(0)
-
-  const[resultSeeds,setResultSeeds]= useState(0)
+  const [resultSeeds,setResultSeeds]= useState(0)
   const [selectedSeed,setSelectedSeed] = useState("No Seeds")
-
   const [seedWeightSquareMeter,setSeedWeightSquareMeter] = useState(0)
 
   useEffect(() => {
-    const data = mathCalculations.calculateTotalSeeds(resultArea,seedWeightSquareMeter)
-    setResultSeeds(data)
+    const data = mathCalculations.calculateTotalSeeds(resultArea,seedWeightSquareMeter);
+    setResultSeeds(data);
+    activePrimaryBtn();
   }, [resultArea,seedWeightSquareMeter,selectedSeed])
-  
-  /*
+
+  const activePrimaryBtn = () =>{
+    if(selectedSeed != "No Seeds" && selectedZone != "No Zone" && resultArea != 0){
+      //console.log("no");
+      setIsBtnDisabled(false)
+      setBtnOpacity(1)
+    }
+  }
+
+  /* Callback Function:
     Status Operations Codes:
     0 = restart area calculation
     1 = Area Calculation is ready
@@ -50,7 +48,6 @@ function CalculationScreen({navigation}){
     3 = All User operations are ready
   */
   
-  //Callback Function
   const onChangeStatusCode = (currentStatusCode,selectedData,seedWeightData) =>{
     switch(currentStatusCode){
       case 0:
@@ -59,9 +56,7 @@ function CalculationScreen({navigation}){
         break;
       case 1: 
         setOperationStatus(currentStatusCode);
-        //resultArea=selectedData;
         setResultArea(selectedData)
-        
         //console.log(`Operation Area status: ${currentStatusCode}`);
         //console.log(resultArea);
       break;
@@ -88,24 +83,19 @@ function CalculationScreen({navigation}){
       };
   };
 
-  function controlAllOperationsReady(){
-        //
-  }
   //console.log(operationStatus)
   
-  function pressHandler(){
+  function onPrimaryBtnHandler(){
     navigation.navigate('ResultSC',{
       areaTotal: resultArea,
       seedTotal: resultSeeds, //Total seeds need it.
       seedType: selectedSeed,
     });
-    //setDataEncapsuled({resultAreaData: resultArea,selectedZoneData: selectedZone}) //works!
   }
 
   return(
     <View style={styles.rootContainer}>
       <AreaCalculateView onChangeStatusCode={onChangeStatusCode}/>
-
         <View style={styles.selectionZoneContainer}>
           <IntructionText title={"Select a Growing Zone"} />
             <PickerZone
@@ -113,7 +103,6 @@ function CalculationScreen({navigation}){
               onChangeStatusCode={onChangeStatusCode}
             />
         </View> 
-
         <View style={styles.selectionSeedContainer}>
           <IntructionText title={"Select a Seed Type"} />
             <PickerSeed 
@@ -122,8 +111,11 @@ function CalculationScreen({navigation}){
               onChangeStatusCode={onChangeStatusCode}
             />             
         </View>
-
-        <PrimaryButton onPress={pressHandler} disabled={isBtnDisabled}> Calculate</PrimaryButton>
+        <PrimaryButton
+          onPress={onPrimaryBtnHandler}
+          disabled={isBtnDisabled}
+          style= {{opacity:btnOpacity}} //Overriding style
+        > Calculate</PrimaryButton>
     </View>
   );    
 }
@@ -142,5 +134,5 @@ const styles=StyleSheet.create({
     backgroundColor: Colors.primaryGreen3,
     marginVertical:10,
     alignItems:'center'
-  }
+  },
 })

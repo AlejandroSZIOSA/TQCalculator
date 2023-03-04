@@ -13,7 +13,6 @@ function PickerSeed({onChangeStatusCode,selectedZone}){
   
   const [chooseData,setChooseData] = useState('Press here')
   const [isModalVisible,setIsModalVisible] = useState(false)
-  //const [isTODisabled,setIsTODisabled]= useState(true)
 
 useEffect(() => {
   setChooseData('Press here')
@@ -30,14 +29,18 @@ useEffect(() => {
   //Callback Function
   const setData = (selectedOption,seedWeightData)=>{
   setChooseData(selectedOption)
+  //todo: fix useEffect
+
   //console.log(selectedOption);
   
   ctx.seedSelectedToTrue(); //Context works well! :)
+    //console.log(chooseData);
+    
   onChangeStatusCode(3,selectedOption,seedWeightData) // Callback function
-  console.log(seedWeightData);
+  //console.log(seedWeightData);
   
   }
-  console.log(selectedZone);
+  //console.log(selectedZone);
   
   return(
     <View style={styles.container}>
