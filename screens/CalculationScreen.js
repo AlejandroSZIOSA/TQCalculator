@@ -29,6 +29,7 @@ function CalculationScreen({navigation}){
   useEffect(() => {
     const data = mathCalculations.calculateTotalSeeds(resultArea,seedWeightSquareMeter);
     setResultSeeds(data);
+    //setSelectedSeed("No Seeds")
     activePrimaryBtn();
   }, [resultArea,seedWeightSquareMeter,selectedSeed])
 
@@ -37,17 +38,19 @@ function CalculationScreen({navigation}){
       //console.log("no");
       setIsBtnDisabled(false)
       setBtnOpacity(1)
+    }else{
+      setIsBtnDisabled(true)
+      setBtnOpacity(0.5)
     }
   }
 
-  /* Callback Function:
+  /*  Callback Function:
     Status Operations Codes:
     0 = restart area calculation
     1 = Area Calculation is ready
     2 = Selection Of Growing zone is ready
     3 = All User operations are ready
   */
-  
   const onChangeStatusCode = (currentStatusCode,selectedData,seedWeightData) =>{
     switch(currentStatusCode){
       case 0:
@@ -62,8 +65,8 @@ function CalculationScreen({navigation}){
       break;
       case 2: 
         setOperationStatus(currentStatusCode)
-        // selectedZone=selectedData // make a hook :)
         setSelectedZone(selectedData)
+        setSelectedSeed("No Seeds") //fix problem
         //console.log(`Operation Zone status: ${currentStatusCode}`);
         //console.log(selectedZone);
       break;
@@ -106,15 +109,14 @@ function CalculationScreen({navigation}){
         <View style={styles.selectionSeedContainer}>
           <IntructionText title={"Select a Seed Type"} />
             <PickerSeed 
-              //isPickerDisabled={isPickerSeedDisabled}
-              selectedZone={selectedZone} // A very Nested Prop
+              selectedZone={selectedZone} // A very Nested Prop. fix problem!
               onChangeStatusCode={onChangeStatusCode}
             />             
         </View>
         <PrimaryButton
           onPress={onPrimaryBtnHandler}
           disabled={isBtnDisabled}
-          style= {{opacity:btnOpacity}} //Overriding style
+          style= {{opacity:btnOpacity}} //Overriding style. fix problem!
         > Calculate</PrimaryButton>
     </View>
   );    
