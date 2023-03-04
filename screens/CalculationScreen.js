@@ -2,24 +2,20 @@
 import { useState,useEffect } from "react";
 import { View,StyleSheet} from "react-native";
 import PrimaryButton from "../components/buttons/PrimaryButton";
-
 import Colors from "../constants/colors";
 import IntructionText from "../components/calculateSection/IntructionText";
-
 import PickerZone from "../components/picker/PickerZone"
 import PickerSeed from "../components/picker/PickerSeed";
-
 import AreaCalculateView from "../components/calculateSection/AreaCalculateView";
 import mathCalculations from "../operations/mathCalculations";
-
-//All these Variables will be passed as Route.params to the "Result Screen" 
 
 function CalculationScreen({navigation}){
 
   const [isBtnDisabled,setIsBtnDisabled]=useState(true)
-  const [btnOpacity,setBtnOpacity]=useState(0.5)
+  const [btnOpacity,setBtnOpacity]=useState(0.2)
 
   const [operationStatus,setOperationStatus]=useState(0);
+
   const [selectedZone,setSelectedZone]= useState("No Zone");
   const [resultArea,setResultArea]= useState(0)
   const [resultSeeds,setResultSeeds]= useState(0)
@@ -102,7 +98,6 @@ function CalculationScreen({navigation}){
         <View style={styles.selectionZoneContainer}>
           <IntructionText title={"Select a Growing Zone"} />
             <PickerZone
-              //isPickerDisabled={isPickerZoneDisabled}
               onChangeStatusCode={onChangeStatusCode}
             />
         </View> 

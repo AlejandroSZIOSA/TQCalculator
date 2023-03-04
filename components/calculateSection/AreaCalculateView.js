@@ -11,23 +11,37 @@ function AreaCalculateView({onChangeStatusCode}){
   const [totalArea,setTotalArea] = useState(0);
 
   const [isTextInputEnabled,setIsTextInputEnabled]= useState(true)
+  
+  const [isResetBtnDisabled,setIsResetBtnDisabled]= useState(true)
   const [isSetBtnDisabled, setIsSetBtnDisabled]= useState(false)
+  
+  const [opacityResetBtn,setOpacityResetBtn]= useState(0.2)
+  const [opacitySetBtn,setOpacitySetBtn]= useState(1)
   
   function setButtonHandler(){
     const length = parseInt(lengthEntry,10)
     const height = parseInt(heightEntry,10)
     const areaResult=mathCalculations.calculateArea(length,height)
-    
+    //console.log(isSetBtnDisabled); //calling console log made a problem with hook
+    setOpacitySetBtn(0.2)
     setTotalArea(areaResult)
     setIsSetBtnDisabled(true)
     setIsTextInputEnabled(false)
+    setIsResetBtnDisabled(false)
+    setOpacityResetBtn(1)
     onChangeStatusCode(1,areaResult) //Callback Function
   }
   function resetButtonHandler(){
+    //console.log("reset2");
+    setIsSetBtnDisabled(false)
+    setIsResetBtnDisabled(true)
+    setOpacityResetBtn(0.2)
+    setOpacitySetBtn(1)
+  
     setLengthEntry("")
     setHeightEntry("")
     setTotalArea(0)
-    setIsSetBtnDisabled(false)
+    
     setIsTextInputEnabled(true)
     onChangeStatusCode(0,"No data") //Callback Function
   }
@@ -69,6 +83,8 @@ function AreaCalculateView({onChangeStatusCode}){
       <View style={styles.buttonContainer}>
         <View style={styles.innerButtonContainer}>
           <SecondaryButton 
+            disabled={isResetBtnDisabled}
+            style={{opacity:opacityResetBtn}} //Overriding style. Fix Problem!
             onPress={resetButtonHandler}
           >
           Reset</SecondaryButton>
@@ -76,6 +92,7 @@ function AreaCalculateView({onChangeStatusCode}){
       <View style={styles.innerButtonContainer}>
         <SecondaryButton 
           disabled={isSetBtnDisabled}
+          style={{opacity:opacitySetBtn}} //Overriding style. Fix Problem!
           onPress={setButtonHandler}
         >Set</SecondaryButton>
       </View>

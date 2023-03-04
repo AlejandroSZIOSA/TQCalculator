@@ -1,7 +1,8 @@
 import { View,Text, Pressable,StyleSheet } from "react-native";
 import Colors from "../../constants/colors";
 
-// Login - Restart - Calculate Buttons 
+// Login - Restart - Calculate / Primary Buttons 
+
 function PrimaryButton({children,onPress,disabled,style}){
   return (
     <View style={ [styles.buttonContainer,style]}>
