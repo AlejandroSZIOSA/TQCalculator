@@ -126,8 +126,10 @@ const styles= StyleSheet.create({
     fontSize:27,
     backgroundColor:'white',
     borderRadius:5,
+    borderColor:'black',
+    borderWidth:3,
     margin:10,
-    width: '35%', //fix! problem with Text Input size
+    width: '40%', //fix! problem with Text Input size
   },
   buttonContainer:{
     flexDirection:'row',

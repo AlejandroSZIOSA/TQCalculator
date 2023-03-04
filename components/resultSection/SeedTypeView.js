@@ -24,7 +24,8 @@ const styles= StyleSheet.create({
   seedTypeContainer:{
     backgroundColor:Colors.primaryGreen3,
     paddingHorizontal:60,
-    paddingVertical:30
+    paddingVertical:30,
+    borderRadius:23
   },
   seedTypeText:{
     color:'#FAFF00',

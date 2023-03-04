@@ -31,7 +31,9 @@ const styles = StyleSheet.create({
   numberContainer:{
     paddingHorizontal:10,
     alignContent:'center',
-    backgroundColor:Colors.primaryDarkBlue
+    backgroundColor:Colors.primaryDarkBlue,
+    borderRadius:10,
+
   },
   unitContainer:{
     paddingLeft:10

@@ -14,9 +14,9 @@ function PickerSeed({onChangeStatusCode,selectedZone}){
   const [chooseData,setChooseData] = useState('Press here')
   const [isModalVisible,setIsModalVisible] = useState(false)
 
-useEffect(() => {
-  setChooseData('Press here')
-}, [selectedZone])
+  useEffect(() => {
+    setChooseData('Press here')
+  }, [selectedZone])
 
   const ctx = useContext(DataContext);
 
@@ -66,6 +66,7 @@ useEffect(() => {
     </View>
   )
 }
+
 const styles= StyleSheet.create({
   container:{
     backgroundColor:Colors.primaryYellow,

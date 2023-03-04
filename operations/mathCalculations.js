@@ -11,4 +11,4 @@ function calculateArea(length, height){
 function calculateTotalSeeds (area,seedWeight){
     return(area*seedWeight)
 };
-export default {calculateArea,calculateTotalSeeds};
+export default {calculateArea,calculateTotalSeeds}; //export multiple functions at once

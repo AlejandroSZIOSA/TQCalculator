@@ -18,6 +18,8 @@ const styles=StyleSheet.create({
     backgroundColor:Colors.primaryLightBlue,
     padding:15,
     borderRadius:15,
+    borderWidth:3,
+    borderColor:'black',
     paddingVertical:15,
     paddingHorizontal:16,
     marginHorizontal:100, //fix problem with button size

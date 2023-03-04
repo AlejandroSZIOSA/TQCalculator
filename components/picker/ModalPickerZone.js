@@ -1,5 +1,4 @@
 import { StyleSheet,Text,View,TouchableOpacity,Dimensions,ScrollView} from "react-native";
-
 import Colors from "../../constants/colors";
 import { ZONE } from "../../data/dummy-data";
 

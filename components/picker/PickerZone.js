@@ -41,6 +41,7 @@ function PickerZone({onChangeStatusCode}){
     </View>
   )
 }
+
 const styles= StyleSheet.create({
   container:{
     backgroundColor:Colors.primaryYellow,

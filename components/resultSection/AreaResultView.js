@@ -1,6 +1,7 @@
 import ResultText from "./ResultText";
 import { View,Text,StyleSheet } from "react-native";
 import Colors from "../../constants/colors";
+
 function AreaResultView(props){
   return(
     <View style= {styles.container}>
@@ -19,6 +20,7 @@ function AreaResultView(props){
     )
 }
 export default AreaResultView;
+
 const styles = StyleSheet.create({
   container:{
     alignItems:'center',  
@@ -29,6 +31,7 @@ const styles = StyleSheet.create({
   numberContainer:{
     paddingHorizontal:20,
     alignContent:'center',
+    borderRadius:23,
     backgroundColor:Colors.primaryDarkBlue
   },
   unitContainer:{
