@@ -17,6 +17,8 @@ function CalculationScreen({navigation}){
   const [isPickerZoneDisabled,setIsPickerZoneDisabled]=useState(true)
   const [isPickerSeedDisabled,setIsPickerSeedDisabled]=useState(true)
 
+  const [pickerZoneOpacity,setPickerZoneOpacity]=useState(0.3)
+  const [pickerSeedOpacity,setPickerSeedOpacity]=useState(0.3)
 
   const [operationStatus,setOperationStatus]=useState(0);
 
@@ -44,7 +46,6 @@ function CalculationScreen({navigation}){
     }
   }
   
-
   /*  Callback Function:
     Status Operations Codes:
     0 = restart area calculation / restart Hooks
@@ -57,41 +58,35 @@ function CalculationScreen({navigation}){
       case 0:
         setResultArea(0)
         setIsPickerZoneDisabled(true) //fix problem!
-        //setIsPickerSeedDisabled(true)
+        setPickerZoneOpacity(0.3)
+        
+        setIsPickerSeedDisabled(true) //can be active!
+        setPickerSeedOpacity(0.3)
         break;
       case 1: 
         setOperationStatus(currentStatusCode);
         setResultArea(selectedData)
         setIsPickerZoneDisabled(false)
-        //setIsPickerSeedDisabled(false)
-        //console.log(`Operation Area status: ${currentStatusCode}`);
-        //console.log(resultArea);
+        setPickerZoneOpacity(1)
+
+        setIsPickerSeedDisabled(false)
+        setPickerSeedOpacity(1)
       break;
       case 2: 
         setOperationStatus(currentStatusCode)
         setSelectedZone(selectedData)
         setSelectedSeed("No Seeds") //fix problem
-        //console.log(`Operation Zone status: ${currentStatusCode}`);
-        //console.log(selectedZone);
         setIsPickerSeedDisabled(false)
+        setPickerSeedOpacity(1)
       break;
       case 3:
         setOperationStatus(currentStatusCode)
         setSelectedSeed(selectedData)
         setSeedWeightSquareMeter(seedWeightData)
-        
-        //console.log(`Operation Seed status: ${currentStatusCode}`);
-        //console.log(selectedData);
-        //console.log(seedWeightSquareMeter);
-        //console.log(resultSeeds);
-        //console.log(resultArea);
-        //console.log(selectedSeed);
       break;
       default: console.log("No operation code");
       };
   };
-
-  //console.log(operationStatus)
   
   function onPrimaryBtnHandler(){
     navigation.navigate('ResultSC',{
@@ -112,6 +107,8 @@ function CalculationScreen({navigation}){
 
               isPickerZoneDisabled={isPickerZoneDisabled}
               //onChangePickerDisabled={onChangePickerDisabled}
+
+              style={{opacity:pickerZoneOpacity}} //Overriding styles
             />
         </View> 
         <View style={styles.selectionSeedContainer}>
@@ -121,6 +118,7 @@ function CalculationScreen({navigation}){
               onChangeStatusCode={onChangeStatusCode}
 
               isPickerSeedDisabled={isPickerSeedDisabled}
+              style={{opacity:pickerSeedOpacity}} //Overriding styles
             />             
         </View>
         <PrimaryButton

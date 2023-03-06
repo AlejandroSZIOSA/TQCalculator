@@ -4,7 +4,7 @@ import Colors from "../../constants/colors";
 import { useState } from "react";
 import ModalPickerZone from "./ModalPickerZone";
 
-function PickerZone({onChangeStatusCode,isPickerZoneDisabled}){
+function PickerZone({onChangeStatusCode,isPickerZoneDisabled,style}){
 
   const [chooseData,setChooseData] = useState('Press here')
   const [isModalVisible,setIsModalVisible] = useState(false)
@@ -20,7 +20,7 @@ function PickerZone({onChangeStatusCode,isPickerZoneDisabled}){
   onChangeStatusCode(2,option)
   }
   return(
-    <View style={styles.container}>
+    <View style={[styles.container,style]}>
       <TouchableOpacity
         style={styles.TouchableOpacity}
         onPress={()=> changeModalVisibility(true)}
@@ -53,7 +53,8 @@ const styles= StyleSheet.create({
     paddingHorizontal:10,
     borderWidth:2,
     borderColor:'black',
-    borderRadius:10 
+    borderRadius:10,
+    //opacity:1
   },
   text:{
     //marginHorizontal:100,

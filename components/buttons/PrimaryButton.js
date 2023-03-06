@@ -13,6 +13,7 @@ function PrimaryButton({children,onPress,disabled,style}){
   )
 }
 export default PrimaryButton;
+
 const styles=StyleSheet.create({
   buttonContainer: {
     backgroundColor:Colors.primaryLightBlue,
@@ -24,7 +25,7 @@ const styles=StyleSheet.create({
     paddingHorizontal:16,
     marginHorizontal:100, //fix problem with button size
     margin:10, //fix problem with the border area
-    opacity:1
+    //opacity:1
   },
   buttonText:{
     fontSize:20,
