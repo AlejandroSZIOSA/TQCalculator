@@ -14,6 +14,10 @@ function CalculationScreen({navigation}){
   const [isBtnDisabled,setIsBtnDisabled]=useState(true)
   const [btnOpacity,setBtnOpacity]=useState(0.2)
 
+  const [isPickerZoneDisabled,setIsPickerZoneDisabled]=useState(true)
+  const [isPickerSeedDisabled,setIsPickerSeedDisabled]=useState(true)
+
+
   const [operationStatus,setOperationStatus]=useState(0);
 
   const [selectedZone,setSelectedZone]= useState("No Zone");
@@ -39,10 +43,11 @@ function CalculationScreen({navigation}){
       setBtnOpacity(0.5)
     }
   }
+  
 
   /*  Callback Function:
     Status Operations Codes:
-    0 = restart area calculation
+    0 = restart area calculation / restart Hooks
     1 = Area Calculation is ready
     2 = Selection Of Growing zone is ready
     3 = All User operations are ready
@@ -51,11 +56,14 @@ function CalculationScreen({navigation}){
     switch(currentStatusCode){
       case 0:
         setResultArea(0)
-        //console.log(`Operation code (${currentStatusCode}) + ${selectedData}`);
+        setIsPickerZoneDisabled(true) //fix problem!
+        //setIsPickerSeedDisabled(true)
         break;
       case 1: 
         setOperationStatus(currentStatusCode);
         setResultArea(selectedData)
+        setIsPickerZoneDisabled(false)
+        //setIsPickerSeedDisabled(false)
         //console.log(`Operation Area status: ${currentStatusCode}`);
         //console.log(resultArea);
       break;
@@ -65,6 +73,7 @@ function CalculationScreen({navigation}){
         setSelectedSeed("No Seeds") //fix problem
         //console.log(`Operation Zone status: ${currentStatusCode}`);
         //console.log(selectedZone);
+        setIsPickerSeedDisabled(false)
       break;
       case 3:
         setOperationStatus(currentStatusCode)
@@ -97,15 +106,21 @@ function CalculationScreen({navigation}){
       <AreaCalculateView onChangeStatusCode={onChangeStatusCode}/>
         <View style={styles.selectionZoneContainer}>
           <IntructionText title={"Select a Growing Zone"} />
+            {/*Callback functions */}
             <PickerZone
               onChangeStatusCode={onChangeStatusCode}
+
+              isPickerZoneDisabled={isPickerZoneDisabled}
+              //onChangePickerDisabled={onChangePickerDisabled}
             />
         </View> 
         <View style={styles.selectionSeedContainer}>
           <IntructionText title={"Select a Seed Type"} />
             <PickerSeed 
-              selectedZone={selectedZone} // A very Nested Prop. fix problem!
+              selectedZone={selectedZone} // A very Nested Prop. problem fixed!
               onChangeStatusCode={onChangeStatusCode}
+
+              isPickerSeedDisabled={isPickerSeedDisabled}
             />             
         </View>
         <PrimaryButton

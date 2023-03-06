@@ -5,7 +5,7 @@ import { useContext,useEffect } from "react";
 import DataContext from "../../context/DataContext";
 import ModalPickerSeed from "./ModalPickerSeed";
 
-function PickerSeed({onChangeStatusCode,selectedZone}){
+function PickerSeed({onChangeStatusCode,selectedZone,isPickerSeedDisabled}){
 
   // useEffect(() => {
   //   setIsTODisabled(false)
@@ -47,7 +47,8 @@ function PickerSeed({onChangeStatusCode,selectedZone}){
       <TouchableOpacity
         style={styles.TouchableOpacity}
         onPress={()=> changeModalVisibility(true)}
-        //disabled={isTODisabled}
+
+        disabled={isPickerSeedDisabled} //working on!
       >
         <Text style={styles.text}> {chooseData } </Text>
       </TouchableOpacity>
