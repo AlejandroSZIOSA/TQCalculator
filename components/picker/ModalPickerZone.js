@@ -35,7 +35,7 @@ function ModalPickerZone(props){
       onPress={() => props.changeModalVisibility(false)}
       style={styles.container}
     >
-      <View style={[styles.modal,{width:WIDTH -20,height:HEIGHT/3}]}>
+      <View style={[styles.modal,{width:WIDTH -50,height:HEIGHT/3}]}>
         <ScrollView>
           { option}
         </ScrollView>
@@ -47,14 +47,14 @@ const styles = StyleSheet.create({
   container:{
     flex:1,
     alignItems:'center',
-    justifyContent:'center'
+    justifyContent:'center',
   },
   modal:{
     backgroundColor:Colors.primaryYellow,
-    borderRadius:10
+    borderRadius:10,
   },
   option:{
-    alignItems:'flex-start'
+    alignItems:'center'
   },
   text:{
     margin:20,

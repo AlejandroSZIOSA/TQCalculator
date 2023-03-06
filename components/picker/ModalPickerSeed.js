@@ -62,7 +62,7 @@ function ModalPickerSeed(props){
       onPress={() => props.changeModalVisibility(false)}
       style={styles.container}
     >
-      <View style={[styles.modal,{width:WIDTH -20,height:HEIGHT/3}]}>
+      <View style={[styles.modal,{width:WIDTH -50,height:HEIGHT/4}]}>
         <ScrollView>
           { option}
         </ScrollView>
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     borderRadius:10
   },
   option:{
-    alignItems:'flex-start'
+    alignItems:'center'
   },
   text:{
     margin:20,
