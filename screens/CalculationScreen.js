@@ -20,7 +20,7 @@ function CalculationScreen({navigation}){
   const [pickerZoneOpacity,setPickerZoneOpacity]=useState(0.3)
   const [pickerSeedOpacity,setPickerSeedOpacity]=useState(0.3)
 
-  const [operationStatus,setOperationStatus]=useState(0);
+  const [operationCode,setOperationCode]=useState(0);
 
   const [selectedZone,setSelectedZone]= useState("No Zone");
   const [resultArea,setResultArea]= useState(0)
@@ -53,7 +53,7 @@ function CalculationScreen({navigation}){
     2 = Selection Of Growing zone is ready
     3 = All User operations are ready
   */
-  const onChangeStatusCode = (currentStatusCode,selectedData,seedWeightData) =>{
+  const onChangeOperationCode = (currentStatusCode,selectedData,seedWeightData) =>{
     switch(currentStatusCode){
       case 0:
         setResultArea(0)
@@ -64,7 +64,7 @@ function CalculationScreen({navigation}){
         setPickerSeedOpacity(0.3)
         break;
       case 1: 
-        setOperationStatus(currentStatusCode);
+        setOperationCode(currentStatusCode);
         setResultArea(selectedData)
         setIsPickerZoneDisabled(false)
         setPickerZoneOpacity(1)
@@ -73,14 +73,14 @@ function CalculationScreen({navigation}){
         setPickerSeedOpacity(1)
       break;
       case 2: 
-        setOperationStatus(currentStatusCode)
+        setOperationCode(currentStatusCode)
         setSelectedZone(selectedData)
         setSelectedSeed("No Seeds") //fix problem
         setIsPickerSeedDisabled(false)
         setPickerSeedOpacity(1)
       break;
       case 3:
-        setOperationStatus(currentStatusCode)
+        setOperationCode(currentStatusCode)
         setSelectedSeed(selectedData)
         setSeedWeightSquareMeter(seedWeightData)
       break;
@@ -98,12 +98,12 @@ function CalculationScreen({navigation}){
 
   return(
     <View style={styles.rootContainer}>
-      <AreaCalculateView onChangeStatusCode={onChangeStatusCode}/>
+      <AreaCalculateView onChangeStatusCode={onChangeOperationCode}/>
         <View style={styles.selectionZoneContainer}>
           <IntructionText title={"Select a Growing Zone"} />
             {/*Callback functions */}
             <PickerZone
-              onChangeStatusCode={onChangeStatusCode}
+              onChangeStatusCode={onChangeOperationCode}
 
               isPickerZoneDisabled={isPickerZoneDisabled}
               //onChangePickerDisabled={onChangePickerDisabled}
@@ -115,7 +115,7 @@ function CalculationScreen({navigation}){
           <IntructionText title={"Select a Seed Type"} />
             <PickerSeed 
               selectedZone={selectedZone} // A very Nested Prop. problem fixed!
-              onChangeStatusCode={onChangeStatusCode}
+              onChangeStatusCode={onChangeOperationCode}
 
               isPickerSeedDisabled={isPickerSeedDisabled}
               style={{opacity:pickerSeedOpacity}} //Overriding styles
