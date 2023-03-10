@@ -10,9 +10,15 @@ import {useState } from 'react';
 
 import DataContext from './context/DataContext';
 
+//import useFetch from './hooks/fetchData';
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  //const {data} = useFetch('http://localhost:8080/seed/seeds')
+  //console.log(data.seeds[1].name); //works
+  
+
   const[isZoneSelected,setIsZoneSelected]=useState(false);
   const[isSeedSelected,setIsSeedSelected]=useState(false);
 

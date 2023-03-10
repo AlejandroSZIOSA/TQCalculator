@@ -9,7 +9,11 @@ import PickerSeed from "../components/picker/PickerSeed";
 import AreaCalculateView from "../components/calculateSection/AreaCalculateView";
 import mathCalculations from "../operations/mathCalculations";
 
-function CalculationScreen({navigation}){
+function CalculationScreen({route,navigation}) {
+  //route params
+  const seedDb = route.params.seedDbData; 
+
+  //console.log(seedDb.seeds[1].name); 
 
   const [isBtnDisabled,setIsBtnDisabled]=useState(true)
   const [btnOpacity,setBtnOpacity]=useState(0.2)
@@ -29,13 +33,12 @@ function CalculationScreen({navigation}){
   const [seedWeightSquareMeter,setSeedWeightSquareMeter] = useState(0)
 
   useEffect(() => {
-    const data = mathCalculations.calculateTotalSeeds(resultArea,seedWeightSquareMeter);
-    setResultSeeds(data);
-    //setSelectedSeed("No Seeds")
-    activePrimaryBtn();
+    const resultTotalSeeds = mathCalculations.calculateTotalSeeds(resultArea,seedWeightSquareMeter);
+    setResultSeeds(resultTotalSeeds);
+    enablePrimaryBtn();
   }, [resultArea,seedWeightSquareMeter,selectedSeed])
 
-  const activePrimaryBtn = () =>{
+  const enablePrimaryBtn = () =>{
     if(selectedSeed != "No Seeds" && selectedZone != "No Zone" && resultArea != 0){
       //console.log("no");
       setIsBtnDisabled(false)
@@ -47,7 +50,7 @@ function CalculationScreen({navigation}){
   }
   
   /*  Callback Function:
-    Status Operations Codes:
+    Status User Operations Codes:
     0 = restart area calculation / restart Hooks
     1 = Area Calculation is ready
     2 = Selection Of Growing zone is ready
@@ -89,6 +92,7 @@ function CalculationScreen({navigation}){
   };
   
   function onPrimaryBtnHandler(){
+    //using Route params
     navigation.navigate('ResultSC',{
       areaTotal: resultArea,
       seedTotal: resultSeeds, //Total seeds need it.
@@ -107,7 +111,7 @@ function CalculationScreen({navigation}){
 
               isPickerZoneDisabled={isPickerZoneDisabled}
               //onChangePickerDisabled={onChangePickerDisabled}
-
+              
               style={{opacity:pickerZoneOpacity}} //Overriding styles
             />
         </View> 
@@ -116,6 +120,8 @@ function CalculationScreen({navigation}){
             <PickerSeed 
               selectedZone={selectedZone} // A very Nested Prop. problem fixed!
               onChangeStatusCode={onChangeOperationCode}
+
+              seedDb={seedDb}// A very Nested Prop. problem fixed!
 
               isPickerSeedDisabled={isPickerSeedDisabled}
               style={{opacity:pickerSeedOpacity}} //Overriding styles

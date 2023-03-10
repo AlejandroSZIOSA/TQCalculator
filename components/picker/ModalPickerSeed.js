@@ -1,13 +1,22 @@
 import { StyleSheet,Text,View,TouchableOpacity,Dimensions,ScrollView} from "react-native";
-import { useEffect } from "react";
 import Colors from "../../constants/colors";
+
 import { SEED } from "../../data/dummy-data";
 import { ZONE } from "../../data/dummy-data"; 
 
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 
-function ModalPickerSeed(props){  
+function ModalPickerSeed(props){
+  console.log(props.seedDb)
+
+  //const seedDb = route.params.seedDbData;
+  //console.log(seedDb);
+  
+
+  //console.log(seedDb.seeds[0].name);
+  
+  
   //Extracting data from a "selected seed type"
   //A Callback function
   const extractSeedIds = () =>{
@@ -19,7 +28,7 @@ function ModalPickerSeed(props){
           }
         })
     });
-    return seedIds
+    return seedIds //Return seeds Ids
   }
   function getSeedsData(temp){
     let seedData=[{}]
@@ -30,7 +39,7 @@ function ModalPickerSeed(props){
           }
         })
       })
-    return seedData;
+    return seedData; //return a list of seeds objects
   }
   //console.log(props.selectedZone);
   //console.log(extractSeedIds());

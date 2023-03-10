@@ -5,12 +5,12 @@ import { useContext,useEffect } from "react";
 import DataContext from "../../context/DataContext";
 import ModalPickerSeed from "./ModalPickerSeed";
 
-function PickerSeed({onChangeStatusCode,selectedZone,isPickerSeedDisabled,style}){
+function PickerSeed({onChangeStatusCode,selectedZone,isPickerSeedDisabled,
+style,seedDb}){
 
-  // useEffect(() => {
-  //   setIsTODisabled(false)
-  // }, [setChooseData])
+  //console.log(seedDb);
   
+
   const [chooseData,setChooseData] = useState('Press here')
   const [isModalVisible,setIsModalVisible] = useState(false)
 
@@ -61,6 +61,9 @@ function PickerSeed({onChangeStatusCode,selectedZone,isPickerSeedDisabled,style}
         <ModalPickerSeed
           changeModalVisibility={changeModalVisibility}
           setData={setData}
+
+          seedDb={seedDb}
+          
           selectedZone={selectedZone}
         />
       </Modal>

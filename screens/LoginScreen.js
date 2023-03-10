@@ -1,12 +1,16 @@
 import { TextInput, View,StyleSheet, Button,Image } from "react-native";
 import PrimaryButton from "../components/buttons/PrimaryButton";
 
+import useFetch from "../hooks/fetchData";
+
 
 function LoginScreen({navigation}){
+  //Custom Hook
+  const {seedDbData} = useFetch('http://localhost:8080/seed/seeds')
+
   function pressHandler(){
-    navigation.navigate('CalculateSC');
+    navigation.navigate('CalculateSC',{seedDbData:seedDbData});
   }
-  
   return(
     <View style={styles.rootContainer}>
       <View style={styles.userImageContainer}>

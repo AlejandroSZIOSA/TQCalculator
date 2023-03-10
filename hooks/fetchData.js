@@ -1,16 +1,17 @@
 import { useState, useEffect } from "react";
 
-const useFetch = () => {
-  const [data, setData] = useState();
+const useFetch = (url) => {
+  const [seedDbData, setSeedDbData] = useState()
 
   const fetchData = async () => {
     const res = await fetch(url)
-    const data = await res.json()
-    setData=data
+    const seedDbData = await res.json()
+    console.log("Fetch data fom db")    
+    setSeedDbData(seedDbData);
   }
   useEffect(() => {
     fetchData()
   }, [])
-return data;
+  return {seedDbData}
 }
-export default useFetch;
+export default useFetch
