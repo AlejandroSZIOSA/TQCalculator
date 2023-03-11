@@ -8,17 +8,10 @@ const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 
 function ModalPickerSeed(props){
-  console.log(props.seedDb)
-
-  //const seedDb = route.params.seedDbData;
-  //console.log(seedDb);
+  //console.log(props.seedDb[1].name) //testing
   
-
-  //console.log(seedDb.seeds[0].name);
+  var seedsDb =  props.seedDb; //it is working / get seeds data from Db
   
-  
-  //Extracting data from a "selected seed type"
-  //A Callback function
   const extractSeedIds = () =>{
     let seedIds=[]
     ZONE.forEach((element, index) => {
@@ -30,10 +23,12 @@ function ModalPickerSeed(props){
     });
     return seedIds //Return seeds Ids
   }
+
   function getSeedsData(temp){
     let seedData=[{}]
       temp.forEach(element => {
-        SEED.forEach(element2 => {
+        //Can change "seedsDb" for Dummy-Data "SEED" for testing
+        seedsDb.forEach(element2 => {
           if(element == element2.id){
             seedData.push(element2)
           }

@@ -7,7 +7,7 @@ const useFetch = (url) => {
     const res = await fetch(url)
     const seedDbData = await res.json()
     console.log("Fetch data fom db")    
-    setSeedDbData(seedDbData);
+    setSeedDbData(seedDbData.seeds);
   }
   useEffect(() => {
     fetchData()

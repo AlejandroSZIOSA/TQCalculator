@@ -48,7 +48,6 @@ function CalculationScreen({route,navigation}) {
       setBtnOpacity(0.5)
     }
   }
-  
   /*  Callback Function:
     Status User Operations Codes:
     0 = restart area calculation / restart Hooks
@@ -111,7 +110,7 @@ function CalculationScreen({route,navigation}) {
 
               isPickerZoneDisabled={isPickerZoneDisabled}
               //onChangePickerDisabled={onChangePickerDisabled}
-              
+
               style={{opacity:pickerZoneOpacity}} //Overriding styles
             />
         </View> 
