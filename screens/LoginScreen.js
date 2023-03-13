@@ -2,7 +2,6 @@ import { useEffect, useLayoutEffect, useState } from "react";
 import { TextInput, View,StyleSheet, Button,Image } from "react-native";
 import PrimaryButton from "../components/buttons/PrimaryButton";
 
-
 import useFetch from "../hooks/fetchData";
 
 function LoginScreen({navigation}){
@@ -75,7 +74,7 @@ const styles= StyleSheet.create({
   userImageContainer:{
     alignItems:'center',
     //backgroundColor:'white',
-    paddingVertical:20
+    paddingVertical:40
   },
   userImageInnerContainer:{
     width:30,height:30
