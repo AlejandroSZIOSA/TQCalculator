@@ -7,16 +7,12 @@ const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 
 function ModalPickerZone(props){
+
   const onPressItem = (option) =>{
-  //console.log(selectedData)
   props.changeModalVisibility(false)
   props.setData(option)
-  //console.log(props.setData)
-  //console.log(option)
   }
-
-  //selectSeed(ZONE)
-
+  
   const option = ZONE.map((item, index)=>{
   return(
     <TouchableOpacity

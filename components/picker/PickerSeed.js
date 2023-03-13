@@ -8,9 +8,6 @@ import ModalPickerSeed from "./ModalPickerSeed";
 function PickerSeed({onChangeStatusCode,selectedZone,isPickerSeedDisabled,
 style,seedDb}){
 
-  //console.log(seedDb);
-  
-
   const [chooseData,setChooseData] = useState('Press here')
   const [isModalVisible,setIsModalVisible] = useState(false)
 
@@ -21,24 +18,16 @@ style,seedDb}){
   const ctx = useContext(DataContext);
 
   const changeModalVisibility = (bool) => {
-  setIsModalVisible(bool)
-  //setIsTODisabled(true)
-  //debug(selectedZone);
+    setIsModalVisible(bool)
   }
 
   //Callback Function
   const setData = (selectedOption,seedWeightData)=>{
-  setChooseData(selectedOption)
-  //todo: fix useEffect
+    setChooseData(selectedOption)
 
-  //console.log(selectedOption);
-  
-  ctx.seedSelectedToTrue(); //Context works well! :)
-    //console.log(chooseData);
+    ctx.seedSelectedToTrue(); //Context works well! :)
     
-  onChangeStatusCode(3,selectedOption,seedWeightData) // Callback function
-  //console.log(seedWeightData);
-  
+    onChangeStatusCode(3,selectedOption,seedWeightData) // Callback function
   }
   //console.log(selectedZone);
   
