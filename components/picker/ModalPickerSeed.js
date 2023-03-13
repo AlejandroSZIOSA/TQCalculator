@@ -26,7 +26,7 @@ function ModalPickerSeed(props){
   function getSeedsData(temp){
     let seedData=[{}]
       temp.forEach(element => {
-        //Can change "seedsDb" for Dummy-Data "SEED" for testing
+        //Can change "seedsDb" for "SEED" for test,
         seedsDb.forEach(element2 => {
           if(element == element2.id){
             seedData.push(element2)
