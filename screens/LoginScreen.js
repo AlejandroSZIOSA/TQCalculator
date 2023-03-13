@@ -1,16 +1,33 @@
+import { useEffect, useLayoutEffect, useState } from "react";
 import { TextInput, View,StyleSheet, Button,Image } from "react-native";
 import PrimaryButton from "../components/buttons/PrimaryButton";
 
+
 import useFetch from "../hooks/fetchData";
 
-
 function LoginScreen({navigation}){
-  //Custom Hook
-  const {seedDbData} = useFetch('http://localhost:8080/seed/seeds')
 
+  //Custom Hook Fetch Data from DB
+  const {dbData} = useFetch('http://localhost:8080/seed/seeds')
+
+  const [isPrimaryBtnDisabled, setIsPrimaryBtnDisabled] = useState(false);
+  const [opacityPrimaryBtn, setOpacityPrimaryBtn] = useState(1);
+  
+  // function checkDbConnection(){
+  //   console.log(error)
+  //   if(error!= null){
+  //     setIsPrimaryBtnDisabled(true)
+  //     setOpacityPrimaryBtn(0.3)
+  //   }
+  // }
+  
   function pressHandler(){
-    navigation.navigate('CalculateSC',{seedDbData:seedDbData});
+    // if(!dbData?.length){
+    //   console.log("esta vacia");
+    // }
+    navigation.navigate('CalculateSC',{seedDbData:dbData});
   }
+
   return(
     <View style={styles.rootContainer}>
       <View style={styles.userImageContainer}>
@@ -33,7 +50,11 @@ function LoginScreen({navigation}){
       </View> 
 
       <View style={styles.btnLogInContainer}>
-        <PrimaryButton onPress={pressHandler}>Login</PrimaryButton> 
+        <PrimaryButton 
+          onPress={pressHandler}
+          disabled={isPrimaryBtnDisabled}
+          style= {{opacity:opacityPrimaryBtn}} //overriding Style
+          >Login</PrimaryButton> 
       </View>    
 
       <View style={styles.btnSignUpContainer}>

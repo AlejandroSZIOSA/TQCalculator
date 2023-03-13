@@ -1,17 +1,27 @@
 import { useState, useEffect } from "react";
 
 const useFetch = (url) => {
-  const [seedDbData, setSeedDbData] = useState()
+  const [dbData, setDbData] = useState([{}]) //App no more crashes now! :)
+  //const [error, setError] = useState(null)
 
   const fetchData = async () => {
+    //todo: Validation errors 
+
     const res = await fetch(url)
-    const seedDbData = await res.json()
-    console.log("Fetch data fom db")    
-    setSeedDbData(seedDbData.seeds);
+    const data = await res.json()
+    //console.log("Fetch data fom db")    
+    setDbData(data.seeds); //works!
+    
+    // fetch(url)
+    //   .then((res) => res.json())
+    //   .then((data) => setSeedDbData(data.seeds))
+    //   .catch((error) => {setError(error)})
+    //   .finally(() => console.log(error))
+
   }
   useEffect(() => {
     fetchData()
-  }, [])
-  return {seedDbData}
+  }, []);
+  return {dbData};
 }
 export default useFetch
