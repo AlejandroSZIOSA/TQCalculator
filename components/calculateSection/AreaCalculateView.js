@@ -3,9 +3,9 @@ import { useState } from "react";
 import Colors from "../../constants/colors";
 import SecondaryButton from "../buttons/SecondaryButton";
 import IntructionText from "./IntructionText";
-import mathCalculations from "../../operations/mathCalculations";
+import mathCalculations from "../../mathOperations/mCalculate";
 
-function AreaCalculateView({onChangeStatusCode}){    
+function AreaCalculateView({onChangeCurrentOperationCode}){    
   const [lengthEntry, setLengthEntry] = useState("")
   const [heightEntry, setHeightEntry] = useState("")
   const [totalArea,setTotalArea] = useState(0);
@@ -29,7 +29,8 @@ function AreaCalculateView({onChangeStatusCode}){
     setIsTextInputEnabled(false)
     setIsResetBtnDisabled(false)
     setOpacityResetBtn(1)
-    onChangeStatusCode(1,areaResult) //Callback Function
+    
+    onChangeCurrentOperationCode(1,areaResult) //Callback Function
   }
   function resetButtonHandler(){
     //console.log("reset2");
@@ -43,7 +44,7 @@ function AreaCalculateView({onChangeStatusCode}){
     setTotalArea(0)
     
     setIsTextInputEnabled(true)
-    onChangeStatusCode(0,"No data") //Callback Function
+    onChangeCurrentOperationCode(0,"No data") //Callback Function
   }
 
   //todo: Validate text inputs .... "Test useRef" in Text inputs

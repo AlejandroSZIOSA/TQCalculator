@@ -7,7 +7,7 @@ import IntructionText from "../components/calculateSection/IntructionText";
 import PickerZone from "../components/picker/PickerZone"
 import PickerSeed from "../components/picker/PickerSeed";
 import AreaCalculateView from "../components/calculateSection/AreaCalculateView";
-import mathCalculations from "../operations/mathCalculations";
+import mathCalculations from "../mathOperations/mCalculate";
 
 function CalculationScreen({route,navigation}) {
   //route params
@@ -55,7 +55,7 @@ function CalculationScreen({route,navigation}) {
     2 = Selection Of Growing zone is ready
     3 = All User operations are ready
   */
-  const onChangeOperationCode = (currentStatusCode,selectedData,seedWeightData) =>{
+  const changeUserOperationCode = (currentStatusCode,selectedData,seedWeightData) =>{
     switch(currentStatusCode){
       case 0:
         setResultArea(0)
@@ -101,12 +101,12 @@ function CalculationScreen({route,navigation}) {
 
   return(
     <View style={styles.rootContainer}>
-      <AreaCalculateView onChangeStatusCode={onChangeOperationCode}/>
+      <AreaCalculateView onChangeCurrentOperationCode={changeUserOperationCode}/>
         <View style={styles.selectionZoneContainer}>
           <IntructionText title={"Select a Growing Zone"} />
             {/*Callback functions */}
             <PickerZone
-              onChangeStatusCode={onChangeOperationCode}
+              onChangeCurrentOperationCode={changeUserOperationCode}
 
               isPickerZoneDisabled={isPickerZoneDisabled}
               //onChangePickerDisabled={onChangePickerDisabled}
@@ -118,7 +118,7 @@ function CalculationScreen({route,navigation}) {
           <IntructionText title={"Select a Seed Type"} />
             <PickerSeed 
               selectedZone={selectedZone} // A very Nested Prop. problem fixed!
-              onChangeStatusCode={onChangeOperationCode}
+              onChangeCurrentOperationCode={changeUserOperationCode}
 
               seedDb={seedDb}// A very Nested Prop. problem fixed!
 

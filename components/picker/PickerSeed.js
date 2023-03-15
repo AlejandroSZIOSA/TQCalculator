@@ -5,7 +5,7 @@ import { useContext,useEffect } from "react";
 import DataContext from "../../context/DataContext";
 import ModalPickerSeed from "./ModalPickerSeed";
 
-function PickerSeed({onChangeStatusCode,selectedZone,isPickerSeedDisabled,
+function PickerSeed({onChangeCurrentOperationCode,selectedZone,isPickerSeedDisabled,
 style,seedDb}){
 
   const [chooseData,setChooseData] = useState('Press here')
@@ -27,7 +27,7 @@ style,seedDb}){
 
     ctx.seedSelectedToTrue(); //Context works well! :)
     
-    onChangeStatusCode(3,selectedOption,seedWeightData) // Callback function
+    onChangeCurrentOperationCode(3,selectedOption,seedWeightData) // Callback function
   }
   //console.log(selectedZone);
   
@@ -36,7 +36,6 @@ style,seedDb}){
       <TouchableOpacity
         style={styles.TouchableOpacity}
         onPress={()=> changeModalVisibility(true)}
-
         disabled={isPickerSeedDisabled} //working on!
       >
         <Text style={styles.text}> {chooseData } </Text>
@@ -50,9 +49,7 @@ style,seedDb}){
         <ModalPickerSeed
           changeModalVisibility={changeModalVisibility}
           setData={setData}
-
           seedDb={seedDb}
-          
           selectedZone={selectedZone}
         />
       </Modal>
