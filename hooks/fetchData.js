@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 const useFetch = (url) => {
-  const [dbData, setDbData] = useState([{}]) //App no more crashes now! :)
+  const [dbData, setDbData] = useState([{}]) //App no more crashes now! default values
   //const [error, setError] = useState(null)
 
   const fetchData = async () => {

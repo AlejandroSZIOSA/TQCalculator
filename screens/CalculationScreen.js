@@ -9,9 +9,14 @@ import PickerSeed from "../components/picker/PickerSeed";
 import AreaCalculateView from "../components/calculateSection/AreaCalculateView";
 import mathCalculations from "../mathOperations/mCalculate";
 
-function CalculationScreen({route,navigation}) {
+import useFetch from "../hooks/fetchData";
+
+
+function CalculationScreen({navigation}) {
   //route params
-  const seedDb = route.params.seedDbData; 
+  //const seedDb = route.params.seedDbData; 
+
+  const {dbData} = useFetch('http://localhost:8080/seed/seeds')
 
   //console.log(seedDb.seeds[1].name); 
 
@@ -120,7 +125,7 @@ function CalculationScreen({route,navigation}) {
               selectedZone={selectedZone} // A very Nested Prop. problem fixed!
               onChangeCurrentOperationCode={changeUserOperationCode}
 
-              seedDb={seedDb}// A very Nested Prop. problem fixed!
+              seedDb={dbData}// A very Nested Prop. problem fixed!
 
               isPickerSeedDisabled={isPickerSeedDisabled}
               style={{opacity:pickerSeedOpacity}} //Overriding styles
