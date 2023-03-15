@@ -19,3 +19,12 @@
 - Re-render(restart) Pickers Programatic from a parent Component,  ?
 
 -Make the SeedPicker can filter seeds from a Selected Zone, ?
+
+
+--------
+
+-Test useFetch
+
+-Switch betwen navigation stack 
+
+-Build Sign OutScreen

@@ -13,14 +13,6 @@ function LoginScreen({navigation}){
   const [isPrimaryBtnDisabled, setIsPrimaryBtnDisabled] = useState(false);
   const [opacityPrimaryBtn, setOpacityPrimaryBtn] = useState(1);
   
-  // function checkDbConnection(){
-  //   console.log(error)
-  //   if(error!= null){
-  //     setIsPrimaryBtnDisabled(true)
-  //     setOpacityPrimaryBtn(0.3)
-  //   }
-  // }
-  
   function pressHandler(){
     //navigation.navigate('CalculateSC',{seedDbData:dbData});
     navigation.navigate('CalculateSC');
@@ -38,7 +30,7 @@ function LoginScreen({navigation}){
         <TextInput 
           style={styles.textInput}
           maxLength={20}
-          placeholder="UserName" 
+          placeholder="E-Post" 
         />
         <TextInput 
           style={styles.textInput} 

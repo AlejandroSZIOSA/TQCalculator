@@ -9,7 +9,7 @@ const useFetch = (url) => {
 
     const res = await fetch(url)
     const data = await res.json()
-    //console.log("Fetch data fom db")    
+    console.log("Succeed Fetched data from db!")    
     setDbData(data.seeds); //works!
     
     // fetch(url)

@@ -74,8 +74,8 @@ export default function App() {
   
   return(
     <NavigationContainer>
-      {/* <MainScreens/> */}
-      <AuthStackScreens/>
+      <MainScreens/>
+      {/* <AuthStackScreens/> */}
     </NavigationContainer>    
   );  
 }
