@@ -1,21 +1,25 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState,useContext } from "react";
 import { TextInput, View,StyleSheet, Button,Image } from "react-native";
 import PrimaryButton from "../components/buttons/PrimaryButton";
+
+import { AuthContext } from "../context/AuthContext";
 
 //import useFetch from "../hooks/fetchData";
 
 function LoginScreen({navigation}){
 
   //Custom Hook Fetch Data from DB
-  
   //const {dbData} = useFetch('http://localhost:8080/seed/seeds') //change to Calculation Screen
 
   const [isPrimaryBtnDisabled, setIsPrimaryBtnDisabled] = useState(false);
   const [opacityPrimaryBtn, setOpacityPrimaryBtn] = useState(1);
   
+  const {signIn} = useContext(AuthContext) //Ctx
+
   function pressHandler(){
     //navigation.navigate('CalculateSC',{seedDbData:dbData});
-    navigation.navigate('CalculateSC');
+    //navigation.navigate('CalculateSC');
+    signIn()
   }
 
   return(
@@ -46,7 +50,7 @@ function LoginScreen({navigation}){
           style= {{opacity:opacityPrimaryBtn}} //overriding Style
           >Login</PrimaryButton> 
       </View>    
- 
+
       <View style={styles.btnSignUpContainer}>
           <Button  title="SignUp" onPress={() =>navigation.navigate('SignUpSc')}/>
       </View>

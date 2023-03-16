@@ -2,7 +2,6 @@ import { useState} from "react";
 import { StyleSheet,Text,Modal, TouchableOpacity, View } from "react-native";
 import Colors from "../../constants/colors";
 import { useContext,useEffect } from "react";
-import DataContext from "../../context/DataContext";
 import ModalPickerSeed from "./ModalPickerSeed";
 
 function PickerSeed({onChangeCurrentOperationCode,selectedZone,isPickerSeedDisabled,
@@ -14,19 +13,14 @@ style,seedDb}){
   useEffect(() => {
     setChooseData('Press here')
   }, [selectedZone])
-
-  const ctx = useContext(DataContext);
-
+  
   const changeModalVisibility = (bool) => {
     setIsModalVisible(bool)
   }
 
   //Callback Function
   const setData = (selectedOption,seedWeightData)=>{
-    setChooseData(selectedOption)
-
-    ctx.seedSelectedToTrue(); //Context works well! :)
-    
+    setChooseData(selectedOption)    
     onChangeCurrentOperationCode(3,selectedOption,seedWeightData) // Callback function
   }
   //console.log(selectedZone);

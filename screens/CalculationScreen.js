@@ -9,6 +9,7 @@ import PickerSeed from "../components/picker/PickerSeed";
 import AreaCalculateView from "../components/calculateSection/AreaCalculateView";
 import mathCalculations from "../mathOperations/mCalculate";
 
+
 import useFetch from "../hooks/fetchData";
 
 
@@ -16,6 +17,7 @@ function CalculationScreen({navigation}) {
   //route params
   //const seedDb = route.params.seedDbData; 
 
+  //Custom Hook Fetch Data from DB
   const {dbData} = useFetch('http://localhost:8080/seed/seeds')
 
   //console.log(seedDb.seeds[1].name); 

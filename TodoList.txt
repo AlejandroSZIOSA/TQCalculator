@@ -23,8 +23,11 @@
 
 --------
 
--Test useFetch
+-Test useFetch done
 
--Switch betwen navigation stack 
+-Switch betwen navigation stack done
 
--Build Sign OutScreen
+-Build SignUp OutScreen done
+
+---
+set upp condition switch navigation
