@@ -71,9 +71,9 @@ const MainStackScreens = () => (
 const RootStack = createNativeStackNavigator();
 const RootStackScreens = ({userToken}) => (
   <RootStack.Navigator 
-    screenOptions={{headerShown:false}} //fix Header problem
+    screenOptions={{headerShown:false}} //fix Header problem!
   >
-    {/* Conditional value switch Between Navigation when User Is Log in */}
+    {/* Conditional value switch Between "Stack Navigation" when User Is Log in */}
     {
       !userToken ?(<RootStack.Screen name="Auth" component={AuthStackScreens}/>) :
       (<RootStack.Screen name="Main" component={MainStackScreens}/>)

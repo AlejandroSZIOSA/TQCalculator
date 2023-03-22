@@ -7,7 +7,7 @@ function SignUpScreen() {
 
     <View style={styles.rootContainer}>
 
-      <View style={styles.inputEpostContainer}>
+      <View style={styles.inputPostContainer}>
         <TextInput
         style={styles.textInput}
             maxLength={20}
@@ -46,7 +46,7 @@ const styles= StyleSheet.create({
     flex: 1,
     justifyContent: 'top-center',
   },
-  inputEpostContainer:{
+  inputPostContainer:{
     marginHorizontal:5, //take left and right space
     marginTop:130,
     padding:10,

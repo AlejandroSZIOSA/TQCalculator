@@ -17,8 +17,6 @@ function LoginScreen({navigation}){
   const {signIn} = useContext(AuthContext) //Ctx
 
   function pressHandler(){
-    //navigation.navigate('CalculateSC',{seedDbData:dbData});
-    //navigation.navigate('CalculateSC');
     signIn()
   }
 

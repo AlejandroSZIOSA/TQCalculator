@@ -10,7 +10,7 @@ import AreaCalculateView from "../components/calculateSection/AreaCalculateView"
 import mathCalculations from "../mathOperations/mCalculate";
 
 
-import useFetch from "../hooks/fetchData";
+import useFetch from "../hooks/useFetch";
 
 
 function CalculationScreen({navigation}) {

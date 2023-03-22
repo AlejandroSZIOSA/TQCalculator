@@ -10,7 +10,7 @@ const HEIGHT = Dimensions.get('window').height;
 function ModalPickerSeed(props){
   //console.log(props.seedDb[1].name) //testing
 
-  //var seedsDb =  props.seedDb; //it is working / get seeds data from Db
+  var seedsDb =  props.seedDb; //it is working / get seeds data from Db
   
   const extractSeedIds = () =>{
     let seedIds=[]
@@ -27,7 +27,7 @@ function ModalPickerSeed(props){
     let seedData=[{}]
       temp.forEach(element => {
         //Can change "seedsDb" for Dummy-Data "SEED" for testing
-        SEED.forEach(element2 => {
+        seedsDb.forEach(element2 => {
           if(element == element2.id){
             seedData.push(element2)
           }
