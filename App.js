@@ -88,7 +88,7 @@ export default function App() {
   
   const [isAuth,setIsAuth]= useState(false)
 
-  //CallBack function to check if user is logged in
+  //CallBack function used for check if user is logged in or not
   const authContext = useMemo(() => {
     return{
       signIn: () => {

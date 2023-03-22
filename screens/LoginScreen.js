@@ -14,10 +14,11 @@ function LoginScreen({navigation}){
   const [isPrimaryBtnDisabled, setIsPrimaryBtnDisabled] = useState(false);
   const [opacityPrimaryBtn, setOpacityPrimaryBtn] = useState(1);
   
+  //To a callback Function
   const {signIn} = useContext(AuthContext) //Ctx
 
   function pressHandler(){
-    signIn()
+    //signIn() // change this for go to the main app
   }
 
   return(
