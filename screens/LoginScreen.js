@@ -1,6 +1,12 @@
-import { useEffect, useLayoutEffect, useState,useContext } from "react";
+import { useState,useContext } from "react";
 import { TextInput, View,StyleSheet, Button,Image } from "react-native";
-import PrimaryButton from "../components/buttons/PrimaryButton";
+
+import { Formik } from "formik";
+import * as Yup from 'yup'
+
+import LoginForm from "../components/forms/LoginForm";
+
+//import PrimaryButton from "../components/buttons/PrimaryButton";
 
 import { AuthContext } from "../context/AuthContext";
 
@@ -14,7 +20,25 @@ function LoginScreen({navigation}){
   const [isPrimaryBtnDisabled, setIsPrimaryBtnDisabled] = useState(false);
   const [opacityPrimaryBtn, setOpacityPrimaryBtn] = useState(1);
   
-  //To a callback Function
+  
+
+  // const formik = useFormik({
+  //   //an Object
+  //   initialValues: {
+  //     email: '',
+  //   },
+  //   validationSchema:Yup.object({
+  //     email: Yup.string()
+  //       .email('Invalid')
+  //       .required('required'),
+  //   }),
+  //   onSubmit: x => console.warm(x)
+  // })
+
+
+
+  
+  //Callback Function
   const {signIn} = useContext(AuthContext) //Ctx
 
   function pressHandler(){
@@ -28,13 +52,20 @@ function LoginScreen({navigation}){
           source={require('../assets/userIcon3.png')}
         />
       </View>
-      
-      <View style={styles.inputsContainer} >
-        <TextInput 
-          style={styles.textInput}
-          maxLength={20}
-          placeholder="E-Post" 
-        />
+      <View >
+        <Formik 
+          validationSchema={
+            Yup.object({
+              email: Yup.string()
+                .email('Invalid')
+                .required('required'),
+            })
+          }
+          initialValues={{email:''}}
+        >
+          <LoginForm />   
+        </Formik>
+        
         <TextInput 
           style={styles.textInput} 
           maxLength={20}
@@ -42,13 +73,6 @@ function LoginScreen({navigation}){
         />
       </View> 
 
-      <View style={styles.btnLogInContainer}>
-        <PrimaryButton 
-          onPress={pressHandler}
-          disabled={isPrimaryBtnDisabled}
-          style= {{opacity:opacityPrimaryBtn}} //overriding Style
-          >Login</PrimaryButton> 
-      </View>    
 
       <View style={styles.btnSignUpContainer}>
           <Button  title="SignUp" onPress={() =>navigation.navigate('SignUpSc')}/>
