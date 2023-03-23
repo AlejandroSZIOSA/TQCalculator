@@ -43,18 +43,17 @@ function LoginScreen({navigation}){
                 .max(14)
                 .email('Invalid')
                 .required('required'),
+              password: Yup.string()
+                .required('required')
+                .max(2)
             })
           }
-          initialValues={{email:''}}
+          initialValues={{email:'', password:''}}
         >
           <LoginForm />   
         </Formik>
         
-        <TextInput 
-          style={styles.textInput} 
-          maxLength={20}
-          placeholder="Password" 
-        />
+        
       </View> 
 
 
@@ -81,11 +80,11 @@ const styles= StyleSheet.create({
   userImageInnerContainer:{
     width:30,height:30
   },
-  inputsContainer:{
-    marginHorizontal:5, //take left and right space
-    padding:10,
-    //backgroundColor:'yellow'
-  },
+  // inputsContainer:{
+  //   marginHorizontal:5, //take left and right space
+  //   padding:10,
+  //   //backgroundColor:'yellow'
+  // },
   textInput:{
     height:50, 
     fontSize:32,
