@@ -20,24 +20,6 @@ function LoginScreen({navigation}){
   const [isPrimaryBtnDisabled, setIsPrimaryBtnDisabled] = useState(false);
   const [opacityPrimaryBtn, setOpacityPrimaryBtn] = useState(1);
   
-  
-
-  // const formik = useFormik({
-  //   //an Object
-  //   initialValues: {
-  //     email: '',
-  //   },
-  //   validationSchema:Yup.object({
-  //     email: Yup.string()
-  //       .email('Invalid')
-  //       .required('required'),
-  //   }),
-  //   onSubmit: x => console.warm(x)
-  // })
-
-
-
-  
   //Callback Function
   const {signIn} = useContext(AuthContext) //Ctx
 
@@ -54,9 +36,11 @@ function LoginScreen({navigation}){
       </View>
       <View >
         <Formik 
+          onSubmit={x => console.log(x)}
           validationSchema={
             Yup.object({
               email: Yup.string()
+                .max(14)
                 .email('Invalid')
                 .required('required'),
             })

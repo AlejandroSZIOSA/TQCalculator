@@ -1,21 +1,18 @@
-import { TextInput } from "react-native";
+import { StyleSheet, TextInput } from "react-native";
 import { Formik,useFormikContext } from "formik";
 import * as Yup from 'yup';
 
+
 import PrimaryButton from "../buttons/PrimaryButton";
+import EmailTextInput from "./EmailTextInput";
 
 function  LoginForm () {
 
   const {handleChange, submitForm, values} = useFormikContext();
   return(
     <>
-      <TextInput 
-        //onblur={handleBlur('email')}
-        //style={styles.textInput}
-        onChangeText={handleChange('email')}
-        value={values.email}
-        //maxLength={20}
-        placeholder="E-Mail" 
+      <EmailTextInput 
+        fieldName="email"
       />
       <PrimaryButton 
         onPress={submitForm}
@@ -26,3 +23,16 @@ function  LoginForm () {
   )
 }
 export default LoginForm;
+
+const styles = StyleSheet.create({
+  textInput:{
+    height:50, 
+    fontSize:32,
+    borderBottomColor:'black',
+    borderBottomWidth:2,
+    fontWeight:'semi-bold',
+    textAlign:'center',
+    backgroundColor:'white',
+    marginVertical: 8, //take top and bottom space
+  },
+})
