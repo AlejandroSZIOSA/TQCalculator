@@ -51,11 +51,8 @@ function LoginScreen({navigation}){
           initialValues={{email:'', password:''}}
         >
           <LoginForm />   
-        </Formik>
-        
-        
+        </Formik>  
       </View> 
-
 
       <View style={styles.btnSignUpContainer}>
           <Button  title="SignUp" onPress={() =>navigation.navigate('SignUpSc')}/>
@@ -85,16 +82,16 @@ const styles= StyleSheet.create({
   //   padding:10,
   //   //backgroundColor:'yellow'
   // },
-  textInput:{
-    height:50, 
-    fontSize:32,
-    borderBottomColor:'black',
-    borderBottomWidth:2,
-    fontWeight:'semi-bold',
-    textAlign:'center',
-    backgroundColor:'white',
-    marginVertical: 8, //take top and bottom space
-  },
+  // textInput:{
+  //   height:50, 
+  //   fontSize:32,
+  //   borderBottomColor:'black',
+  //   borderBottomWidth:2,
+  //   fontWeight:'semi-bold',
+  //   textAlign:'center',
+  //   backgroundColor:'white',
+  //   marginVertical: 8, //take top and bottom space
+  // },
   btnSignUpContainer:{
     //backgroundColor:'red',
     alignItems:'center',

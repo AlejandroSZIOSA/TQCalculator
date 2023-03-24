@@ -1,16 +1,14 @@
 import { StyleSheet, TextInput,View } from "react-native";
 import { Formik,useFormikContext } from "formik";
-import * as Yup from 'yup';
-
+//import * as Yup from 'yup';
 
 import PrimaryButton from "../buttons/PrimaryButton";
 import EmailTextInput from "./EmailTextInput";
 import PassTextInput from "./PassTextInput";
 
-function  LoginForm () {
+function LoginForm(){
 
   const {handleChange, submitForm, values} = useFormikContext();
-
   return(
     <View style={styles.inputsContainer}>
       <EmailTextInput 
@@ -23,7 +21,6 @@ function  LoginForm () {
           fieldName="password"
           //placeholder="Password" 
         />
-
 
       <PrimaryButton 
         onPress={submitForm}

@@ -1,41 +1,29 @@
 import { StyleSheet, Text, TextInput,View } from "react-native";
-import PrimaryButton from "../components/buttons/PrimaryButton";
+//import PrimaryButton from "../components/buttons/PrimaryButton";
 
+import { Formik } from "formik";
+import * as Yup from 'yup'
+
+import SignUpForm from "../components/forms/SignUpForm";
 
 function SignUpScreen() {
   return (
 
     <View style={styles.rootContainer}>
-
-      <View style={styles.inputPostContainer}>
-        <TextInput
-        style={styles.textInput}
-            maxLength={20}
-            placeholder="E-Post" 
-          />
-      </View>
-
-      <View style={styles.inputsPasswordContainer}>
-        <TextInput 
-          style={styles.textInput}
-          maxLength={20}
-          placeholder="New Password" 
-        />
-        <TextInput 
-          style={styles.textInput} 
-          maxLength={20}
-          placeholder="Repeat Password" 
-        />
-      </View>
-
-      <View >
-        <PrimaryButton 
-          //onPress={pressHandler}
-          //disabled={isPrimaryBtnDisabled}
-          //overriding Style
-          >Confirm</PrimaryButton> 
-      </View>    
-
+      <Formik
+        onSubmit={x => console.log(x)}
+        validationSchema={
+          Yup.object({
+            email:Yup.string()
+              //.max(14)
+              .email('Invalid')
+              .required('Required'),
+          })
+        }
+        initialValues={{email:''}}
+      >
+        <SignUpForm/>
+      </Formik>
     </View>
   )
 }
@@ -44,7 +32,7 @@ export default SignUpScreen;
 const styles= StyleSheet.create({
   rootContainer: {
     flex: 1,
-    justifyContent: 'top-center',
+    justifyContent: 'center',
   },
   inputPostContainer:{
     marginHorizontal:5, //take left and right space
