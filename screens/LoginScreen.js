@@ -42,9 +42,9 @@ function LoginScreen({navigation}){
               email: Yup.string()
                 .max(14)
                 .email('Invalid')
-                .required('required'),
+                .required('Required'),
               password: Yup.string()
-                .required('required')
+                .required('Required')
                 .max(2)
             })
           }

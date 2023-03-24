@@ -1,4 +1,4 @@
-import { TextInput,Text } from "react-native";
+import { TextInput,Text,StyleSheet, View } from "react-native";
 
 import { useField } from "formik"; // permite acceder a props tipo formik
 
@@ -17,10 +17,23 @@ function EmailTextInput ({fieldName,...props}){
         {...props}
       />
       {meta.error && meta.touched&& (
-        <Text style={{color:'red'}}> {meta.error} </Text>
+        <View style={styles.validationTextContainer}>
+          <Text style={styles.validationText}> {meta.error} </Text>
+        </View>
       )}
   </>
   )
   
 }
 export default EmailTextInput;
+
+const styles = StyleSheet.create({
+
+  validationTextContainer:{
+    alignItems: 'center',
+  },
+  validationText:{
+    fontSize:22,
+    color:'yellow'
+  }
+})
