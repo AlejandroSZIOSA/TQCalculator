@@ -1,6 +1,5 @@
-import { StyleSheet, TextInput,View } from "react-native";
-import { useFormikContext } from "formik";
-
+import { StyleSheet,View } from "react-native";
+import { useFormikContext } from "formik"; //Formik Hook
 
 import PrimaryButton from "../buttons/PrimaryButton";
 import EmailTextInput from "./EmailTextInput";

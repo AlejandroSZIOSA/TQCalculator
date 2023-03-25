@@ -1,7 +1,5 @@
-import { View,TextInput,StyleSheet } from "react-native";
-
-import { Formik,useFormikContext } from "formik";
-//import * as Yup from 'yup';
+import { View,StyleSheet } from "react-native";
+import { useFormikContext } from "formik"; //Formik Hook
 
 import EmailTextInput from "./EmailTextInput";
 import PrimaryButton from "../buttons/PrimaryButton";
@@ -9,7 +7,6 @@ import PassTextInput from "./PassTextInput";
 import ConfirmPassTextInput from "./ConfirmPassTextInput";
 
 function SignUpForm(){
-
   const {handleChange, submitForm, values} = useFormikContext();
 
   return(

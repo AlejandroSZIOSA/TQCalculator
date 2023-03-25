@@ -1,6 +1,5 @@
 import { TextInput,Text,StyleSheet, View } from "react-native";
-
-import { useField } from "formik"; // permite acceder a props tipo formik
+import { useField } from "formik"; //Hooks get access to props type Formik
 
 function EmailTextInput ({fieldName,...props}){
   const[field, meta] = useField(fieldName); //destructuring.. :)

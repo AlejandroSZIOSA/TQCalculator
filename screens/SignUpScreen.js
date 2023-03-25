@@ -1,5 +1,4 @@
 import { StyleSheet, Text, TextInput,View } from "react-native";
-//import PrimaryButton from "../components/buttons/PrimaryButton";
 
 import { Formik } from "formik";
 import * as Yup from 'yup'
