@@ -40,12 +40,12 @@ function LoginScreen({navigation}){
           validationSchema={
             Yup.object({
               email: Yup.string()
-                .max(14)
+                .max(20)
                 .email('Invalid')
                 .required('Required'),
               password: Yup.string()
                 .required('Required')
-                .max(2)
+                .max(20)
             })
           }
           initialValues={{email:'', password:''}}
@@ -77,21 +77,6 @@ const styles= StyleSheet.create({
   userImageInnerContainer:{
     width:30,height:30
   },
-  // inputsContainer:{
-  //   marginHorizontal:5, //take left and right space
-  //   padding:10,
-  //   //backgroundColor:'yellow'
-  // },
-  // textInput:{
-  //   height:50, 
-  //   fontSize:32,
-  //   borderBottomColor:'black',
-  //   borderBottomWidth:2,
-  //   fontWeight:'semi-bold',
-  //   textAlign:'center',
-  //   backgroundColor:'white',
-  //   marginVertical: 8, //take top and bottom space
-  // },
   btnSignUpContainer:{
     //backgroundColor:'red',
     alignItems:'center',

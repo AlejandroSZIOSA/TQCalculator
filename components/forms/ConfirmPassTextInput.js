@@ -1,15 +1,16 @@
-import { TextInput,Text,StyleSheet, View } from "react-native";
+import { TextInput,Text,StyleSheet,View } from "react-native";
 
 import { useField } from "formik"; // permite acceder a props tipo formik
 
-function EmailTextInput ({fieldName,...props}){
-  const[field, meta] = useField(fieldName); //destructuring.. :)
+function ConfirmPassTextInput ({fieldName,...props}){
+  const[field, meta] = useField(fieldName); //destructuring Props.. :)
+  // meta ?
 
   return (
   <>  
     <TextInput 
         onblur={field.onBlur(fieldName)}
-        onChangeText={field.onChange('email')}
+        onChangeText={field.onChange('confirm')}
         value={field.value}
         maxLength={21}
         {...props}
@@ -22,7 +23,7 @@ function EmailTextInput ({fieldName,...props}){
   </>
   )
 }
-export default EmailTextInput;
+export default ConfirmPassTextInput;
 
 const styles = StyleSheet.create({
   validationTextContainer:{
@@ -30,6 +31,6 @@ const styles = StyleSheet.create({
   },
   validationText:{
     fontSize:22,
-    color:'yellow'
+    color:'red'
   }
 })

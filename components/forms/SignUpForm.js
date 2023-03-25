@@ -5,6 +5,8 @@ import { Formik,useFormikContext } from "formik";
 
 import EmailTextInput from "./EmailTextInput";
 import PrimaryButton from "../buttons/PrimaryButton";
+import PassTextInput from "./PassTextInput";
+import ConfirmPassTextInput from "./ConfirmPassTextInput";
 
 function SignUpForm(){
 
@@ -16,19 +18,22 @@ function SignUpForm(){
         <EmailTextInput
           style={styles.textInput}
           fieldName="email" //Passing as Prop
+          placeholder="Enter your email"
         />        
       </View>
 
       <View style={styles.inputsPasswordContainer}>
-        <TextInput 
+        <PassTextInput
           style={styles.textInput}
+          fieldName="password" //Passing as Prop
           maxLength={20}
           placeholder="New Password" 
         />
-        <TextInput 
+        <ConfirmPassTextInput 
           style={styles.textInput} 
           maxLength={20}
-          placeholder="Repeat Password" 
+          fieldName="confirm" //Passing as Prop
+          placeholder="Confirm Password" 
         />
         <View >
           <PrimaryButton 
@@ -37,9 +42,7 @@ function SignUpForm(){
             //overriding Style
           >Confirm</PrimaryButton> 
         </View>    
-      </View>
-
-      
+      </View>      
     </View>
   )
 }

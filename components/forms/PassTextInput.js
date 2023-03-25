@@ -10,26 +10,22 @@ function PassTextInput ({fieldName,...props}){
   <>  
     <TextInput 
         onblur={field.onBlur(fieldName)}
-        //style={styles.textInput}
         onChangeText={field.onChange('password')}
         value={field.value}
-        maxLength={20}
-        placeholder="Enter your Password" 
+        maxLength={21}
         {...props}
-      />
-      {meta.error && meta.touched&& (
-        <View style={styles.validationTextContainer}>
-          <Text style={styles.validationText}> {meta.error} </Text>
-        </View>
-      )}
+    />
+    {meta.error && meta.touched&& (
+      <View style={styles.validationTextContainer}>
+        <Text style={styles.validationText}> {meta.error} </Text>
+      </View>
+    )}
   </>
   )
-  
 }
 export default PassTextInput;
 
 const styles = StyleSheet.create({
-
   validationTextContainer:{
     alignItems: 'center',
   },

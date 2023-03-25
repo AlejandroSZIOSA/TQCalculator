@@ -8,19 +8,23 @@ import SignUpForm from "../components/forms/SignUpForm";
 
 function SignUpScreen() {
   return (
-
     <View style={styles.rootContainer}>
       <Formik
         onSubmit={x => console.log(x)}
         validationSchema={
           Yup.object({
             email:Yup.string()
-              //.max(14)
+              .max(20)
               .email('Invalid')
               .required('Required'),
+            password:Yup.string()
+              .required('required'),
+            confirm:Yup.string()
+              .required('required')
+              .oneOf([Yup.ref("password"), null], "Passwords don't match")
           })
         }
-        initialValues={{email:''}}
+        initialValues={{email:'',password:'',confirm:''}}
       >
         <SignUpForm/>
       </Formik>
