@@ -2,20 +2,19 @@ import { StyleSheet,View } from "react-native";
 import { useFormikContext } from "formik"; //Formik Hook
 
 import PrimaryButton from "../buttons/PrimaryButton";
-import EmailTextInput from "./EmailTextInput";
-import PassTextInput from "./PassTextInput";
+import UserTextInput from "./UserTextInput";
 
 function LoginForm(){
   const {handleChange, submitForm, values} = useFormikContext();
 
   return(
     <View style={styles.inputsContainer}>
-      <EmailTextInput 
+      <UserTextInput 
         style={styles.textInput}
         fieldName="email" //Passing as Prop
         placeholder="Enter your Email"
       />
-      <PassTextInput
+      <UserTextInput
         style={styles.textInput}
         fieldName="password"
         placeholder="Enter your Password" 
