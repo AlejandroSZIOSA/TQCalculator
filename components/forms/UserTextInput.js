@@ -1,15 +1,14 @@
-import { TextInput,Text,StyleSheet,View } from "react-native";
+import { TextInput,Text,StyleSheet, View } from "react-native";
 import { useField } from "formik"; //Hooks get access to props type Formik
 
-function ConfirmPassTextInput ({fieldName,...props}){
-  const[field, meta] = useField(fieldName); //destructuring Props.. :)
-  // meta ?
+function UserTextInput ({fieldName,...props}){
+  const[field, meta] = useField(fieldName); //destructuring.. :)
 
   return (
   <>  
     <TextInput 
         onblur={field.onBlur(fieldName)}
-        onChangeText={field.onChange('confirm')}
+        onChangeText={field.onChange(fieldName)}
         value={field.value}
         maxLength={21}
         {...props}
@@ -22,7 +21,7 @@ function ConfirmPassTextInput ({fieldName,...props}){
   </>
   )
 }
-export default ConfirmPassTextInput;
+export default UserTextInput;
 
 const styles = StyleSheet.create({
   validationTextContainer:{
@@ -30,6 +29,6 @@ const styles = StyleSheet.create({
   },
   validationText:{
     fontSize:22,
-    color:'red'
+    color:'yellow'
   }
 })

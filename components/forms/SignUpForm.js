@@ -1,10 +1,8 @@
 import { View,StyleSheet } from "react-native";
 import { useFormikContext } from "formik"; //Formik Hook
 
-import EmailTextInput from "./EmailTextInput";
+import UserTextInput from "./UserTextInput";
 import PrimaryButton from "../buttons/PrimaryButton";
-import PassTextInput from "./PassTextInput";
-import ConfirmPassTextInput from "./ConfirmPassTextInput";
 
 function SignUpForm(){
   const {handleChange, submitForm, values} = useFormikContext();
@@ -12,7 +10,7 @@ function SignUpForm(){
   return(
     <View >
       <View style={styles.emailInputContainer}>
-        <EmailTextInput
+        <UserTextInput
           style={styles.textInput}
           fieldName="email" //Passing as Prop
           placeholder="Enter your email"
@@ -20,13 +18,13 @@ function SignUpForm(){
       </View>
 
       <View style={styles.inputsPasswordContainer}>
-        <PassTextInput
+        <UserTextInput
           style={styles.textInput}
           fieldName="password" //Passing as Prop
           maxLength={20}
           placeholder="New Password" 
         />
-        <ConfirmPassTextInput 
+        <UserTextInput
           style={styles.textInput} 
           maxLength={20}
           fieldName="confirm" //Passing as Prop
