@@ -1,5 +1,6 @@
-import { useState,useContext } from "react";
+import { useState,useContext, useEffect } from "react";
 import { TextInput, View,StyleSheet, Button,Image } from "react-native";
+
 
 import { Formik } from "formik";
 import * as Yup from 'yup'
@@ -9,6 +10,8 @@ import LoginForm from "../components/forms/LoginForm";
 //import PrimaryButton from "../components/buttons/PrimaryButton";
 
 import { AuthContext } from "../context/AuthContext";
+import useAuth from "../hooks/useAuth";
+import axios from "axios";
 
 //import useFetch from "../hooks/fetchData";
 
@@ -19,13 +22,32 @@ function LoginScreen({navigation}){
 
   const [isPrimaryBtnDisabled, setIsPrimaryBtnDisabled] = useState(false);
   const [opacityPrimaryBtn, setOpacityPrimaryBtn] = useState(1);
+  const [token,setToken]=useState(false);
+
+  //const [user, setUser] = useState({});
   
+  //const {token} = useAuth({})
+  
+
   //Callback Function
   const {signIn} = useContext(AuthContext) //Ctx
 
-  function pressHandler(){
-    //signIn() // change this for go to the main app
-  }
+   // authenticate
+
+    const onLoginBtnHandler = async (x) =>{
+      const url= 'http://localhost:8080/auth/login'
+      try{
+        const res = await axios.post(url,x);
+        //console.log(res.data.token);
+        //setToken(res.data.token);
+        setToken(true)
+        console.log(token)
+        signIn()
+      }
+      catch (error){
+        console.log(error);
+      }
+    }
 
   return(
     <View style={styles.rootContainer}>
@@ -36,7 +58,7 @@ function LoginScreen({navigation}){
       </View>
       <View >
         <Formik 
-          onSubmit={x => console.log(x)}
+          onSubmit={x => onLoginBtnHandler(x)}
           validationSchema={
             Yup.object({
               email: Yup.string()

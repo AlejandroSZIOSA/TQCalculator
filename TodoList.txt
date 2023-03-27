@@ -31,3 +31,10 @@
 
 ---
 set upp condition switch navigation
+
+onSubmit={x => console.log(x)}
+
+{ 
+          email:"phoenix@sidius.com",
+          password:"password",
+        }
