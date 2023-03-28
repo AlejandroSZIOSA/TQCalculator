@@ -11,9 +11,11 @@ const useFetch = (url) => {
     console.log("Succeed Fetched data from db!")    
     setDbData(data.seeds); //works!
   }
+
   useEffect(() => {
     fetchData()
   }, []);
+  
   return {dbData};
 }
 export default useFetch

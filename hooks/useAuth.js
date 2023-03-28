@@ -1,19 +1,26 @@
 import axios from "axios";
+import { useState,useEffect } from "react";
 
 function useAuth(obj){
   
-  var token = false;
+  const [token,setToken]= useState(false)
+
   const url= 'http://localhost:8080/auth/login'
 
   const getUserAuth = async () => {
     try{
       const res = await axios.post(url,obj)
       console.log(res.data.token);
-      token = true;
+  
       } catch (error) {
         console.log(error);
       }
-    }    
-    return token;
-}
+    }   
+    
+    useEffect(() => {
+      getUserAuth();
+    }, [obj]); // execute once only
+    
+    return {token};
+  }
 export default useAuth;

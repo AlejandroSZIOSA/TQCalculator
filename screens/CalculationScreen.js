@@ -9,9 +9,7 @@ import PickerSeed from "../components/picker/PickerSeed";
 import AreaCalculateView from "../components/calculateSection/AreaCalculateView";
 import mathCalculations from "../mathOperations/mCalculate";
 
-
 import useFetch from "../hooks/useFetch";
-
 
 function CalculationScreen({navigation}) {
   //route params

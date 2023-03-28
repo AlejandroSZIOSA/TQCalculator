@@ -86,23 +86,25 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   
-  const [isAuth,setIsAuth]= useState(false)
+  //const [isAuth,setIsAuth]= useState(false)
+  const [token, setToken] = useState(null)
 
   //CallBack function used for check if user is logged in or not
   const authContext = useMemo(() => {
     return{
-      signIn: () => {
-        setIsAuth(true);
+      logIn: (t) =>{
+        setToken(t)
       }
   }
   }, []);
-  //console.log(isAuth); // testing
+  console.log(token); // testing
   
+  //userToken ={isAuth}
   return(
     <AuthContext.Provider value={authContext}>
       <NavigationContainer>
         {/* passing props to root stack screen */}
-        <RootStackScreens userToken ={isAuth}/>
+        <RootStackScreens userToken ={token}/>
       </NavigationContainer>   
     </AuthContext.Provider> 
   );  

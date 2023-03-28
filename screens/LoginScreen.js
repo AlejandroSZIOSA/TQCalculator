@@ -22,30 +22,21 @@ function LoginScreen({navigation}){
 
   const [isPrimaryBtnDisabled, setIsPrimaryBtnDisabled] = useState(false);
   const [opacityPrimaryBtn, setOpacityPrimaryBtn] = useState(1);
-  const [token,setToken]=useState(false);
-
-  //const [user, setUser] = useState({});
+  //const [token,setToken]=useState(false); // Can activate :)
   
-  //const {token} = useAuth({})
-  
-
   //Callback Function
-  const {signIn} = useContext(AuthContext) //Ctx
-
-   // authenticate
-
-    const onLoginBtnHandler = async (x) =>{
+  const {logIn} = useContext(AuthContext) //Ctx
+  
+  // authenticate Axios Login
+    const onLoginBtnHandler = async (userData) =>{
       const url= 'http://localhost:8080/auth/login'
       try{
-        const res = await axios.post(url,x);
-        //console.log(res.data.token);
-        //setToken(res.data.token);
-        setToken(true)
-        console.log(token)
-        signIn()
+        const res = await axios.post(url,userData);
+        logIn(res.data.token) //Callback function to CTX
       }
       catch (error){
         console.log(error);
+        console.warn("Something was wrong!")
       }
     }
 
