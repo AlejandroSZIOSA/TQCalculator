@@ -16,25 +16,17 @@ import axios from "axios";
 
 import onLoginBtnHandler from "../services/dbOperations/setUserLogIn";
 
+
+
 function LoginScreen({navigation}){
+
+  const {setToken} = useContext(TokenContext); //CTX Function
+  const {logIn} = useContext(AuthContext) //CTX Callback Function
 
   const [isPrimaryBtnDisabled, setIsPrimaryBtnDisabled] = useState(false);
   const [opacityPrimaryBtn, setOpacityPrimaryBtn] = useState(1);
   //const [token,setToken]=useState(false); // Can activate :)
   
-  const {logIn} = useContext(AuthContext) //CTX Callback Function
-  
-  //const [token] = useContext(TokenContext);
-  
-  //const {setToken} = useContext(TokenContext);
-
-
-  //console.log(token)
-
-  const {token, setToken} = useContext(TokenContext)
-
-
-  console.log(token)
   return(
     <View style={styles.rootContainer}>
       <View style={styles.userImageContainer}>

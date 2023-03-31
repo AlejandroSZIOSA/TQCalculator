@@ -1,23 +1,25 @@
-import { AuthContext } from "../../context/AuthContext";
-import { TokenContext } from "../../context/TokenContext";
-
 import axios from "axios";
-import { useContext } from "react";
 
 // authenticate Axios Login
 const onLoginBtnHandler = async (userKey,logIn,setToken) =>{
-
+  let token;
   const url= 'http://localhost:8080/auth/login'
   try{
-    const res = await axios.post(url,userKey);
-    logIn(res.data.token) //Callback function to CTX (Trigger Switch between Navigators)
+  const res = await axios.post(url,userKey);
+    logIn(true) //Callback function to CTX (Trigger Switch between Navigators)
+    token=(res.data.token)
+    //console.log(token)
+    //await test(res.data.token)
   }
   catch (error){
-    console.log(error);
+    //console.log(error);
     console.warn("Something was wrong!")
   }
   finally{
-    setToken(3)
+    console.log("finally");
+    //console.log(token);
+    setToken(token)
+    //test(token)
   }
 }
 export default onLoginBtnHandler;

@@ -17,7 +17,7 @@ function CalculationScreen({navigation}) {
 
   //Token from CTX
   const {token}= useContext(TokenContext)
-  console.log(token);
+  console.log(token); // It is Working!
 
   //Custom Hook Fetch Data from DB
   const {dbData} = useFetch('http://localhost:8080/seed/seeds') //object destructing

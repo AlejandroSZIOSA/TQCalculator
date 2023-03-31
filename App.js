@@ -77,13 +77,13 @@ const MainStackScreens = () => (
 
 // Declaration of "Root Stack" Navigation
 const RootStack = createNativeStackNavigator();
-const RootStackScreens = ({userToken}) => (
+const RootStackScreens = ({isAuth}) => (
   <RootStack.Navigator
     screenOptions={{headerShown:false}} //fixed Header problem!
   >
     {/* Conditional value switch Between "Stack Navigation" when User Is Log in */}
     {
-      !userToken ?(<RootStack.Screen name="Auth" component={AuthStackScreens}/>) :
+      !isAuth ?(<RootStack.Screen name="Auth" component={AuthStackScreens}/>) :
       (<RootStack.Screen name="Main" component={MainStackScreens}/>) //testing
     }  
   </RootStack.Navigator>
@@ -92,13 +92,13 @@ const RootStackScreens = ({userToken}) => (
 export default function App() {
   
   //const [isAuth,setIsAuth]= useState(false)
-  const [token, setToken] = useState(null)
+  const [isAuth, setIsAuth] = useState(false)
 
   //CallBack function used for check if user is logged in or not
   const authContext = useMemo(() => {
     return{
       logIn: (t) =>{
-        setToken(t)
+        setIsAuth(t)
       },
   }
   }, []);
@@ -111,7 +111,7 @@ export default function App() {
       <TokenProvider>
         <NavigationContainer>
           {/* passing props to root stack screen */}
-          <RootStackScreens userToken ={token}/>
+          <RootStackScreens isAuth ={isAuth}/>
         </NavigationContainer>   
       </TokenProvider>
       

@@ -3,7 +3,7 @@ import { TokenContext } from "./TokenContext";
 
 export const TokenProvider = ({children}) =>{
 
-  const[token,setToken]= useState(1)
+  const[token,setToken]= useState("")
 
   const value ={
     token,
