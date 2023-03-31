@@ -1,7 +1,6 @@
 import { useState,useContext, useEffect } from "react";
 import { TextInput, View,StyleSheet, Button,Image } from "react-native";
 
-
 import { Formik } from "formik";
 import * as Yup from 'yup'
 
@@ -10,36 +9,20 @@ import LoginForm from "../components/forms/LoginForm";
 //import PrimaryButton from "../components/buttons/PrimaryButton";
 
 import { AuthContext } from "../context/AuthContext";
-import useAuth from "../hooks/useAuth";
+
+//import useAuth from "../hooks/useAuth";
 import axios from "axios";
 
-//import useFetch from "../hooks/fetchData";
+import onLoginBtnHandler from "../services/dbOperations/setUserLogIn";
 
 function LoginScreen({navigation}){
-
-  //Custom Hook Fetch Data from DB
-  //const {dbData} = useFetch('http://localhost:8080/seed/seeds') //change to Calculation Screen
 
   const [isPrimaryBtnDisabled, setIsPrimaryBtnDisabled] = useState(false);
   const [opacityPrimaryBtn, setOpacityPrimaryBtn] = useState(1);
   //const [token,setToken]=useState(false); // Can activate :)
   
-  //Callback Function
-  const {logIn} = useContext(AuthContext) //Ctx
+  const {logIn} = useContext(AuthContext) //CTX Callback Function
   
-  // authenticate Axios Login
-    const onLoginBtnHandler = async (userData) =>{
-      const url= 'http://localhost:8080/auth/login'
-      try{
-        const res = await axios.post(url,userData);
-        logIn(res.data.token) //Callback function to CTX
-      }
-      catch (error){
-        console.log(error);
-        console.warn("Something was wrong!")
-      }
-    }
-
   return(
     <View style={styles.rootContainer}>
       <View style={styles.userImageContainer}>
@@ -49,7 +32,7 @@ function LoginScreen({navigation}){
       </View>
       <View >
         <Formik 
-          onSubmit={x => onLoginBtnHandler(x)}
+          onSubmit={userKey => onLoginBtnHandler(userKey,logIn)} // Can change here
           validationSchema={
             Yup.object({
               email: Yup.string()
@@ -61,7 +44,7 @@ function LoginScreen({navigation}){
                 .max(20)
             })
           }
-          initialValues={{email:'', password:''}}
+          initialValues={{email:'phoenix@sidius.com', password:'password'}}
         >
           <LoginForm />   
         </Formik>  

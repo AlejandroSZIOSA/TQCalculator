@@ -1,5 +1,5 @@
 
-import { useState,useEffect } from "react";
+import { useState,useEffect,useContext } from "react";
 import { View,StyleSheet} from "react-native";
 import PrimaryButton from "../components/buttons/PrimaryButton";
 import Colors from "../constants/colors";
@@ -9,14 +9,27 @@ import PickerSeed from "../components/picker/PickerSeed";
 import AreaCalculateView from "../components/calculateSection/AreaCalculateView";
 import mathCalculations from "../mathOperations/mCalculate";
 
+
+//import { AuthContext } from "../context/AuthContext";
+
 import useFetch from "../hooks/useFetch";
 
-function CalculationScreen({navigation}) {
-  //route params
-  //const seedDb = route.params.seedDbData; 
+function CalculationScreen({navigation,token}) {
+
+//const t = useContext(AuthContext) //Ctx
+
+//const url =navigation.getParam('url');
+//console.log(url);
+
+//route params
+  
+
+
+  console.log(token);
+
 
   //Custom Hook Fetch Data from DB
-  const {dbData} = useFetch('http://localhost:8080/seed/seeds')
+  const {dbData} = useFetch('http://localhost:8080/seed/seeds') //object destructing
 
   //console.log(seedDb.seeds[1].name); 
 

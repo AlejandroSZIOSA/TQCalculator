@@ -12,6 +12,10 @@ import SignUpScreen from './screens/SignUpScreen';
 //Context
 import { AuthContext } from './context/AuthContext';
 
+
+//TO-DO: Problem with passing prop "userToken" trough navigation 
+
+
 //Declaration  "Authentication" Navigation Stack
 const AuthStack = createNativeStackNavigator();
 const AuthStackScreens = () =>(
@@ -23,12 +27,13 @@ const AuthStackScreens = () =>(
     },
   contentStyle:{ backgroundColor:Colors.primaryGreen1}
   }}
->
-  <AuthStack.Screen 
-    name="LoginSc" 
-    component={LoginScreen}
-    options={{title: 'Login'}}
-  />
+> 
+    <AuthStack.Screen 
+      name="LoginSc" 
+      component={LoginScreen}
+      options={{title: 'Login'}}
+    />
+
   <AuthStack.Screen 
     name="SignUpSc" 
     component={SignUpScreen}
@@ -40,7 +45,7 @@ const AuthStackScreens = () =>(
 
 //Declaration of "Main Stack" Navigation
 const MainStack = createNativeStackNavigator();
-const MainStackScreens = () => (
+const MainStackScreens = ({token}) => (
   <MainStack.Navigator 
     screenOptions={{
       headerStyle:{backgroundColor:Colors.primaryGreen4},
@@ -49,13 +54,17 @@ const MainStackScreens = () => (
       },
       contentStyle:{ backgroundColor:Colors.primaryGreen1}
     }}
+    
   >
     <MainStack.Screen 
+      token={token}
       name="CalculateSC" 
       component={CalculationScreen} 
       options={{
         title:'Seeds Calculator'
       }}
+      //initialParams={ userToken }
+      
     />
     <MainStack.Screen 
       name="ResultSC" 
@@ -70,19 +79,16 @@ const MainStackScreens = () => (
 // Declaration of "Root Stack" Navigation
 const RootStack = createNativeStackNavigator();
 const RootStackScreens = ({userToken}) => (
-  <RootStack.Navigator 
-    screenOptions={{headerShown:false}} //fix Header problem!
+  <RootStack.Navigator
+    screenOptions={{headerShown:false}} //fixed Header problem!
   >
     {/* Conditional value switch Between "Stack Navigation" when User Is Log in */}
     {
       !userToken ?(<RootStack.Screen name="Auth" component={AuthStackScreens}/>) :
-      (<RootStack.Screen name="Main" component={MainStackScreens}/>)
+      (<RootStack.Screen token={userToken} name="Main" component={MainStackScreens}/>) //testing
     }  
   </RootStack.Navigator>
 )
-
-//////////************ */
-const Stack = createNativeStackNavigator();
 
 export default function App() {
   
@@ -94,7 +100,7 @@ export default function App() {
     return{
       logIn: (t) =>{
         setToken(t)
-      }
+      },
   }
   }, []);
   console.log(token); // testing
@@ -102,10 +108,12 @@ export default function App() {
   //userToken ={isAuth}
   return(
     <AuthContext.Provider value={authContext}>
-      <NavigationContainer>
-        {/* passing props to root stack screen */}
-        <RootStackScreens userToken ={token}/>
-      </NavigationContainer>   
+      
+        <NavigationContainer>
+          {/* passing props to root stack screen */}
+          <RootStackScreens userToken ={token}/>
+        </NavigationContainer>   
+      
     </AuthContext.Provider> 
   );  
 }
