@@ -9,24 +9,15 @@ import PickerSeed from "../components/picker/PickerSeed";
 import AreaCalculateView from "../components/calculateSection/AreaCalculateView";
 import mathCalculations from "../mathOperations/mCalculate";
 
-
-//import { AuthContext } from "../context/AuthContext";
+import { TokenContext } from "../context/TokenContext";
 
 import useFetch from "../hooks/useFetch";
 
-function CalculationScreen({navigation,token}) {
+function CalculationScreen({navigation}) {
 
-//const t = useContext(AuthContext) //Ctx
-
-//const url =navigation.getParam('url');
-//console.log(url);
-
-//route params
-  
-
-
+  //Token from CTX
+  const {token}= useContext(TokenContext)
   console.log(token);
-
 
   //Custom Hook Fetch Data from DB
   const {dbData} = useFetch('http://localhost:8080/seed/seeds') //object destructing

@@ -12,9 +12,9 @@ import SignUpScreen from './screens/SignUpScreen';
 //Context
 import { AuthContext } from './context/AuthContext';
 
+import { TokenProvider } from './context/ToKenProvider';
 
 //TO-DO: Problem with passing prop "userToken" trough navigation 
-
 
 //Declaration  "Authentication" Navigation Stack
 const AuthStack = createNativeStackNavigator();
@@ -45,7 +45,7 @@ const AuthStackScreens = () =>(
 
 //Declaration of "Main Stack" Navigation
 const MainStack = createNativeStackNavigator();
-const MainStackScreens = ({token}) => (
+const MainStackScreens = () => (
   <MainStack.Navigator 
     screenOptions={{
       headerStyle:{backgroundColor:Colors.primaryGreen4},
@@ -57,7 +57,6 @@ const MainStackScreens = ({token}) => (
     
   >
     <MainStack.Screen 
-      token={token}
       name="CalculateSC" 
       component={CalculationScreen} 
       options={{
@@ -85,7 +84,7 @@ const RootStackScreens = ({userToken}) => (
     {/* Conditional value switch Between "Stack Navigation" when User Is Log in */}
     {
       !userToken ?(<RootStack.Screen name="Auth" component={AuthStackScreens}/>) :
-      (<RootStack.Screen token={userToken} name="Main" component={MainStackScreens}/>) //testing
+      (<RootStack.Screen name="Main" component={MainStackScreens}/>) //testing
     }  
   </RootStack.Navigator>
 )
@@ -103,16 +102,18 @@ export default function App() {
       },
   }
   }, []);
-  console.log(token); // testing
+
+  //console.log(token); // testing
   
   //userToken ={isAuth}
   return(
     <AuthContext.Provider value={authContext}>
-      
+      <TokenProvider>
         <NavigationContainer>
           {/* passing props to root stack screen */}
           <RootStackScreens userToken ={token}/>
         </NavigationContainer>   
+      </TokenProvider>
       
     </AuthContext.Provider> 
   );  

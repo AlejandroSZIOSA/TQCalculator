@@ -9,6 +9,7 @@ import LoginForm from "../components/forms/LoginForm";
 //import PrimaryButton from "../components/buttons/PrimaryButton";
 
 import { AuthContext } from "../context/AuthContext";
+import { TokenContext } from "../context/TokenContext";
 
 //import useAuth from "../hooks/useAuth";
 import axios from "axios";
@@ -23,6 +24,17 @@ function LoginScreen({navigation}){
   
   const {logIn} = useContext(AuthContext) //CTX Callback Function
   
+  //const [token] = useContext(TokenContext);
+  
+  //const {setToken} = useContext(TokenContext);
+
+
+  //console.log(token)
+
+  const {token, setToken} = useContext(TokenContext)
+
+
+  console.log(token)
   return(
     <View style={styles.rootContainer}>
       <View style={styles.userImageContainer}>
@@ -32,7 +44,7 @@ function LoginScreen({navigation}){
       </View>
       <View >
         <Formik 
-          onSubmit={userKey => onLoginBtnHandler(userKey,logIn)} // Can change here
+          onSubmit={userKey => onLoginBtnHandler(userKey,logIn,setToken)} // Can change here
           validationSchema={
             Yup.object({
               email: Yup.string()
