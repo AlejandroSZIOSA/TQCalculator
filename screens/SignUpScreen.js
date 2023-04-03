@@ -5,11 +5,13 @@ import * as Yup from 'yup'
 
 import SignUpForm from "../components/forms/SignUpForm";
 
+import setUserSignUp from "../services/dbOperations/setUserSignUp";
+
 function SignUpScreen() {
   return (
     <View style={styles.rootContainer}>
       <Formik
-        onSubmit={x => console.log(x)}
+        onSubmit={newUser => setUserSignUp(newUser)}
         validationSchema={
           Yup.object({
             email:Yup.string()
