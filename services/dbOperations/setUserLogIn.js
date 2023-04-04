@@ -7,14 +7,14 @@ const onLoginBtnHandler = async (userKey,logIn,setToken) =>{
   try{
   const res = await axios.post(URL,userKey);
     logIn(true) //Callback function to CTX (Trigger Switch between Navigators)
-    token=(res.data.token)
+    token = res.data.token // TODO: testa await 
   }
   catch (error){
     console.log(error);
-    console.warn("Something was wrong!")
+    console.warn("LogIn request Failed!")
   }
   finally{
-    console.log("LogIn successful");
+    console.log("LogIn request successful");
     setToken(token)
   }
 }

@@ -11,21 +11,17 @@ import LoginForm from "../components/forms/LoginForm";
 import { AuthContext } from "../context/AuthContext";
 import { TokenContext } from "../context/TokenContext";
 
-//import useAuth from "../hooks/useAuth";
 import axios from "axios";
 
 import onLoginBtnHandler from "../services/dbOperations/setUserLogIn";
 
-
-
 function LoginScreen({navigation}){
-
-  const {setToken} = useContext(TokenContext); //CTX Function
-  const {logIn} = useContext(AuthContext) //CTX Callback Function
+  
+  const {setToken} = useContext(TokenContext); // CTX Function
+  const {logIn} = useContext(AuthContext) // CTX Callback Function
 
   const [isPrimaryBtnDisabled, setIsPrimaryBtnDisabled] = useState(false);
   const [opacityPrimaryBtn, setOpacityPrimaryBtn] = useState(1);
-  //const [token,setToken]=useState(false); // Can activate :)
   
   return(
     <View style={styles.rootContainer}>

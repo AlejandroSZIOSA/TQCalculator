@@ -8,10 +8,9 @@ const useFetch = (url) => {
     //todo: Validation errors 
       const res = await fetch(url)
       const data = await res.json()
-      console.log("Succeed Fetched data from db!")    
+      console.log("Success Fetched data from db!")    
       setDbData(data.seeds); //works!
   }
-
   useEffect(() => {
     fetchData()
   }, []);

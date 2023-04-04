@@ -11,9 +11,7 @@ import mathCalculations from "../mathOperations/mCalculate";
 
 import { TokenContext } from "../context/TokenContext";
 
-import useFetch from "../hooks/useFetch";
 import fetchSeeds from "../services/dbOperations/fetchSeeds";
-import fetch2 from "../services/dbOperations/fetch2";
 
 
 function CalculationScreen({navigation}) {
@@ -21,11 +19,11 @@ function CalculationScreen({navigation}) {
   //Custom Hook Fetch Data from DB
   //const {dbData} = useFetch('http://localhost:8080/seed/seeds') //object destructing work!
 
-  const {token}= useContext(TokenContext)
+  const {token}=useContext(TokenContext)
 
   //const dbData= ([{}]) //works!
 
-  const [dbData,setDbData]= useState()
+  const [seedsDb,setSeedsDb]= useState()
 
   const [isBtnDisabled,setIsBtnDisabled]=useState(true)
   const [btnOpacity,setBtnOpacity]=useState(0.2)
@@ -44,26 +42,24 @@ function CalculationScreen({navigation}) {
   const [selectedSeed,setSelectedSeed] = useState("No Seeds")
   const [seedWeightSquareMeter,setSeedWeightSquareMeter] = useState(0)
 
+  
   useLayoutEffect(() => {
-    testFetch();
-  }, [token])
+    getSeedsDb();
+  }, [token]) //Fix rendering problem!
 
   useEffect(() => {
     const resultTotalSeeds = mathCalculations.calculateTotalSeeds(resultArea,seedWeightSquareMeter);
     setResultSeeds(resultTotalSeeds);
     enablePrimaryBtn();
-  }, [resultArea,seedWeightSquareMeter,selectedSeed])
+  }, [resultArea,seedWeightSquareMeter,selectedSeed]) //Fix rendering problem!
 
-  async function testFetch(){ //fix problem inconsistent object 
-    const seedDb = await fetchSeeds(token) //fix problem inconsistent object 
-    setDbData(seedDb)
-    //console.log(dbData); 
-  }
-  //console.log(dbData); 
+  async function getSeedsDb(){ //fix problem inconsistent object 
+    const data = await fetchSeeds(token) //fix problem inconsistent returned object 
+    setSeedsDb(data) 
+  } 
 
   const enablePrimaryBtn = () =>{
     if(selectedSeed != "No Seeds" && selectedZone != "No Zone" && resultArea != 0){
-      //console.log("no");
       setIsBtnDisabled(false)
       setBtnOpacity(1)
     }else{
@@ -143,7 +139,7 @@ function CalculationScreen({navigation}) {
               selectedZone={selectedZone} // A very Nested Prop. problem fixed!
               onChangeCurrentOperationCode={changeUserOperationCode}
 
-              seedDb={dbData}// A very Nested Prop. problem fixed!
+              seedDb={seedsDb}// A very Nested Prop. problem fixed!
 
               isPickerSeedDisabled={isPickerSeedDisabled}
               style={{opacity:pickerSeedOpacity}} //Overriding styles
