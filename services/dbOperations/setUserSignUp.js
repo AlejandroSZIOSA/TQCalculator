@@ -5,21 +5,14 @@ const setUserSignUp = async (newUser) =>{
   
   const URL= 'http://localhost:8080/auth/signup'
   try{
-  const res = await axios.put( URL, newUser)
-    //logIn(true) //Callback function to CTX (Trigger Switch between Navigators)
-    //token=(res.data.token)
-    //console.log(token)
-    //await test(res.data.token)
+    await axios.put( URL, newUser)  
   }
   catch (error){
-    //console.log(error);
-    console.warn("Something was wrong!-----")
+    console.log(error)
+    console.warn("Something was wrong!")
   }
   finally{
-    console.log("A new user has been created");
-    //console.log(token);
-    //setToken(token)
-    //test(token)
+    console.log("A new User has been created");
   }
 }
 export default setUserSignUp;

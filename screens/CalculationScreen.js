@@ -1,5 +1,5 @@
 
-import { useState,useEffect,useContext } from "react";
+import { useState,useEffect,useContext,useLayoutEffect } from "react";
 import { View,StyleSheet} from "react-native";
 import PrimaryButton from "../components/buttons/PrimaryButton";
 import Colors from "../constants/colors";
@@ -12,17 +12,20 @@ import mathCalculations from "../mathOperations/mCalculate";
 import { TokenContext } from "../context/TokenContext";
 
 import useFetch from "../hooks/useFetch";
+import fetchSeeds from "../services/dbOperations/fetchSeeds";
+import fetch2 from "../services/dbOperations/fetch2";
+
 
 function CalculationScreen({navigation}) {
 
-  //Token from CTX
-  const {token}= useContext(TokenContext)
-  console.log(token); // It is Working!
-
   //Custom Hook Fetch Data from DB
-  const {dbData} = useFetch('http://localhost:8080/seed/seeds') //object destructing
+  //const {dbData} = useFetch('http://localhost:8080/seed/seeds') //object destructing work!
 
-  //console.log(seedDb.seeds[1].name); 
+  const {token}= useContext(TokenContext)
+
+  //const dbData= ([{}]) //works!
+
+  const [dbData,setDbData]= useState()
 
   const [isBtnDisabled,setIsBtnDisabled]=useState(true)
   const [btnOpacity,setBtnOpacity]=useState(0.2)
@@ -41,11 +44,22 @@ function CalculationScreen({navigation}) {
   const [selectedSeed,setSelectedSeed] = useState("No Seeds")
   const [seedWeightSquareMeter,setSeedWeightSquareMeter] = useState(0)
 
+  useLayoutEffect(() => {
+    testFetch();
+  }, [token])
+
   useEffect(() => {
     const resultTotalSeeds = mathCalculations.calculateTotalSeeds(resultArea,seedWeightSquareMeter);
     setResultSeeds(resultTotalSeeds);
     enablePrimaryBtn();
   }, [resultArea,seedWeightSquareMeter,selectedSeed])
+
+  async function testFetch(){ //fix problem inconsistent object 
+    const seedDb = await fetchSeeds(token) //fix problem inconsistent object 
+    setDbData(seedDb)
+    //console.log(dbData); 
+  }
+  //console.log(dbData); 
 
   const enablePrimaryBtn = () =>{
     if(selectedSeed != "No Seeds" && selectedZone != "No Zone" && resultArea != 0){
