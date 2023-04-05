@@ -2,10 +2,10 @@ import Seed from "../models/seed"
 import Zone from "../models/zone"
 
 export const ZONE = [
-  new Zone('1',"Stockholm",["s1","s2"]),
-  new Zone('2',"Malmö",["s3","s4"]),
-  new Zone('3',"Helsingborgs",["s5","s6","s7"]), //problem solved array "s5" not 's5' :)
-  new Zone('4',"Ekerö",["s8","s9","s10","s11"]),
+  new Zone('1',"Consumer Product",["s1","s2"]),
+  new Zone('2',"Lawn & Public green",["s3","s4"]),
+  new Zone('3',"Professional Turf",["s5","s6","s7"]), //problem solved array "s5" not 's5' :)
+  new Zone('4',"Slopes & Banks",["s8","s9","s10","s11"]),
 ]
 export const SEED = [
   new Seed("s1",'Seed type1',13),

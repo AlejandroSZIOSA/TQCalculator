@@ -1,3 +1,5 @@
+// This CUSTOM HOOK IS NOT WORKING!
+//TODO: Custom HOOK can not return and retrieve hooks correctly
 import { useState, useEffect } from "react";
 
 const useFetch = (url) => {

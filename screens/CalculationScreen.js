@@ -13,7 +13,6 @@ import { TokenContext } from "../context/TokenContext";
 
 import fetchSeeds from "../services/dbOperations/fetchSeeds";
 
-
 function CalculationScreen({navigation}) {
 
   //Custom Hook Fetch Data from DB
@@ -42,7 +41,6 @@ function CalculationScreen({navigation}) {
   const [selectedSeed,setSelectedSeed] = useState("No Seeds")
   const [seedWeightSquareMeter,setSeedWeightSquareMeter] = useState(0)
 
-  
   useLayoutEffect(() => {
     getSeedsDb();
   }, [token]) //Fix rendering problem!
@@ -122,7 +120,7 @@ function CalculationScreen({navigation}) {
     <View style={styles.rootContainer}>
       <AreaCalculateView onChangeCurrentOperationCode={changeUserOperationCode}/>
         <View style={styles.selectionZoneContainer}>
-          <IntructionText title={"Select a Growing Zone"} />
+          <IntructionText title={"Choose The Right Grass"} />
             {/*Callback functions */}
             <PickerZone
               onChangeCurrentOperationCode={changeUserOperationCode}
@@ -134,7 +132,7 @@ function CalculationScreen({navigation}) {
             />
         </View> 
         <View style={styles.selectionSeedContainer}>
-          <IntructionText title={"Select a Seed Type"} />
+          <IntructionText title={"Find Products"} />
             <PickerSeed 
               selectedZone={selectedZone} // A very Nested Prop. problem fixed!
               onChangeCurrentOperationCode={changeUserOperationCode}
