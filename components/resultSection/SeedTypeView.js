@@ -28,7 +28,8 @@ const styles= StyleSheet.create({
     borderRadius:23
   },
   seedTypeText:{
+    textAlign:'center',
     color:'#FAFF00',
-    fontSize:48
+    fontSize:43
   }
 })
