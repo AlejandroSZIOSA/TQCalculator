@@ -1,11 +1,11 @@
 import axios from "axios";
+import ENDPOINTS from "../../constants/endPoints";
 
 // authenticate Axios Login
 const onLoginBtnHandler = async (userKey,logIn,setToken) =>{
   let token;
-  const URL='http://localhost:8080/auth/login'
   try{
-  const res = await axios.post(URL,userKey);
+  const res = await axios.post(ENDPOINTS.POST_USER,userKey);
     logIn(true) //Callback function to CTX (Trigger Switch between Navigators)
     token = res.data.token // TODO: testa await 
   }

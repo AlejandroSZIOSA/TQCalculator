@@ -1,11 +1,11 @@
 import axios from "axios";
+import ENDPOINTS from "../../constants/endPoints";
 
 // authenticate Axios Login
 const setUserSignUp = async (newUser) =>{
   
-  const URL= 'http://localhost:8080/auth/signup'
   try{
-    await axios.put( URL, newUser)  
+    await axios.put(ENDPOINTS.PUT_USER,newUser)  
   }
   catch (error){
     console.log(error)

@@ -1,13 +1,13 @@
 import axios from "axios";
+import ENDPOINTS from "../../constants/endPoints";
 
 // Fetch + Token Axios
 const fetchSeeds = async (token) =>{
-  const URL = 'http://localhost:8080/seed/seeds'
   var seedsDb;
   const headers= {'Authorization':'Bearer ' + token}
   
   try{
-    const res = await axios.get(URL,{headers})
+    const res = await axios.get(ENDPOINTS.GET_SEEDS,{headers})
     seedsDb = await res.data.seeds; //fix problem! Inconsistent object
   }
   catch (error){
