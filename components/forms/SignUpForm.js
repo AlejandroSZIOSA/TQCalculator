@@ -5,8 +5,8 @@ import UserTextInput from "./UserTextInput";
 import PrimaryButton from "../buttons/PrimaryButton";
 
 function SignUpForm(){
-  const {handleChange, submitForm, values} = useFormikContext();
-
+  //TODO: research handleChange and values
+  const {handleChange,submitForm,values} = useFormikContext();// Callback function
   return(
     <View >
       <View style={styles.emailInputContainer}>

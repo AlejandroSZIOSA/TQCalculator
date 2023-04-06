@@ -1,7 +1,7 @@
 import axios from "axios";
 import ENDPOINTS from "../../constants/endPoints";
 
-// authenticate Axios Login
+// Authenticate Axios User Login
 const onLoginBtnHandler = async (userKey,logIn,setToken) =>{
   let token;
   try{
