@@ -3,19 +3,21 @@ import ENDPOINTS from "../../constants/endPoints";
 
 // Authenticate Axios User Login
 const onLoginBtnHandler = async (userKey,logIn,setToken) =>{
-  let token;
   try{
-  const res = await axios.post(ENDPOINTS.POST_USER,userKey);
-    logIn(true) //Callback function to CTX (Trigger Switch between Navigators)
-    token = res.data.token // TODO: testa await 
+  const res = await axios.post(ENDPOINTS.POST_USER,userKey)
+    .then((res) =>{
+      const token = res.data.token // TODO: testa await 
+      logIn(true) //Callback function to CTX (Trigger Switch between Navigators)
+      setToken(token) //callBack function
+      console.log("LogIn request successful");
+    })
   }
   catch (error){
     console.log(error);
     console.warn("LogIn request Failed!")
   }
   finally{
-    console.log("LogIn request successful");
-    setToken(token)
+    console.log("LogIn operation successful");
   }
 }
 export default onLoginBtnHandler;

@@ -17,7 +17,7 @@ import { TokenProvider } from './context/ToKenProvider';
 import { UserStackScreens } from './navigation/UserStackScreens'; 
 import { CalculationStackScreens } from './navigation/CalculationStackScreens';
 
-// Root Stack Navigation
+// Root Stack Navigation Screens
 const RootStack = createNativeStackNavigator();
 const RootStackScreens = ({isAuth}) => (
   <RootStack.Navigator

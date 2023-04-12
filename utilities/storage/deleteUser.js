@@ -10,5 +10,4 @@ const deleteUser = async () => {
     console.log("not removed")
   }
 }
-
 export default deleteUser;

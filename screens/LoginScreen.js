@@ -1,6 +1,7 @@
-import { useState,useContext, useEffect } from "react";
+import { useState,useContext, useEffect, useLayoutEffect } from "react";
 import { TextInput, View,StyleSheet, Button,Image } from "react-native";
 
+// Formik + Yup
 import { Formik } from "formik";
 import * as Yup from 'yup'
 
@@ -11,9 +12,12 @@ import LoginForm from "../components/forms/LoginForm";
 import { AuthContext } from "../context/AuthContext";
 import { TokenContext } from "../context/TokenContext";
 
+//Axios 
 import axios from "axios";
-
 import onLoginBtnHandler from "../services/dbOperations/setUserLogIn";
+
+// Async Storage
+import { getUserKey } from "../utilities/storage/getUserKey";
 
 function LoginScreen({navigation}){
   
@@ -22,7 +26,15 @@ function LoginScreen({navigation}){
 
   const [isPrimaryBtnDisabled, setIsPrimaryBtnDisabled] = useState(false);
   const [opacityPrimaryBtn, setOpacityPrimaryBtn] = useState(1);
-  
+
+  const [defaultUser, setDefaultUser] = useState({email:"", password:""})
+  //initialValues={{email:'phoenix@sidius.com', password:'password'}}
+
+
+  useEffect(() => {
+    getUserKey(setDefaultUser);
+  }, [])
+
   return(
     <View style={styles.rootContainer}>
       <View style={styles.userImageContainer}>
@@ -44,7 +56,7 @@ function LoginScreen({navigation}){
                 .max(20)
             })
           }
-          initialValues={{email:'phoenix@sidius.com', password:'password'}}
+          initialValues={defaultUser} enableReinitialize //fix problem! :)
         >
           <LoginForm />   
         </Formik>  
