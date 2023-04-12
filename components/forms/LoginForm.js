@@ -13,16 +13,16 @@ function LoginForm(){
         style={styles.textInput}
         fieldName="email" //Passing as Prop
         placeholder="Enter your Email"
+        //editable={false}
       />
       <UserTextInput
         style={styles.textInput}
         fieldName="password"
         placeholder="Enter your Password" 
+        //editable={false}
       />
       <PrimaryButton 
         onPress={submitForm}
-        //disabled={isPrimaryBtnDisabled}
-        //style= {{opacity:opacityPrimaryBtn}} //overriding Style
       >Login</PrimaryButton> 
     </View>
   )

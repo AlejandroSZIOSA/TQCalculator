@@ -13,7 +13,7 @@ function SeedResultView(props){
           <Text style={styles.textNumber}>{props.seedTotal}</Text>
         </View>
         <View style={styles.unitContainer}>
-          <Text style={styles.textUnit}>gr</Text>
+          <Text style={styles.textUnit}>g</Text>
         </View>
       </View>
     </View>

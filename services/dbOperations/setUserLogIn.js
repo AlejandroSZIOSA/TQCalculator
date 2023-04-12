@@ -13,8 +13,10 @@ const onLoginBtnHandler = async (userKey,logIn,setToken) =>{
     })
   }
   catch (error){
-    console.log(error);
-    console.warn("LogIn request Failed!")
+    //console.log(error.message);
+    console.warn(error.message); // extract  status code error
+    
+    //console.warn("LogIn request Failed!")
   }
   finally{
     console.log("LogIn operation successful");

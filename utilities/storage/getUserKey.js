@@ -6,10 +6,8 @@ export const getUserKey = (setDefaultUser) => {
     AsyncStorage.getItem(KEYS.USER_STORAGE)
       .then((user) =>{
         if(user!= null){
-          var obj = JSON.parse(user); //solution
-          var email = obj.email.toLowerCase() // problem must fix it!
-          var password = obj.password.toLowerCase() // problem must fix it!
-          setDefaultUser({email:email, password:password});
+          var obj = JSON.parse(user); //solution!
+          setDefaultUser({email:obj.email, password:obj.password});
         }
       })
   }

@@ -9,7 +9,7 @@ const setUserSignUp = async (newUser) =>{
     await axios.put(ENDPOINTS.PUT_USER,newUser) 
     saveUserKey(newUser); //testing
     console.warn("A new User has been created successfully");
-    console.warn("RESTART THE APP");
+    console.warn("User created and saved RESTART THE APP");
   }
   catch (error){
     console.log(error)

@@ -30,7 +30,6 @@ function LoginScreen({navigation}){
   const [defaultUser, setDefaultUser] = useState({email:"", password:""})
   //initialValues={{email:'phoenix@sidius.com', password:'password'}}
 
-
   useEffect(() => {
     getUserKey(setDefaultUser);
   }, [])
@@ -56,7 +55,7 @@ function LoginScreen({navigation}){
                 .max(20)
             })
           }
-          initialValues={defaultUser} enableReinitialize //fix problem! :)
+          initialValues={defaultUser} enableReinitialize //fix problem! update useState :)
         >
           <LoginForm />   
         </Formik>  

@@ -7,18 +7,23 @@ const fetchSeeds = async (token) =>{
   const headers= {'Authorization':'Bearer ' + token}
   try{
     const res = await axios.get(ENDPOINTS.GET_SEEDS,{headers})
-    seedsDb = await res.data.seeds; //fix problem! Inconsistent object
+      //then fix problem with await!
+      .then((res)=>{
+        seedsDb = res.data.seeds; //fix problem! Inconsistent object await
+      })
+    console.warn("Fetch data Success")
+    return seedsDb;
   }
   catch (error){
     //console.log(token);
     console.log(error);
-    console.warn("Fetch request Failed!")
+    console.warn(error.message)
     return ([{}]); // TODO: must test!
   }
   finally{
-    console.warn("Fetch request Success!")
+    console.log("Fetch request operation Success!")
     //console.log(seedsDb)
-    return seedsDb;
+    
   }
 }
 export default fetchSeeds;
