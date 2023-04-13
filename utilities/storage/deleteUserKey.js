@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import KEYS from '../constants/storageKeys';
 
-const deleteUser = async () => {
+const deleteUserKey = async () => {
   
   try {
     await AsyncStorage.removeItem(KEYS.USER_STORAGE)
@@ -10,4 +10,4 @@ const deleteUser = async () => {
     console.log("not removed")
   }
 }
-export default deleteUser;
+export default deleteUserKey;

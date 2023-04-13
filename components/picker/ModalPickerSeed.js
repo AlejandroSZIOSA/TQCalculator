@@ -1,8 +1,7 @@
 import { StyleSheet,Text,View,TouchableOpacity,Dimensions,ScrollView} from "react-native";
 import Colors from "../../constants/colors";
 
-import { SEED } from "../../data/dummy-data";
-import { ZONE } from "../../data/dummy-data"; 
+import { CATEGORIES } from "../../data/categories";
 
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
@@ -10,12 +9,12 @@ const HEIGHT = Dimensions.get('window').height;
 function ModalPickerSeed(props){
   //console.log(props.seedDb[1].name) //testing
 
-  var seedsDb =  props.seedDb; //it is working / get seeds data from Db
+  var seedsDb =  props.seedDb; //it is working / get seeds data from Mongo Db
   
   const extractSeedIds = () =>{
     let seedIds=[]
-    ZONE.forEach((element, index) => {
-        ZONE[index].seedsIds.forEach(element2 => {
+    CATEGORIES.forEach((element, index) => {
+        CATEGORIES[index].seedsIds.forEach(element2 => {
           if(element.name==props.selectedZone){
           seedIds.push(element2)
           }

@@ -60,11 +60,9 @@ function LoginScreen({navigation}){
           <LoginForm />   
         </Formik>  
       </View> 
-
       <View style={styles.btnSignUpContainer}>
           <Button  title="SignUp" onPress={() =>navigation.navigate('SignUpSc')}/>
       </View>
-        
     </View>
   )
 }

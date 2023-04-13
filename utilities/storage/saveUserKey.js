@@ -12,6 +12,5 @@ const saveUserKey = async (user) => {
   finally{
     console.log("User has been / Saved");
   }
-
 };
 export default saveUserKey;

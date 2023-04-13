@@ -1,25 +1,44 @@
 import { StyleSheet,View } from "react-native";
+import { useState,useEffect } from "react";
+
 import { useFormikContext } from "formik"; //Formik Hook
 
 import PrimaryButton from "../buttons/PrimaryButton";
 import UserTextInput from "./UserTextInput";
 
-function LoginForm(){
-  const {handleChange, submitForm, values} = useFormikContext();
+import checkStorage from "../../utilities/storage/checkStorage";
 
+function LoginForm(){
+  const {submitForm} = useFormikContext();
+
+  const [opacityTextInputs,setOpacityTextInputs]= useState();
+  const [editableTextInputs,setEditableTextInput] = useState();
+
+  useEffect(() => {
+    const isEmpty = checkStorage();
+      if(!isEmpty){
+        setOpacityTextInputs(1)
+        setEditableTextInput(true)
+      }
+        else{
+          setOpacityTextInputs(0.5)
+          setEditableTextInput(false)
+        }
+  },[])
+  
   return(
     <View style={styles.inputsContainer}>
       <UserTextInput 
-        style={styles.textInput}
+        style={[styles.textInput,{opacity:opacityTextInputs}]} //Overriding styles
         fieldName="email" //Passing as Prop
         placeholder="Enter your Email"
-        //editable={false}
+        editable={editableTextInputs}
       />
       <UserTextInput
-        style={styles.textInput}
+        style={[styles.textInput,{opacity:opacityTextInputs}]} //Overriding styles
         fieldName="password"
         placeholder="Enter your Password" 
-        //editable={false}
+        editable={editableTextInputs}
       />
       <PrimaryButton 
         onPress={submitForm}
@@ -44,5 +63,6 @@ const styles = StyleSheet.create({
     textAlign:'center',
     backgroundColor:'white',
     marginVertical: 8, //take top and bottom space
+    //opacity:0.2
   },
 })
