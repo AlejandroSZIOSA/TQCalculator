@@ -1,6 +1,7 @@
 import Seed from "../models/seed"
 import Zone from "../models/zone"
 
+// This data model is used not for testing purposes
 export const ZONE = [
   new Zone('1',"Consumer Product",["s1","s2","s3","s4","s5"]),
   new Zone('2',"Lawn & Public green",["s6"]),

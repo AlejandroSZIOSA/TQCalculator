@@ -1,8 +1,8 @@
 import { StyleSheet,Text,View,TouchableOpacity,Dimensions,ScrollView} from "react-native";
 import Colors from "../../constants/colors";
-import { ZONE } from "../../data/dummy-data";
 
-//const OPTIONS =[{state:'Stockholm'},{state:'Malmö'},{state:'Örebro'},{state:'Örby'} ]
+import { CATEGORIES } from "../../data/categories";
+
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 
@@ -13,7 +13,7 @@ function ModalPickerZone(props){
   props.setData(option)
   }
   
-  const option = ZONE.map((item, index)=>{
+  const option = CATEGORIES.map((item, index)=>{
   return(
     <TouchableOpacity
       style={styles.option}
