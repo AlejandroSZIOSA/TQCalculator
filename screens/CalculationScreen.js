@@ -1,5 +1,5 @@
 
-import { useState,useEffect,useContext,useLayoutEffect } from "react";
+import { useState,useEffect,useContext,useLayoutEffect,useReducer } from "react";
 import { View,StyleSheet} from "react-native";
 import PrimaryButton from "../components/buttons/PrimaryButton";
 import Colors from "../constants/colors";
@@ -8,21 +8,22 @@ import PickerZone from "../components/picker/PickerZone"
 import PickerSeed from "../components/picker/PickerSeed";
 import AreaCalculateView from "../components/calculateSection/AreaCalculateView";
 import mathCalculations from "../mathOperations/mCalculate";
-
+//CTX
 import { TokenContext } from "../context/TokenContext";
-
+//Axios
 import fetchSeeds from "../services/dbOperations/fetchSeeds";
+// useReducer
+import { resultsReducer,initialState } from "../hooks/resultUseReducer";
 
 function CalculationScreen({navigation}) {
-
-  //Custom Hook Fetch Data from DB
-  //const {dbData} = useFetch('http://localhost:8080/seed/seeds') //object destructing work!
 
   const {token}=useContext(TokenContext)
 
   //const dbData= ([{}]) //works!
-
   const [seedsDb,setSeedsDb]= useState()
+
+  //useReducer
+  const [stateResults, dispatch] = useReducer(resultsReducer,initialState);
 
   const [isBtnDisabled,setIsBtnDisabled]=useState(true)
   const [btnOpacity,setBtnOpacity]=useState(0.2)
@@ -34,11 +35,9 @@ function CalculationScreen({navigation}) {
   const [pickerSeedOpacity,setPickerSeedOpacity]=useState(0.3)
 
   const [operationCode,setOperationCode]=useState(0);
+  
 
-  const [selectedZone,setSelectedZone]= useState("No Zone");
-  const [resultArea,setResultArea]= useState(0)
-  const [resultSeeds,setResultSeeds]= useState(0)
-  const [selectedSeed,setSelectedSeed] = useState("No Seeds")
+  const [selectedZone,setSelectedZone]= useState("No Zone Selected");
   const [seedWeightSquareMeter,setSeedWeightSquareMeter] = useState(0)
 
   useLayoutEffect(() => {
@@ -46,10 +45,10 @@ function CalculationScreen({navigation}) {
   }, [token]) //Fix rendering problem!
 
   useEffect(() => {
-    const resultTotalSeeds = mathCalculations.calculateTotalSeeds(resultArea,seedWeightSquareMeter);
-    setResultSeeds(resultTotalSeeds);
+    const resultTotalSeeds = mathCalculations.calculateTotalSeeds(stateResults.resultArea,seedWeightSquareMeter);
+    dispatch({type:'ADD_TOTAL_WEIGHT', payload: resultTotalSeeds})
     enablePrimaryBtn();
-  }, [resultArea,seedWeightSquareMeter,selectedSeed]) //Fix rendering problem!
+  }, [stateResults.resultArea,seedWeightSquareMeter,stateResults.productSelected]) //Fix rendering problem!
 
   async function getSeedsDb(){ //fix problem inconsistent object 
     const data = await fetchSeeds(token) //fix problem inconsistent returned object 
@@ -57,7 +56,7 @@ function CalculationScreen({navigation}) {
   } 
 
   const enablePrimaryBtn = () =>{
-    if(selectedSeed != "No Seeds" && selectedZone != "No Zone" && resultArea != 0){
+    if(stateResults.productSelected != "No Seeds" && selectedZone != "No Zone" && stateResults.resultArea != 0){
       setIsBtnDisabled(false)
       setBtnOpacity(1)
     }else{
@@ -74,17 +73,18 @@ function CalculationScreen({navigation}) {
   */
   const changeUserOperationCode = (currentStatusCode,selectedData,seedWeightData) =>{
     switch(currentStatusCode){
-      case 0:
-        setResultArea(0)
+      case 0:  
+        dispatch({type:'ADD_TOTAL_AREA', payload: 0})
+
         setIsPickerZoneDisabled(true) //fix problem!
         setPickerZoneOpacity(0.3)
-        
         setIsPickerSeedDisabled(true) //can be active!
         setPickerSeedOpacity(0.3)
         break;
       case 1: 
         setOperationCode(currentStatusCode);
-        setResultArea(selectedData)
+        dispatch({type:'ADD_TOTAL_AREA', payload: selectedData})
+        
         setIsPickerZoneDisabled(false)
         setPickerZoneOpacity(1)
 
@@ -94,13 +94,16 @@ function CalculationScreen({navigation}) {
       case 2: 
         setOperationCode(currentStatusCode)
         setSelectedZone(selectedData)
-        setSelectedSeed("No Seeds") //fix problem
+
+        dispatch({type:'ADD_PRODUCT_SELECTED', payload: "No Product Selected"}) //fix problem
+        
         setIsPickerSeedDisabled(false)
         setPickerSeedOpacity(1)
       break;
       case 3:
         setOperationCode(currentStatusCode)
-        setSelectedSeed(selectedData)
+        dispatch({type:'ADD_PRODUCT_SELECTED', payload: selectedData})
+
         setSeedWeightSquareMeter(seedWeightData)
       break;
       default: console.log("No operation code");
@@ -109,11 +112,7 @@ function CalculationScreen({navigation}) {
   
   function onPrimaryBtnHandler(){
     //using Route params
-    navigation.navigate('ResultSC',{
-      areaTotal: resultArea,
-      seedTotal: resultSeeds, //Total seeds need it.
-      seedType: selectedSeed,
-    });
+    navigation.navigate('ResultSC',{stateResults});
   }
 
   return(

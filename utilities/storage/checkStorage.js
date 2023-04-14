@@ -5,11 +5,11 @@ const checkStorage = async () => {
   try {
   const isEmpty = await AsyncStorage.getItem(KEYS.USER_STORAGE);
     if (isEmpty !== null){
-      console.log('data found')
+      console.log('Data found It! in Async Storage')
       return false;
     } 
       else {
-        console.log("no data found")
+        console.log("No data found It! in Async storage")
         return true;
       }
   } catch (error) {

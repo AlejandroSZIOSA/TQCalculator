@@ -5,7 +5,7 @@ import SeedTypeView from "../components/resultSection/SeedTypeView";
 
 function ResultScreen({navigation,route}){
   //route params
-  const {areaTotal,seedTotal, seedType}=route.params; 
+  const {stateResults} = route.params
 
   function pressRestartHandler(){
     navigation.navigate('CalculateSC')
@@ -13,9 +13,9 @@ function ResultScreen({navigation,route}){
 
   return(
     <View style={styles.rootContainer}>
-      <AreaResultView areaTotal={areaTotal}/>
-      <SeedResultView seedTotal={seedTotal}/>
-      <SeedTypeView seedType={seedType}/>
+      <AreaResultView areaTotal={stateResults.resultArea}/>
+      <SeedResultView seedTotal={stateResults.weightResult}/>
+      <SeedTypeView seedType={stateResults.productSelected}/>
     </View>
   )
 }

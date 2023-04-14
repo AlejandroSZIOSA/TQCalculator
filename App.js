@@ -33,7 +33,7 @@ const RootStackScreens = ({isAuth}) => (
 
 // App 
 export default function App() {
-  const [isAuth, setIsAuth] = useState(false)
+  const [isAuth, setIsAuth] = useState(false) //can change this to false
   
   //CallBack function CTX used for check if user is authenticated
   const authContext = useMemo(() => {
