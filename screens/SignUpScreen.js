@@ -4,7 +4,6 @@ import { Formik } from "formik";
 import * as Yup from 'yup'
 
 import SignUpForm from "../components/forms/SignUpForm";
-
 import setUserSignUp from "../services/dbOperations/setUserSignUp";
 
 function SignUpScreen() {

@@ -1,27 +1,27 @@
-export function resultsReducer(stateFinalResult,action){
+export function resultsReducer(state,action){
   switch(action.type){
     case 'ADD_TOTAL_AREA' :{
       return {
-        ...stateFinalResult,
+        ...state,
         resultArea: action.payload,
       }
     }
     case 'ADD_TOTAL_WEIGHT' :{
       return {
-        ...stateFinalResult,
+        ...state,
         weightResult: action.payload,
       }
     }
     case 'ADD_PRODUCT_SELECTED' :{
       return {
-        ...stateFinalResult,
+        ...state,
         productSelected: action.payload,
       };
     }
   }
-  return stateFinalResult;
+  return state;
 }
-export const initialState = {
+export const initialStateResults = {
   resultArea: 0,
   weightResult: 0,
   productSelected:'No product selected',

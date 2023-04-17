@@ -13,7 +13,9 @@ import { TokenContext } from "../context/TokenContext";
 //Axios
 import fetchSeeds from "../services/dbOperations/fetchSeeds";
 // useReducer
-import { resultsReducer,initialState } from "../hooks/resultUseReducer";
+import { resultsReducer,initialStateResults } from "../reducers/calculationSC/finalResults";
+import { uiReducer,initialStateUi} from "../reducers/calculationSC/ui";
+
 
 function CalculationScreen({navigation}) {
 
@@ -23,21 +25,21 @@ function CalculationScreen({navigation}) {
   const [seedsDb,setSeedsDb]= useState()
 
   //useReducer
-  const [stateResults, dispatch] = useReducer(resultsReducer,initialState);
+  const [stateResults, dispatchResults] = useReducer(resultsReducer,initialStateResults);
+  const [stateUi,dispatchUi] = useReducer(uiReducer,initialStateUi);
 
-  const [isBtnDisabled,setIsBtnDisabled]=useState(true)
-  const [btnOpacity,setBtnOpacity]=useState(0.2)
+  //const [isBtnDisabled,setIsBtnDisabled]=useState(true)
+  //const [btnOpacity,setBtnOpacity]=useState(0.2)
+  //const [isPickerZoneDisabled,setIsPickerZoneDisabled]=useState(true)
 
-  const [isPickerZoneDisabled,setIsPickerZoneDisabled]=useState(true)
-  const [isPickerSeedDisabled,setIsPickerSeedDisabled]=useState(true)
+  //const [isPickerSeedDisabled,setIsPickerSeedDisabled]=useState(true)
 
-  const [pickerZoneOpacity,setPickerZoneOpacity]=useState(0.3)
-  const [pickerSeedOpacity,setPickerSeedOpacity]=useState(0.3)
+  //const [pickerZoneOpacity,setPickerZoneOpacity]=useState(0.3)
+  //const [pickerSeedOpacity,setPickerSeedOpacity]=useState(0.3)
 
-  const [operationCode,setOperationCode]=useState(0);
+  //const [operationCode,setOperationCode]=useState(0);
   
-
-  const [selectedZone,setSelectedZone]= useState("No Zone Selected");
+  const [selectedZone,setSelectedZone]= useState("No Zone Selected"); //TODO
   const [seedWeightSquareMeter,setSeedWeightSquareMeter] = useState(0)
 
   useLayoutEffect(() => {
@@ -46,7 +48,7 @@ function CalculationScreen({navigation}) {
 
   useEffect(() => {
     const resultTotalSeeds = mathCalculations.calculateTotalSeeds(stateResults.resultArea,seedWeightSquareMeter);
-    dispatch({type:'ADD_TOTAL_WEIGHT', payload: resultTotalSeeds})
+    dispatchResults({type:'ADD_TOTAL_WEIGHT', payload: resultTotalSeeds})
     enablePrimaryBtn();
   }, [stateResults.resultArea,seedWeightSquareMeter,stateResults.productSelected]) //Fix rendering problem!
 
@@ -57,11 +59,18 @@ function CalculationScreen({navigation}) {
 
   const enablePrimaryBtn = () =>{
     if(stateResults.productSelected != "No Seeds" && selectedZone != "No Zone" && stateResults.resultArea != 0){
-      setIsBtnDisabled(false)
-      setBtnOpacity(1)
+
+      dispatchUi({type:'DISABLED_PRIMARY_BTN', payload:false})
+      //setIsBtnDisabled(false)
+      dispatchUi({type:'CHANGE_PRIMARY_BTN_OPACITY', payload:1})
+
+      //setBtnOpacity(1)
     }else{
-      setIsBtnDisabled(true)
-      setBtnOpacity(0.5)
+      dispatchUi({type:'DISABLED_PRIMARY_BTN', payload:true})
+
+      //setIsBtnDisabled(true)
+      //setBtnOpacity(0.5)
+      dispatchUi({type:'CHANGE_PRIMARY_BTN_OPACITY', payload:0.5})
     }
   }
   /*  Callback Function:
@@ -74,35 +83,51 @@ function CalculationScreen({navigation}) {
   const changeUserOperationCode = (currentStatusCode,selectedData,seedWeightData) =>{
     switch(currentStatusCode){
       case 0:  
-        dispatch({type:'ADD_TOTAL_AREA', payload: 0})
+        dispatchResults({type:'ADD_TOTAL_AREA', payload: 0})
+        dispatchUi({type:'DISABLED_PICKER_CATEGORIES', payload: true})
 
-        setIsPickerZoneDisabled(true) //fix problem!
-        setPickerZoneOpacity(0.3)
-        setIsPickerSeedDisabled(true) //can be active!
-        setPickerSeedOpacity(0.3)
+        //setIsPickerZoneDisabled(true) //fix problem!
+        
+        dispatchUi({type:'CHANGE_PICKER_CATEGORIES_OPACITY', payload: 0.3})
+        //setPickerZoneOpacity(0.3)
+
+        dispatchUi({type:'DISABLED_PICKER_SEEDS', payload: true})
+        //setIsPickerSeedDisabled(true) //can be active!
+
+        dispatchUi({type:'CHANGE_PICKER_SEEDS_OPACITY', payload: 0.3})
+        //setPickerSeedOpacity(0.3)
         break;
       case 1: 
-        setOperationCode(currentStatusCode);
-        dispatch({type:'ADD_TOTAL_AREA', payload: selectedData})
-        
-        setIsPickerZoneDisabled(false)
-        setPickerZoneOpacity(1)
+        //setOperationCode(currentStatusCode);
 
-        setIsPickerSeedDisabled(false)
-        setPickerSeedOpacity(1)
+        dispatchResults({type:'ADD_TOTAL_AREA', payload: selectedData})
+        dispatchUi({type:'DISABLED_PICKER_CATEGORIES', payload: false})
+        
+        //setIsPickerZoneDisabled(false)
+        
+        dispatchUi({type:'CHANGE_PICKER_CATEGORIES_OPACITY', payload: 1})
+        //setPickerZoneOpacity(1)
+
+        dispatchUi({type:'DISABLED_PICKER_SEEDS', payload: false})
+        //setIsPickerSeedDisabled(false)
+
+        dispatchUi({type:'CHANGE_PICKER_SEEDS_OPACITY', payload: 1})
+        //setPickerSeedOpacity(1)
       break;
       case 2: 
-        setOperationCode(currentStatusCode)
+        //setOperationCode(currentStatusCode)
         setSelectedZone(selectedData)
-
-        dispatch({type:'ADD_PRODUCT_SELECTED', payload: "No Product Selected"}) //fix problem
         
-        setIsPickerSeedDisabled(false)
-        setPickerSeedOpacity(1)
+        dispatchResults({type:'ADD_PRODUCT_SELECTED', payload: "No Product Selected"}) //fix problem
+
+        dispatchUi({type:'DISABLED_PICKER_SEEDS', payload: false})
+        //setIsPickerSeedDisabled(false)
+        dispatchUi({type:'CHANGE_PICKER_SEEDS_OPACITY', payload: 1})
+        //setPickerSeedOpacity(1)
       break;
       case 3:
-        setOperationCode(currentStatusCode)
-        dispatch({type:'ADD_PRODUCT_SELECTED', payload: selectedData})
+        //setOperationCode(currentStatusCode)
+        dispatchResults({type:'ADD_PRODUCT_SELECTED', payload: selectedData})
 
         setSeedWeightSquareMeter(seedWeightData)
       break;
@@ -111,8 +136,7 @@ function CalculationScreen({navigation}) {
   };
   
   function onPrimaryBtnHandler(){
-    //using Route params
-    navigation.navigate('ResultSC',{stateResults});
+    navigation.navigate('ResultSC',{stateResults}); //using Route params
   }
 
   return(
@@ -124,10 +148,9 @@ function CalculationScreen({navigation}) {
             <PickerZone
               onChangeCurrentOperationCode={changeUserOperationCode}
 
-              isPickerZoneDisabled={isPickerZoneDisabled}
+              isPickerZoneDisabled={stateUi.isPickerCategoriesDisabled} // TODO
               //onChangePickerDisabled={onChangePickerDisabled}
-
-              style={{opacity:pickerZoneOpacity}} //Overriding styles
+              style={{opacity:stateUi.pickerCategoriesOpacity}} //Overriding styles
             />
         </View> 
         <View style={styles.selectionSeedContainer}>
@@ -135,17 +158,19 @@ function CalculationScreen({navigation}) {
             <PickerSeed 
               selectedZone={selectedZone} // A very Nested Prop. problem fixed!
               onChangeCurrentOperationCode={changeUserOperationCode}
-
               seedDb={seedsDb}// A very Nested Prop. problem fixed!
 
-              isPickerSeedDisabled={isPickerSeedDisabled}
-              style={{opacity:pickerSeedOpacity}} //Overriding styles
+              isPickerSeedDisabled={stateUi.isPickerSeedDisabled}
+
+              style={{opacity:stateUi.pickerSeedOpacity}} //Overriding styles
             />             
         </View>
         <PrimaryButton
           onPress={onPrimaryBtnHandler}
-          disabled={isBtnDisabled}
-          style= {{opacity:btnOpacity}} //Overriding style. fix problem!
+
+          disabled={stateUi.isBtnDisabled}
+
+          style= {{opacity:stateUi.btnOpacity}} //Overriding style. fix problem!
         > Calculate</PrimaryButton>
     </View>
   );    
