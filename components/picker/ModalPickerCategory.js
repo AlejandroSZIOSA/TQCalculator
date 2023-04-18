@@ -6,26 +6,26 @@ import { CATEGORIES } from "../../data/categories";
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 
-function ModalPickerZone(props){
+function ModalPickerCategory(props){
+    const onPressItem = (option) =>{
+    props.changeModalVisibility(false)
+    props.setData(option) //callback function
+    }
+    
+    const option = CATEGORIES.map((item, index)=>{
+    return(
+      <TouchableOpacity
+        style={styles.option}
+        key={index}
+        onPress={()=>onPressItem(item.name)}
+      >
+        <Text style={styles.text}>
+          {item.name}
+        </Text>
+      </TouchableOpacity>
+    )
+    })
 
-  const onPressItem = (option) =>{
-  props.changeModalVisibility(false)
-  props.setData(option)
-  }
-  
-  const option = CATEGORIES.map((item, index)=>{
-  return(
-    <TouchableOpacity
-      style={styles.option}
-      key={index}
-      onPress={()=>onPressItem(item.name)}
-    >
-      <Text style={styles.text}>
-        {item.name}
-      </Text>
-    </TouchableOpacity>
-  )
-  })
   return(
     <TouchableOpacity
       onPress={() => props.changeModalVisibility(false)}
@@ -58,4 +58,4 @@ const styles = StyleSheet.create({
     fontWeight:'bold'
   }
 })
-export default ModalPickerZone;
+export default ModalPickerCategory;

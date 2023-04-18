@@ -1,13 +1,17 @@
 
 import { useState,useEffect,useContext,useLayoutEffect,useReducer } from "react";
 import { View,StyleSheet} from "react-native";
-import PrimaryButton from "../components/buttons/PrimaryButton";
+
 import Colors from "../constants/colors";
 import IntructionText from "../components/calculateSection/IntructionText";
-import PickerZone from "../components/picker/PickerZone"
+
+import PickerCategory from "../components/picker/PickerCategory";
 import PickerSeed from "../components/picker/PickerSeed";
+
 import AreaCalculateView from "../components/calculateSection/AreaCalculateView";
 import mathCalculations from "../mathOperations/mCalculate";
+
+import PrimaryButton from "../components/buttons/PrimaryButton";
 //CTX
 import { TokenContext } from "../context/TokenContext";
 //Axios
@@ -17,7 +21,6 @@ import { resultsReducer,initialStateResults } from "../reducers/calculationSC/fi
 import { uiReducer,initialStateUi} from "../reducers/calculationSC/ui";
 
 function CalculationScreen({navigation}) {
-
   const {token}=useContext(TokenContext)
   //const dbData= ([{}]) //works!
   const [seedsDb,setSeedsDb]= useState()
@@ -53,6 +56,11 @@ function CalculationScreen({navigation}) {
       dispatchUi({type:'CHANGE_PRIMARY_BTN_OPACITY', payload:0.5})
     }
   }
+
+  function onPrimaryBtnHandler(){
+    navigation.navigate('ResultSC',{stateResults}); //using Route params
+  }
+
   /*  Callback Function:
     Status User Operations Codes:
     0 = restart area calculation 
@@ -89,10 +97,6 @@ function CalculationScreen({navigation}) {
       default: console.log("No operation code");
       };
   };
-  
-  function onPrimaryBtnHandler(){
-    navigation.navigate('ResultSC',{stateResults}); //using Route params
-  }
 
   return(
     <View style={styles.rootContainer}>
@@ -100,7 +104,7 @@ function CalculationScreen({navigation}) {
         <View style={styles.selectionZoneContainer}>
           <IntructionText title={"Choose The Right Grass"} />
             {/*Callback functions */}
-            <PickerZone //TODO:change name!
+            <PickerCategory //TODO:change name!
               onChangeCurrentOperationCode={changeUserOperationCode}
               isPickerCategoryDisabled={stateUi.isPickerCategoriesDisabled} 
               style={{opacity:stateUi.pickerCategoriesOpacity}} //Overriding styles

@@ -62,13 +62,10 @@ const styles= StyleSheet.create({
     borderRadius:10 
   },
   text:{
-    //marginHorizontal:100,
-    //paddingHorizontal:110,
     fontSize:30
   },
   TouchableOpacity:{
     alignSelf:'center',
-    //paddingHorizontal:100,
   },
 })
 export default PickerSeed;
