@@ -4,7 +4,7 @@ import Colors from "../../constants/colors";
 import { useContext,useEffect } from "react";
 import ModalPickerSeed from "./ModalPickerSeed";
 
-function PickerSeed({onChangeCurrentOperationCode,selectedZone,isPickerSeedDisabled,
+function PickerSeed({onChangeCurrentOperationCode,selectedCategory,isPickerSeedDisabled,
 style,seedDb}){
 
   const [chooseData,setChooseData] = useState('Press here')
@@ -12,7 +12,7 @@ style,seedDb}){
 
   useEffect(() => {
     setChooseData('Press here')
-  }, [selectedZone])
+  }, [selectedCategory])
   
   const changeModalVisibility = (bool) => {
     setIsModalVisible(bool)
@@ -23,7 +23,6 @@ style,seedDb}){
     setChooseData(selectedOption)    
     onChangeCurrentOperationCode(3,selectedOption,seedWeightData) // Callback function
   }
-  //console.log(selectedZone);
   
   return(
     <View style={[styles.container,style]}>
@@ -44,7 +43,7 @@ style,seedDb}){
           changeModalVisibility={changeModalVisibility}
           setData={setData}
           seedDb={seedDb}
-          selectedZone={selectedZone}
+          selectedCategory={selectedCategory}
         />
       </Modal>
     </View>

@@ -1,10 +1,10 @@
 import { StyleSheet,Text,Modal, TouchableOpacity, View } from "react-native";
 import Colors from "../../constants/colors";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ModalPickerZone from "./ModalPickerZone";
 
-function PickerZone({onChangeCurrentOperationCode,isPickerZoneDisabled,style}){
+function PickerZone({onChangeCurrentOperationCode,isPickerCategoryDisabled,style}){
 
   const [chooseData,setChooseData] = useState('Press here')
   const [isModalVisible,setIsModalVisible] = useState(false)
@@ -24,7 +24,7 @@ function PickerZone({onChangeCurrentOperationCode,isPickerZoneDisabled,style}){
       <TouchableOpacity
         style={styles.TouchableOpacity}
         onPress={()=> changeModalVisibility(true)}
-        disabled={isPickerZoneDisabled} //working on this
+        disabled={isPickerCategoryDisabled} //working on this
       >
         <Text style={styles.text}> {chooseData } </Text>
       </TouchableOpacity>

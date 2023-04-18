@@ -46,5 +46,4 @@ export const initialStateUi = {
   pickerCategoriesOpacity:0.3,
   isPickerSeedDisabled:true,
   pickerSeedOpacity:0.3,
-
 }

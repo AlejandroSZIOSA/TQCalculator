@@ -24,5 +24,5 @@ export function resultsReducer(state,action){
 export const initialStateResults = {
   resultArea: 0,
   weightResult: 0,
-  productSelected:'No product selected',
+  productSelected:'No Product Selected',
 }

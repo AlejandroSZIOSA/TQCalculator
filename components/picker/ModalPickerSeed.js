@@ -15,7 +15,7 @@ function ModalPickerSeed(props){
     let seedIds=[]
     CATEGORIES.forEach((element, index) => {
         CATEGORIES[index].seedsIds.forEach(element2 => {
-          if(element.name==props.selectedZone){
+          if(element.name==props.selectedCategory){
           seedIds.push(element2)
           }
         })
