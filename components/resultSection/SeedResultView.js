@@ -27,21 +27,21 @@ const styles = StyleSheet.create({
   },
   innerContainer:{
     flexDirection:'row',
-  },
-  numberContainer:{
-    paddingHorizontal:10,
     alignContent:'center',
     backgroundColor:Colors.primaryDarkBlue,
     borderRadius:10,
-
   },
-  unitContainer:{
-    paddingLeft:10
+  numberContainer:{
+    paddingHorizontal:10,
+    
   },
   textNumber:{
     fontSize:64,
     color:'white',
     backgroundColor:Colors.primaryDarkBlue
+  },
+  unitContainer:{
+    paddingRight:8
   },
   textUnit:{
     fontSize:40,

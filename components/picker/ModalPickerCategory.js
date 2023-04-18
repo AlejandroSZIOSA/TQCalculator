@@ -7,24 +7,24 @@ const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 
 function ModalPickerCategory(props){
-    const onPressItem = (option) =>{
-    props.changeModalVisibility(false)
-    props.setData(option) //callback function
-    }
-    
-    const option = CATEGORIES.map((item, index)=>{
-    return(
-      <TouchableOpacity
-        style={styles.option}
-        key={index}
-        onPress={()=>onPressItem(item.name)}
-      >
-        <Text style={styles.text}>
-          {item.name}
-        </Text>
-      </TouchableOpacity>
-    )
-    })
+  const onPressItem = (option) =>{
+  props.changeModalVisibility(false)
+  props.setData(option) //callback function
+  }
+  
+  const option = CATEGORIES.map((item, index)=>{
+  return(
+    <TouchableOpacity
+      style={styles.option}
+      key={index}
+      onPress={()=>onPressItem(item.name)}
+    >
+      <Text style={styles.text}>
+        {item.name}
+      </Text>
+    </TouchableOpacity>
+  )
+  })
 
   return(
     <TouchableOpacity
@@ -33,7 +33,7 @@ function ModalPickerCategory(props){
     >
       <View style={[styles.modal,{width:WIDTH -50,height:HEIGHT/3}]}>
         <ScrollView>
-          { option}
+          {option}
         </ScrollView>
       </View>
     </TouchableOpacity>

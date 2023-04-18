@@ -13,7 +13,7 @@ function AreaResultView(props){
           <Text style={styles.textNumber}>{props.areaTotal}</Text>
         </View>
         <View style={styles.unitContainer}>
-          <Text style={styles.textUnit}>m2</Text>
+          <Text style={styles.textUnit}>m²</Text>
         </View>
       </View>
     </View>
@@ -26,20 +26,20 @@ const styles = StyleSheet.create({
     alignItems:'center',  
   },
   innerContainer:{
-    flexDirection:'row'
+    flexDirection:'row',
+    backgroundColor:Colors.primaryDarkBlue,
+    borderRadius:10,
+    alignContent:'center',
   },
   numberContainer:{
-    paddingHorizontal:20,
-    alignContent:'center',
-    borderRadius:23,
-    backgroundColor:Colors.primaryDarkBlue
-  },
-  unitContainer:{
-    paddingLeft:10
+    paddingHorizontal:8,
   },
   textNumber:{
     fontSize:64,
     color:'white',
+  },
+  unitContainer:{
+    paddingRight:8,
   },
   textUnit:{
     fontSize:40,
