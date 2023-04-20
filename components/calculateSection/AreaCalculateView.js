@@ -26,53 +26,27 @@ function AreaCalculateView ({onChangeCurrentOperationCode}){
       const length = parseInt(lengthEntry,10)
       const height = parseInt(heightEntry,10)
       const areaResult=mathCalculations.calculateArea(length,height)
-      //console.log(isSetBtnDisabled); //calling console log made a problem with hook
-
-      dispatchUi({type:'CHANGE_SET_BTN_OPACITY', payload:0.2})
-      //setOpacitySetBtn(0.2)
-      
       setTotalArea(areaResult)
-
+      dispatchUi({type:'CHANGE_SET_BTN_OPACITY', payload:0.2})
       dispatchUi({type:'DISABLED_SET_BTN', payload:true})
-      //setIsSetBtnDisabled(true)
-
       dispatchUi({type:'ENABLE_TEXT_INPUTS', payload:false})
-      //setIsTextInputEnabled(false)
-
       dispatchUi({type:'DISABLED_RESET_BTN', payload:false})
-      //setIsResetBtnDisabled(false)
-
       dispatchUi({type:'CHANGE_RESET_BTN_OPACITY', payload:1})
-      //setOpacityResetBtn(1)
-      
       onChangeCurrentOperationCode(1,areaResult) //Callback Function
     }
 
     function resetButtonHandler(){
-      //console.log("reset2");
-
       dispatchUi({type:'DISABLED_SET_BTN', payload:false})
-      //setIsSetBtnDisabled(false)
-
       dispatchUi({type:'DISABLED_RESET_BTN', payload:true})
-      //setIsResetBtnDisabled(true)
-      
       dispatchUi({type:'CHANGE_RESET_BTN_OPACITY', payload:0.2})
-      //setOpacityResetBtn(0.2)
-
-      dispatchUi({type:'CHANGE_SET_BTN_OPACITY', payload:1})
-      //setOpacitySetBtn(1)
-    
+      dispatchUi({type:'CHANGE_SET_BTN_OPACITY', payload:1})  
       setLengthEntry("")
       setHeightEntry("")
       setTotalArea(0)
-      
       dispatchUi({type:'ENABLE_TEXT_INPUTS', payload:true})
-      //setIsTextInputEnabled(true)
       onChangeCurrentOperationCode(0,"No data") //Callback Function
     }
 
-  //todo: Validate text inputs .... "Test useRef" in Text inputs
   return(
     <View style={styles.container}>
       <IntructionText title ="Area"/> 

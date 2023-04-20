@@ -26,7 +26,6 @@ const styles = StyleSheet.create({
     opacity:1,
   },
   buttonText:{
-    //color:{disabled:false ? 'red' : 'blue'},
     color:'white',
     fontSize:24
   }

@@ -6,7 +6,7 @@ import PrimaryButton from "../buttons/PrimaryButton";
 
 function SignUpForm(){
   //TODO: research handleChange and values
-  const {handleChange,submitForm,values} = useFormikContext();// Callback function
+  const {submitForm} = useFormikContext();// Callback function
   return(
     <View >
       <View style={styles.emailInputContainer}>
@@ -33,8 +33,6 @@ function SignUpForm(){
         <View >
           <PrimaryButton 
             onPress={submitForm}
-            //disabled={isPrimaryBtnDisabled}
-            //overriding Style
           >Confirm</PrimaryButton> 
         </View>    
       </View>      
@@ -46,10 +44,7 @@ export default SignUpForm;
 const styles= StyleSheet.create({
   emailInputContainer:{
     marginHorizontal:5, //take left and right space
-    //marginTop:100,
     padding:10,
-    //paddingBottom:105,
-    //backgroundColor:'red'
   },
   textInput:{
     height:50, 
@@ -64,6 +59,5 @@ const styles= StyleSheet.create({
   inputsPasswordContainer:{
     marginHorizontal:5, //take left and right space
     padding:10,
-    //backgroundColor:'yellow'
   },
 })

@@ -1,16 +1,12 @@
 import { StyleSheet,View } from "react-native";
 import { useState,useEffect } from "react";
-
 import { useFormikContext } from "formik"; //Formik Hook
-
 import PrimaryButton from "../buttons/PrimaryButton";
 import UserTextInput from "./UserTextInput";
-
 import checkStorage from "../../utilities/storage/checkStorage";
 
 function LoginForm(){
   const {submitForm} = useFormikContext();
-
   const [opacityTextInputs,setOpacityTextInputs]= useState();
   const [editableTextInputs,setEditableTextInput] = useState();
 
@@ -52,7 +48,6 @@ const styles = StyleSheet.create({
   inputsContainer:{
     marginHorizontal:5, //take left and right space
     padding:10,
-    //backgroundColor:'yellow'
   },
   textInput:{
     height:50, 
@@ -63,6 +58,5 @@ const styles = StyleSheet.create({
     textAlign:'center',
     backgroundColor:'white',
     marginVertical: 8, //take top and bottom space
-    //opacity:0.2
   },
 })

@@ -1,8 +1,8 @@
-import { StyleSheet, Text, TextInput,View } from "react-native";
-
+import { StyleSheet,View } from "react-native";
+//Formik + Yup
 import { Formik } from "formik";
 import * as Yup from 'yup'
-
+//Custom Components
 import SignUpForm from "../components/forms/SignUpForm";
 import setUserSignUp from "../services/dbOperations/setUserSignUp";
 
@@ -43,12 +43,10 @@ const styles= StyleSheet.create({
     marginTop:130,
     padding:10,
     paddingBottom:105,
-    //backgroundColor:'red'
   },
   inputsPasswordContainer:{
     marginHorizontal:5, //take left and right space
     padding:10,
-    //backgroundColor:'yellow'
   },
   textInput:{
     height:50, 

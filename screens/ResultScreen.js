@@ -23,7 +23,6 @@ export default ResultScreen;
 
 const styles = StyleSheet.create({
   rootContainer:{
-    //alignContent:'center',
     margin:10,
   },
 })

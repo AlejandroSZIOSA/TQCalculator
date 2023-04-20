@@ -1,16 +1,12 @@
-
 import { useState,useEffect,useContext,useLayoutEffect,useReducer } from "react";
 import { View,StyleSheet} from "react-native";
-
 import Colors from "../constants/colors";
+//Custom components
 import IntructionText from "../components/calculateSection/IntructionText";
-
 import PickerCategory from "../components/picker/PickerCategory";
 import PickerSeed from "../components/picker/PickerSeed";
-
 import AreaCalculateView from "../components/calculateSection/AreaCalculateView";
 import mathCalculations from "../mathOperations/mCalculate";
-
 import PrimaryButton from "../components/buttons/PrimaryButton";
 //CTX
 import { TokenContext } from "../context/TokenContext";
@@ -39,8 +35,8 @@ function CalculationScreen({navigation}) {
     const totalSeedsWeight = mathCalculations.calculateTotalSeeds(stateResults.resultArea,seedWeightSquareMeter);
     dispatchResults({type:'ADD_TOTAL_WEIGHT', payload: totalSeedsWeight})
     enablePrimaryBtn();
-  }, [stateResults.resultArea,stateResults.productSelected]) //Fix rendering problem!
-    
+  },[stateResults.resultArea,stateResults.productSelected]) //Fix rendering problem!
+  
   async function getSeedsDb(){ //fix problem inconsistent object 
     const data = await fetchSeeds(token) //fix problem inconsistent returned object 
     setSeedsDb(data) 
@@ -48,7 +44,7 @@ function CalculationScreen({navigation}) {
 
   const enablePrimaryBtn = () =>{
     //in test!
-    if(stateResults.productSelected!=="No Product Selected" && selectedCategory!=="No Category Selected" && stateResults.resultArea!==0){
+    if(stateResults.productSelected!="No Product Selected" && selectedCategory!="No Category Selected" && stateResults.resultArea!=0){
       dispatchUi({type:'DISABLED_PRIMARY_BTN', payload:false})
       dispatchUi({type:'CHANGE_PRIMARY_BTN_OPACITY', payload:1})
     }else{

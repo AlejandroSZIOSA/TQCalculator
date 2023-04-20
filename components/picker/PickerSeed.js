@@ -1,12 +1,10 @@
-import { useState} from "react";
+import { useState,useEffect} from "react";
 import { StyleSheet,Text,Modal, TouchableOpacity, View } from "react-native";
 import Colors from "../../constants/colors";
-import { useContext,useEffect } from "react";
 import ModalPickerSeed from "./ModalPickerSeed";
 
 function PickerSeed({onChangeCurrentOperationCode,selectedCategory,isPickerSeedDisabled,
 style,seedDb}){
-
   const [chooseData,setChooseData] = useState('Press here')
   const [isModalVisible,setIsModalVisible] = useState(false)
 

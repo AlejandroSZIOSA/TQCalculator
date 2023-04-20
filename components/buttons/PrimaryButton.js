@@ -2,7 +2,6 @@ import { View,Text, Pressable,StyleSheet } from "react-native";
 import Colors from "../../constants/colors";
 
 // Login - Restart - Calculate / Primary Buttons 
-
 function PrimaryButton({children,onPress,disabled,style}){
   return (
     <View style={ [styles.buttonContainer,style]}>
@@ -25,7 +24,6 @@ const styles=StyleSheet.create({
     paddingHorizontal:16,
     marginHorizontal:100, //fix problem with button size
     margin:10, //fix problem with the border area
-    //opacity:1
   },
   buttonText:{
     fontSize:20,
