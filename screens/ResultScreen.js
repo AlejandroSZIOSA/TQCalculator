@@ -7,9 +7,6 @@ function ResultScreen({navigation,route}){
   //route params
   const {stateResults} = route.params
 
-  function pressRestartHandler(){
-    navigation.navigate('CalculateSC')
-  }
 
   return(
     <View style={styles.rootContainer}>
