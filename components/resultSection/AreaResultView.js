@@ -26,10 +26,11 @@ const styles = StyleSheet.create({
     alignItems:'center',  
   },
   innerContainer:{
-    flexDirection:'row',
+    //flexDirection:'column',
+    alignContent:'center',
+    alignItems:'center',
     backgroundColor:Colors.primaryDarkBlue,
     borderRadius:10,
-    alignContent:'center',
   },
   numberContainer:{
     paddingHorizontal:8,
@@ -39,11 +40,12 @@ const styles = StyleSheet.create({
     color:'white',
   },
   unitContainer:{
-    paddingRight:8,
+    //alignItem:'center',
+    //paddingRight:8,
   },
   textUnit:{
     fontSize:40,
-    marginVertical:10,
+    //marginVertical:10,
     color:Colors.primaryGreen5
   },
 })

@@ -10,7 +10,7 @@ const saveUserKey = async (user) => {
     console.log(error);
   }
   finally{
-    console.log("User has been / Saved");
+    console.log("User has been Saved");
   }
 };
 export default saveUserKey;

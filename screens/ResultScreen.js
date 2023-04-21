@@ -3,15 +3,27 @@ import AreaResultView from "../components/resultSection/AreaResultView";
 import SeedResultView from "../components/resultSection/SeedResultView";
 import SeedTypeView from "../components/resultSection/SeedTypeView";
 
-function ResultScreen({navigation,route}){
+import mathCalculations from "../mathOperations/mCalculate";
+
+import { useEffect } from "react";
+
+function ResultScreen({route}){
   //route params
-  const {stateResults} = route.params
+  const {stateResults} = route.params;//destructive Obj
+  const [converted,unit] = mathCalculations.convertTotalSeeds(stateResults.weightResult);//destructive array
 
 
+useEffect(() => {
+  console.log(converted);
+}, [])
+  
   return(
     <View style={styles.rootContainer}>
       <AreaResultView areaTotal={stateResults.resultArea}/>
-      <SeedResultView seedTotal={stateResults.weightResult}/>
+      <SeedResultView 
+        seedTotal={converted}
+        unit={unit}
+      />
       <SeedTypeView seedType={stateResults.productSelected}/>
     </View>
   )

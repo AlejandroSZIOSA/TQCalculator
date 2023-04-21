@@ -13,7 +13,7 @@ function SeedResultView(props){
           <Text style={styles.textNumber}>{props.seedTotal}</Text>
         </View>
         <View style={styles.unitContainer}>
-          <Text style={styles.textUnit}>g</Text>
+          <Text style={styles.textUnit}>{props.unit}</Text>
         </View>
       </View>
     </View>
@@ -26,26 +26,26 @@ const styles = StyleSheet.create({
     margin:10
   },
   innerContainer:{
-    flexDirection:'row',
+    //flexDirection:'column',
     alignContent:'center',
     backgroundColor:Colors.primaryDarkBlue,
     borderRadius:10,
   },
   numberContainer:{
-    paddingHorizontal:10,
-    
+    paddingHorizontal:8,
   },
   textNumber:{
-    fontSize:64,
+    fontSize:60,
     color:'white',
     backgroundColor:Colors.primaryDarkBlue
   },
   unitContainer:{
-    paddingRight:8
+    //paddingRight:8
+    alignItems:'center'
   },
   textUnit:{
-    fontSize:40,
-    marginVertical:10,
+    fontSize:35,
+    //marginVertical:10,
     color:Colors.primaryGreen5
   }
 })

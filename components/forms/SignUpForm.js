@@ -5,7 +5,6 @@ import UserTextInput from "./UserTextInput";
 import PrimaryButton from "../buttons/PrimaryButton";
 
 function SignUpForm(){
-  //TODO: research handleChange and values
   const {submitForm} = useFormikContext();// Callback function
   return(
     <View >
@@ -16,7 +15,6 @@ function SignUpForm(){
           placeholder="Enter your email"
         />        
       </View>
-
       <View style={styles.inputsPasswordContainer}>
         <UserTextInput
           style={styles.textInput}

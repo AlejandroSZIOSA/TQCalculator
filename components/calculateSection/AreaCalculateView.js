@@ -7,7 +7,6 @@ import mathCalculations from "../../mathOperations/mCalculate";
 //Reducer
 import { uiReducer,initialStateUi } from "../../reducers/areaCalculateView/ui";
 
-
 function AreaCalculateView ({onChangeCurrentOperationCode}){    
   const [lengthEntry, setLengthEntry] = useState("")
   const [heightEntry, setHeightEntry] = useState("")
@@ -15,12 +14,6 @@ function AreaCalculateView ({onChangeCurrentOperationCode}){
   
   //Reducer
   const [stateUi, dispatchUi] = useReducer(uiReducer,initialStateUi);
-
-  //const [isTextInputEnabled,setIsTextInputEnabled]= useState(true)
-  //const [isResetBtnDisabled,setIsResetBtnDisabled]= useState(true)
-  //const [isSetBtnDisabled, setIsSetBtnDisabled]= useState(false)
-  //const [opacityResetBtn,setOpacityResetBtn]= useState(0.2)
-  //const [opacitySetBtn,setOpacitySetBtn]= useState(1)
   
     function setButtonHandler(){
       const length = parseInt(lengthEntry,10)
@@ -55,7 +48,7 @@ function AreaCalculateView ({onChangeCurrentOperationCode}){
           editable={stateUi.isTextInputEnabled}
           style={styles.textInput}
           placeholder="Length(m)"
-          maxLength={3}
+          maxLength={4}
           value={lengthEntry}
           onChangeText={(value)=>{setLengthEntry(value)}}
           keyboardType="numeric"
@@ -65,7 +58,7 @@ function AreaCalculateView ({onChangeCurrentOperationCode}){
           editable={stateUi.isTextInputEnabled}
           style={styles.textInput}
           placeholder="Height(m)"
-          maxLength={3}
+          maxLength={4}
           value={heightEntry}
           onChangeText={(value)=>{setHeightEntry(value)}}
           keyboardType="numeric"

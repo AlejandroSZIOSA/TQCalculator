@@ -4,11 +4,33 @@ function calculateArea(length, height){
   if(isNaN(area)){
     return(0)
   } else {
-      return (area)
+    return (area)
   }
 };
 
 function calculateTotalSeeds (area,seedWeight){
   return(area*seedWeight)
 };
-export default {calculateArea,calculateTotalSeeds}; //export multiple functions at once
+
+function convertTotalSeeds(ts){
+  var converted = 0; 
+  var unit = '';
+  if(ts > 0 && ts < 1000){
+    unit ='g';
+    converted = ts;
+    return [converted,unit];
+  }else if(ts >= 1000 && ts <10000){
+      unit = 'kg';
+      converted = ts/1000;
+      return [converted,unit];
+    }else if(ts >= 10000){
+      unit ='Ton';
+      converted = ts/10000;
+      return[converted,unit];
+      }else if(ts >= 100000){
+        unit = '(Ton*10)';
+        converted= ts/10000;
+        return[converted,unit];
+        }
+}
+export default {calculateArea,calculateTotalSeeds,convertTotalSeeds}; //export multiple functions at once

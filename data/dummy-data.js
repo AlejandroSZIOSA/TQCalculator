@@ -1,6 +1,4 @@
 import Seed from "../models/seed"
-//import Zone from "../models/zone"
-
 import Category from "../models/category"
 
 // This data model is used for testing purposes
