@@ -30,6 +30,6 @@ const styles=StyleSheet.create({
   seedTypeText:{
     textAlign:'center',
     color:'#FAFF00',
-    fontSize:34
+    fontSize:36
   }
 })

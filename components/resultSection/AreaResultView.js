@@ -26,8 +26,9 @@ export default AreaResultView;
 const styles = StyleSheet.create({
   container:{
     alignItems:'center',  
-    //backgroundColor:Colors.primaryDarkBlue,
-    //borderRadius:10,
+    backgroundColor:Colors.primaryDarkBlue,
+    borderRadius:10,
+    paddingBottom:8,
   },
   innerContainer:{
     //flexDirection:'column',
@@ -47,10 +48,11 @@ const styles = StyleSheet.create({
     color:'white',
   },
   unitContainer:{
-    backgroundColor:Colors.primaryDarkBlue,
+    //backgroundColor:Colors.primaryDarkBlue,
     borderRadius:5,
     //alignItem:'center',
     //alignContent:'center',
+    backgroundColor:'black',
     padding:4,
   },
   textUnit:{
