@@ -12,10 +12,6 @@ function ResultScreen({route}){
   const {stateResults} = route.params;//destructive Obj
   const [converted,unit] = mathCalculations.convertTotalSeeds(stateResults.weightResult);//destructive array
 
-
-useEffect(() => {
-  console.log(converted);
-}, [])
   
   return(
     <View style={styles.rootContainer}>

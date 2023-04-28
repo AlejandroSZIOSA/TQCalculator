@@ -7,9 +7,11 @@ import saveUserKey from "../../utilities/storage/saveUserKey";
 const setUserSignUp = async (newUser) =>{
   try{
     await axios.put(ENDPOINTS.PUT_USER,newUser) 
-    saveUserKey(newUser); //testing
-    console.warn("A new User has been created successfully");
-    console.warn("Restart the App");
+      .then(() => {
+        saveUserKey(newUser); //testing
+        console.warn("A new User has been created successfully");
+        console.warn("Restart the App");
+      })
   }
   catch (error){
     console.log(error)

@@ -27,25 +27,29 @@ const styles = StyleSheet.create({
   },
   innerContainer:{
     //flexDirection:'column',
-    alignContent:'center',
-    backgroundColor:Colors.primaryDarkBlue,
-    borderRadius:10,
+    alignItems:'center',
+    //backgroundColor:Colors.primaryDarkBlue,
+    //borderRadius:10,
   },
   numberContainer:{
     paddingHorizontal:8,
   },
   textNumber:{
-    fontSize:60,
+    fontSize:55,
     color:'white',
-    backgroundColor:Colors.primaryDarkBlue
+    //backgroundColor:Colors.primaryDarkBlue
   },
   unitContainer:{
-    //paddingRight:8
-    alignItems:'center'
+    //paddingRight:4,
+    //alignItems:'center',
+    backgroundColor:Colors.primaryDarkBlue,
+    borderRadius:5,
+    padding:4
   },
   textUnit:{
     fontSize:35,
     //marginVertical:10,
-    color:Colors.primaryGreen5
+    color:'white',
+    
   }
 })

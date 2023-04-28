@@ -16,10 +16,10 @@ function SeedTypeView(props){
 }
 export default SeedTypeView;
 
-const styles= StyleSheet.create({
+const styles=StyleSheet.create({
   container:{
     alignItems:'center',
-    marginVertical:10,
+    marginVertical:5,
   },
   seedTypeContainer:{
     backgroundColor:Colors.primaryGreen3,
@@ -30,6 +30,6 @@ const styles= StyleSheet.create({
   seedTypeText:{
     textAlign:'center',
     color:'#FAFF00',
-    fontSize:43
+    fontSize:34
   }
 })

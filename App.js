@@ -1,13 +1,6 @@
-import Colors from './constants/colors';
 import { NavigationContainer } from "@react-navigation/native";
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import { useState,useMemo } from 'react';
-
-// SC
-import LoginScreen from './screens/LoginScreen';
-import CalculationScreen from './screens/CalculationScreen';
-import ResultScreen from './screens/ResultScreen';
-import SignUpScreen from './screens/SignUpScreen';
 
 //CTX
 import { AuthContext } from './context/AuthContext';
@@ -33,7 +26,7 @@ const RootStackScreens = ({isAuth}) => (
 
 // App 
 export default function App() {
-  const [isAuth, setIsAuth] = useState(false) //can change this to false
+  const [isAuth, setIsAuth] = useState(false) //Can change this to true if you don't want to login
   
   //CallBack function CTX used for check if user is authenticated
   const authContext = useMemo(() => {

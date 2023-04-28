@@ -6,7 +6,7 @@ const fetchSeeds = async (token) => {
   let seedsDb;
   const headers = {'Authorization':'Bearer ' + token}
   try{
-    const res = await axios.get(ENDPOINTS.GET_SEEDS,{headers})
+    await axios.get(ENDPOINTS.GET_SEEDS,{headers})
       //then fix problem with await!
       .then((res)=>{
         seedsDb = res.data.seeds; //fix problem! Inconsistent object await
