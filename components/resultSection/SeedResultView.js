@@ -23,39 +23,26 @@ export default SeedResultView;
 const styles = StyleSheet.create({
   container:{
     alignItems:'center',
-    //margin:10,
-    marginTop:10,
-    backgroundColor:Colors.primaryDarkBlue,
-    borderRadius:10,
-    paddingBottom:8,
   },
   innerContainer:{
-    //flexDirection:'column',
     alignItems:'center',
-    //backgroundColor:Colors.primaryDarkBlue,
-    //borderRadius:10,
   },
   numberContainer:{
-    //paddingHorizontal:8,
+    backgroundColor:Colors.primaryDarkBlue,
+    borderRadius:10,
+    paddingHorizontal:8,
   },
   textNumber:{
     fontSize:55,
     color:'white',
-    //backgroundColor:Colors.primaryDarkBlue
   },
   unitContainer:{
-    //paddingRight:4,
-    //alignItems:'center',
     backgroundColor:'black',
-
-    // backgroundColor:Colors.primaryDarkBlue,
     borderRadius:5,
     padding:5
   },
   textUnit:{
     fontSize:35,
-    //marginVertical:10,
     color:'white',
-    
   }
 })

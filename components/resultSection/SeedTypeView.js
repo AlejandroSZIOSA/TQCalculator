@@ -23,13 +23,13 @@ const styles=StyleSheet.create({
   },
   seedTypeContainer:{
     backgroundColor:Colors.primaryGreen3,
-    paddingHorizontal:60,
-    paddingVertical:30,
-    borderRadius:23
+    paddingHorizontal:25,
+    paddingVertical:15,
+    borderRadius:20
   },
   seedTypeText:{
     textAlign:'center',
     color:'#FAFF00',
-    fontSize:36
+    fontSize:45
   }
 })
