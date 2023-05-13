@@ -5,7 +5,7 @@ import ResultText from "./ResultText";
 function SeedTypeView(props){
   return(
     <View style={styles.container}>
-      <View style={{paddingBottom:10}}>
+      <View style={{paddingBottom:10,alignItems:'center'}}>
         <ResultText title="Of"/>
       </View>
       <View style={styles.seedTypeContainer}>
@@ -18,18 +18,18 @@ export default SeedTypeView;
 
 const styles=StyleSheet.create({
   container:{
-    alignItems:'center',
     marginVertical:5,
+    marginHorizontal:15,
   },
   seedTypeContainer:{
     backgroundColor:Colors.primaryGreen3,
     paddingHorizontal:25,
     paddingVertical:15,
-    borderRadius:20
+    borderRadius:15
   },
   seedTypeText:{
     textAlign:'center',
     color:'#FAFF00',
-    fontSize:45
+    fontSize:40
   }
 })

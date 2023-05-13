@@ -5,7 +5,7 @@ import ResultText from "./ResultText";
 function SeedResultView(props){
   return(
     <View style={styles.container}>
-      <View style={{paddingBottom:20}}>
+      <View style={{paddingBottom:20,alignItems:'center'}}>
         <ResultText title="You will need"/>
       </View>
       <View style={styles.innerContainer}>
@@ -22,15 +22,17 @@ function SeedResultView(props){
 export default SeedResultView;
 const styles = StyleSheet.create({
   container:{
-    alignItems:'center',
+    justifyContent:'center',
   },
   innerContainer:{
-    alignItems:'center',
+    marginHorizontal:15,   
   },
   numberContainer:{
     backgroundColor:Colors.primaryDarkBlue,
-    borderRadius:10,
+    borderTopLeftRadius:15,
+    borderTopRightRadius:15,
     paddingHorizontal:8,
+    alignItems:'center',
   },
   textNumber:{
     fontSize:55,
@@ -38,11 +40,13 @@ const styles = StyleSheet.create({
   },
   unitContainer:{
     backgroundColor:'black',
-    borderRadius:5,
-    padding:5
+    borderBottomLeftRadius:15,
+    borderBottomRightRadius:15,
+    padding:4,
+    alignItems:'center',
   },
   textUnit:{
-    fontSize:35,
+    fontSize:30,
     color:'white',
   }
 })

@@ -5,12 +5,11 @@ import SeedTypeView from "../components/resultSection/SeedTypeView";
 
 import mathCalculations from "../mathOperations/mCalculate";
 
-import { useEffect } from "react";
 
 function ResultScreen({route}){
   //route params
-  const {stateResults} = route.params;//destructive Obj
-  const [converted,unit] = mathCalculations.convertTotalSeeds(stateResults.weightResult);//destructive array
+  const {stateResults} = route.params; //Destructive Obj
+  const [converted,unit] = mathCalculations.convertTotalSeeds(stateResults.weightResult); //Destructive array
 
   
   return(

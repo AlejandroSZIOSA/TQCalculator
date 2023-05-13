@@ -97,7 +97,7 @@ function CalculationScreen({navigation}) {
   return(
     <View style={styles.rootContainer}>
       <AreaCalculateView onChangeCurrentOperationCode={changeUserOperationCode}/>
-        <View style={styles.selectionZoneContainer}>
+        <View style={styles.selectionCategoryContainer}>
           <IntructionText title={"Choose The Right Grass"} />
             {/*Callback functions */}
             <PickerCategory //TODO:change name!
@@ -117,9 +117,9 @@ function CalculationScreen({navigation}) {
             />             
         </View>
         <PrimaryButton
+          style= {{opacity:stateUi.btnOpacity}} //Overriding style. fix problem!
           onPress={onPrimaryBtnHandler}
           disabled={stateUi.isBtnDisabled}
-          style= {{opacity:stateUi.btnOpacity}} //Overriding style. fix problem!
         > Calculate</PrimaryButton>
     </View>
   );    
@@ -130,7 +130,7 @@ const styles=StyleSheet.create({
   rootContainer:{
     margin:10
   },
-  selectionZoneContainer:{
+  selectionCategoryContainer:{
     backgroundColor: Colors.primaryGreen3,
     marginVertical:10,
     alignItems:'center'

@@ -42,12 +42,12 @@ function AreaCalculateView ({onChangeCurrentOperationCode}){
 
   return(
     <View style={styles.container}>
-      <IntructionText title ="Area"/> 
+      <IntructionText title ="Area (m)"/> 
       <View style={styles.innerContainer}>
         <TextInput
           editable={stateUi.isTextInputEnabled}
           style={styles.textInput}
-          placeholder="Length(m)"
+          placeholder="L (m)"
           maxLength={4}
           value={lengthEntry}
           onChangeText={(value)=>{setLengthEntry(value)}}
@@ -57,7 +57,7 @@ function AreaCalculateView ({onChangeCurrentOperationCode}){
         <TextInput
           editable={stateUi.isTextInputEnabled}
           style={styles.textInput}
-          placeholder="Height(m)"
+          placeholder="H (m)"
           maxLength={4}
           value={heightEntry}
           onChangeText={(value)=>{setHeightEntry(value)}}
@@ -70,7 +70,7 @@ function AreaCalculateView ({onChangeCurrentOperationCode}){
           <Text style={styles.textResult}> {totalArea}</Text>
         </View>
         <View>
-          <IntructionText title = "m²"/>
+          <IntructionText title = "(m²)"/>
         </View>
       </View>
       <View style={styles.buttonContainer}>
@@ -111,18 +111,19 @@ const styles= StyleSheet.create({
     justifyContent:'center'
   },
   textResult:{
-    fontSize:30,
+    fontSize:38,
     color:'white'
     //backgroundColor: Colors.primaryGreen4,
   },
   textInput:{
-    fontSize:27,
+    fontSize:30,
     backgroundColor:'white',
-    borderRadius:5,
+    borderRadius:10,
     borderColor:'black',
     borderWidth:3,
     margin:10,
-    width: '40%', //fix! problem with Text Input size
+    width: '25%', //fix! problem with Text Input size
+    padding:3
   },
   buttonContainer:{
     flexDirection:'row',

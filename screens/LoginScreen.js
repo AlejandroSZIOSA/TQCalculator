@@ -27,7 +27,7 @@ function LoginScreen({navigation}){
     <View style={styles.rootContainer}>
       <View style={styles.userImageContainer}>
         <Image
-          source={require('../assets/userIcon3.png')}
+          source={require('../assets/userLoginIcon.png')}
         />
       </View>
       <View >
