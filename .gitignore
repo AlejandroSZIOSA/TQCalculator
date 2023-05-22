@@ -9,6 +9,7 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
+constants/storageKeys.js
 TodoList.txt
 # macOS
 .DS_Store
