@@ -1,6 +1,6 @@
 import { useState,useContext, useEffect} from "react";
 import { View,StyleSheet, Button,Image } from "react-native";
-// Formik + Yup
+//Formik + Yup
 import { Formik } from "formik";
 import * as Yup from 'yup'
 //Custom components
@@ -13,11 +13,12 @@ import { TokenContext } from "../context/TokenContext";
 import { getUserKey } from "../utilities/storage/getUserKey";
 
 function LoginScreen({navigation}){
-  const {setToken} = useContext(TokenContext); // CTX Function
-  const {logIn} = useContext(AuthContext) // CTX Callback Function
+  const {setToken} = useContext(TokenContext); //CTX Function
+  const {logIn} = useContext(AuthContext) //CTX Callback Function
 
   const [defaultUser, setDefaultUser] = useState({email:"", password:""})
-  //initialValues={{email:'phoenix@sidius.com', password:'password'}}
+
+  //Comment this if you want Log in with another Users Credentials!
 
   useEffect(() => {
     getUserKey(setDefaultUser);
@@ -26,13 +27,11 @@ function LoginScreen({navigation}){
   return(
     <View style={styles.rootContainer}>
       <View style={styles.userImageContainer}>
-        <Image
-          source={require('../assets/userLoginIcon.png')}
-        />
+        <Image source={require('../assets/userLoginIcon.png')}/>
       </View>
       <View >
         <Formik 
-          onSubmit={userKey => onLoginBtnHandler(userKey,logIn,setToken)} // Can change here
+          onSubmit={userKey => onLoginBtnHandler(userKey,logIn,setToken)} //Can change here
           validationSchema={
             Yup.object({
               email: Yup.string()
@@ -44,13 +43,17 @@ function LoginScreen({navigation}){
                 .max(20)
             })
           }
-          initialValues={defaultUser} enableReinitialize //fix problem! update useState :)
+          initialValues={defaultUser} 
+          enableReinitialize //fix problem! update useState Formik :)
         >
-          <LoginForm />   
+          <LoginForm />
         </Formik>  
       </View> 
       <View style={styles.btnSignUpContainer}>
-          <Button  title="SignUp" onPress={() =>navigation.navigate('SignUpSc')}/>
+        <Button  
+          title="Sign Up" 
+          color={'white'} 
+          onPress={() => navigation.navigate('SignUpSc')}/>
       </View>
     </View>
   )
@@ -72,7 +75,4 @@ const styles= StyleSheet.create({
     alignItems:'center',
     marginHorizontal:10,
   },
-  btnLogInContainer:{
-    paddingBottom:15
-  }
 })

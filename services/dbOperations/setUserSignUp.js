@@ -3,14 +3,14 @@ import ENDPOINTS from "../../constants/endPoints";
 
 import saveUserKey from "../../utilities/storage/saveUserKey";
 
-// Create a new User
+//Create a new User
 const setUserSignUp = async (newUser) =>{
   try{
     await axios.put(ENDPOINTS.PUT_USER,newUser) 
       .then(() => {
-        saveUserKey(newUser); //testing
-        console.warn("A new User has been created successfully");
-        console.warn("Restart the App");
+        saveUserKey(newUser); //Async storage
+        console.warn("User created successfully");
+        console.warn("Please Restart the App");
       })
   }
   catch (error){

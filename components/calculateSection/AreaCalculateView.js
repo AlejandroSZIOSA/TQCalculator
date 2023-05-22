@@ -4,7 +4,7 @@ import Colors from "../../constants/colors";
 import SecondaryButton from "../buttons/SecondaryButton";
 import IntructionText from "./IntructionText";
 import mathCalculations from "../../mathOperations/mCalculate";
-//Reducer
+//Reducers
 import { uiReducer,initialStateUi } from "../../reducers/areaCalculateView/ui";
 
 function AreaCalculateView ({onChangeCurrentOperationCode}){    
@@ -44,25 +44,27 @@ function AreaCalculateView ({onChangeCurrentOperationCode}){
     <View style={styles.container}>
       <IntructionText title ="Area (m)"/> 
       <View style={styles.innerContainer}>
-        <TextInput
-          editable={stateUi.isTextInputEnabled}
-          style={styles.textInput}
-          placeholder="L (m)"
-          maxLength={4}
-          value={lengthEntry}
-          onChangeText={(value)=>{setLengthEntry(value)}}
-          keyboardType="numeric"
-        />
-        <IntructionText title ="x"/>
-        <TextInput
-          editable={stateUi.isTextInputEnabled}
-          style={styles.textInput}
-          placeholder="H (m)"
-          maxLength={4}
-          value={heightEntry}
-          onChangeText={(value)=>{setHeightEntry(value)}}
-          keyboardType="numeric"
-        />
+          <TextInput
+            editable={stateUi.isTextInputEnabled}
+            style={styles.textInput}
+            placeholder="L (m)"
+            maxLength={4}
+            value={lengthEntry}
+            onChangeText={(value)=>{setLengthEntry(value)}}
+            keyboardType="numeric"
+          />
+        <View>
+          <IntructionText title ="x"/>
+        </View>
+          <TextInput
+            editable={stateUi.isTextInputEnabled}
+            style={styles.textInput}
+            placeholder="H (m)"
+            maxLength={4}
+            value={heightEntry}
+            onChangeText={(value)=>{setHeightEntry(value)}}
+            keyboardType="numeric"
+          />
       </View>
       <View style={styles.innerContainer2}>
         <IntructionText title = "="/>
@@ -70,7 +72,7 @@ function AreaCalculateView ({onChangeCurrentOperationCode}){
           <Text style={styles.textResult}> {totalArea}</Text>
         </View>
         <View>
-          <IntructionText title = "(m²)"/>
+          <IntructionText title = "( m² )"/>
         </View>
       </View>
       <View style={styles.buttonContainer}>
@@ -99,7 +101,7 @@ const styles= StyleSheet.create({
     alignItems:'center',
     backgroundColor:Colors.primaryDarkBlue,
     padding:10,
-    marginBottom:10 // fix a problem!
+    marginBottom:5 // fix a problem!
   },
   innerContainer:{
     flexDirection:'row',
@@ -123,7 +125,7 @@ const styles= StyleSheet.create({
     borderWidth:3,
     margin:10,
     width: '25%', //fix! problem with Text Input size
-    padding:3
+    padding:2
   },
   buttonContainer:{
     flexDirection:'row',

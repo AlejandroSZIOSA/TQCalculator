@@ -5,7 +5,7 @@ import UserTextInput from "./UserTextInput";
 import PrimaryButton from "../buttons/PrimaryButton";
 
 function SignUpForm(){
-  const {submitForm} = useFormikContext();// Callback function
+  const {submitForm} = useFormikContext(); //Callback function
   return(
     <View >
       <View style={styles.emailInputContainer}>
@@ -28,10 +28,10 @@ function SignUpForm(){
           fieldName="confirm" //Passing as Prop
           placeholder="Confirm Password" 
         />
-        <View >
+        <View style={styles.confirmBtnContainer}>
           <PrimaryButton 
             onPress={submitForm}
-          >Confirm</PrimaryButton> 
+          >Sign up</PrimaryButton>
         </View>    
       </View>      
     </View>
@@ -41,21 +41,25 @@ export default SignUpForm;
 
 const styles= StyleSheet.create({
   emailInputContainer:{
-    marginHorizontal:5, //take left and right space
+    marginHorizontal:5, //Take left and right space
+    marginTop:-20,
     padding:10,
   },
   textInput:{
-    height:50, 
-    fontSize:32,
+    height:45, 
+    fontSize:30,
     borderBottomColor:'black',
     borderBottomWidth:2,
     fontWeight:'semi-bold',
     textAlign:'center',
     backgroundColor:'white',
-    marginVertical: 8, //take top and bottom space
+    marginVertical: 8, //Take top and bottom space
   },
   inputsPasswordContainer:{
-    marginHorizontal:5, //take left and right space
+    marginHorizontal:5, //Take left and right space
     padding:10,
   },
+  confirmBtnContainer:{
+    paddingVertical:12,
+  }
 })

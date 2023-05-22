@@ -16,7 +16,6 @@ function SignUpScreen() {
           style={styles.userSignUpImage}
         />
       </View>
-
       <View>
         <Formik
           onSubmit={newUser => setUserSignUp(newUser)}
@@ -27,10 +26,10 @@ function SignUpScreen() {
                 .email('Invalid')
                 .required('Required'),
               password:Yup.string()
-                .required('required'),
+                .required('Required'),
               confirm:Yup.string()
-                .required('required')
-                .oneOf([Yup.ref("password"), null], "Passwords don't match")
+                .required('Required')
+                .oneOf([Yup.ref("password"), null], "Password doesn't match") //fix problem!
             })
           }
           initialValues={{email:'',password:'',confirm:''}}
@@ -45,7 +44,6 @@ export default SignUpScreen;
 
 const styles= StyleSheet.create({
   rootContainer: {
-    //flex: 1,
     justifyContent: 'center',
   },
   imageContainer:{
@@ -55,27 +53,5 @@ const styles= StyleSheet.create({
   userSignUpImage:{
     width: 220,
     height:220,
-    //backgroundColor:'black'
-  },
-
-  inputPostContainer:{
-    marginHorizontal:5, //take left and right space
-    marginTop:130,
-    padding:10,
-    paddingBottom:105,
-  },
-  inputsPasswordContainer:{
-    marginHorizontal:5, //take left and right space
-    padding:10,
-  },
-  textInput:{
-    height:50, 
-    fontSize:32,
-    borderBottomColor:'black',
-    borderBottomWidth:2,
-    fontWeight:'semi-bold',
-    textAlign:'center',
-    backgroundColor:'white',
-    marginVertical: 8, //take top and bottom space
   },
 })

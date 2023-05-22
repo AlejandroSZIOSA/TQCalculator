@@ -13,7 +13,7 @@ function AreaResultView(props){
             <Text style={styles.textNumber}>{props.areaTotal}</Text>
           </View>
           <View style={styles.unitContainer}>
-            <Text style={styles.textUnit}>m²</Text>
+            <Text style={styles.textUnit}>( m² )</Text>
           </View>
         </View>        
     </View>
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius:15,
   },
   textNumber:{
-    fontSize:55,
+    fontSize:52,
     color:'white',
   },
   unitContainer:{
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius:15,
   },
   textUnit:{
-    fontSize:30,
+    fontSize:32,
     color:'white',
   },
 })

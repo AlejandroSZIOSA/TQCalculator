@@ -1,22 +1,20 @@
 import axios from "axios";
 import ENDPOINTS from "../../constants/endPoints";
 
-// Authenticate Axios User Login
+//Authenticate Axios User Login
 const onLoginBtnHandler = async (userKey,logIn,setToken) =>{
   try{
     await axios.post(ENDPOINTS.POST_USER,userKey)
       .then((res) =>{
-        const token = res.data.token // TODO: testa await 
+        const token = res.data.token  
         logIn(true) //Callback function to CTX (Trigger Switch between Navigators)
-        setToken(token) //callBack function
+        setToken(token) //CallBack function
         console.log("LogIn request successful");
       })
   }
   catch (error){
-    //console.log(error.message);
-    console.warn(error.message); // extract  status code error
-    
-    //console.warn("LogIn request Failed!")
+    //console.warn(error.message);
+    console.warn("LogIn request Failed!")
   }
   finally{
     console.log("LogIn operation successful");

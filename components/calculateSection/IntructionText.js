@@ -7,7 +7,8 @@ export default IntructionText;
 
 const styles = StyleSheet.create({
   textTitle:{
-    fontSize:32,
-    color:'white'
+    fontSize:33,
+    color:'white',
+    paddingVertical:2 //changed here
   },
 })

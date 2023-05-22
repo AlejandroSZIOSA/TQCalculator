@@ -8,8 +8,9 @@ export default ResultText;
 
 const styles = StyleSheet.create({
   textTitle:{
-    fontSize:36,
+    fontSize:33,
     fontWeight:'bold',
-    color:Colors.primaryGreen5
+    color:Colors.primaryGreen5,
+    padding:5
   }
 })

@@ -10,6 +10,8 @@ function LoginForm(){
   const [opacityTextInputs,setOpacityTextInputs]= useState();
   const [editableTextInputs,setEditableTextInput] = useState();
 
+  //Comment this if you want Log in with another User Credentials.
+  
   useEffect(() => {
     const isEmpty = checkStorage();
       if(!isEmpty){
@@ -36,9 +38,11 @@ function LoginForm(){
         placeholder="Enter your Password" 
         editable={editableTextInputs}
       />
-      <PrimaryButton 
-        onPress={submitForm}
-      >Login</PrimaryButton> 
+      <View style={styles.logInBtnContainer}>
+        <PrimaryButton 
+          onPress={submitForm}
+        >Login</PrimaryButton> 
+      </View>
     </View>
   )
 }
@@ -50,8 +54,8 @@ const styles = StyleSheet.create({
     padding:10,
   },
   textInput:{
-    height:50, 
-    fontSize:32,
+    height:48, 
+    fontSize:30,
     borderBottomColor:'black',
     borderBottomWidth:2,
     fontWeight:'semi-bold',
@@ -59,4 +63,7 @@ const styles = StyleSheet.create({
     backgroundColor:'white',
     marginVertical: 8, //take top and bottom space
   },
+  logInBtnContainer:{
+    paddingTop:12,
+  }
 })

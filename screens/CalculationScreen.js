@@ -100,7 +100,7 @@ function CalculationScreen({navigation}) {
         <View style={styles.selectionCategoryContainer}>
           <IntructionText title={"Choose The Right Grass"} />
             {/*Callback functions */}
-            <PickerCategory //TODO:change name!
+            <PickerCategory
               onChangeCurrentOperationCode={changeUserOperationCode}
               isPickerCategoryDisabled={stateUi.isPickerCategoriesDisabled} 
               style={{opacity:stateUi.pickerCategoriesOpacity}} //Overriding styles
@@ -116,11 +116,13 @@ function CalculationScreen({navigation}) {
               style={{opacity:stateUi.pickerSeedOpacity}} //Overriding styles
             />             
         </View>
-        <PrimaryButton
-          style= {{opacity:stateUi.btnOpacity}} //Overriding style. fix problem!
-          onPress={onPrimaryBtnHandler}
-          disabled={stateUi.isBtnDisabled}
-        > Calculate</PrimaryButton>
+        <View style={styles.calculateBtnContainer}>
+          <PrimaryButton
+            style= {{opacity:stateUi.btnOpacity}} //Overriding style. fix problem!
+            onPress={onPrimaryBtnHandler}
+            disabled={stateUi.isBtnDisabled}
+          > Calculate</PrimaryButton>
+        </View>
     </View>
   );    
 }
@@ -132,12 +134,17 @@ const styles=StyleSheet.create({
   },
   selectionCategoryContainer:{
     backgroundColor: Colors.primaryGreen3,
-    marginVertical:10,
+    marginVertical:8,
     alignItems:'center'
   },
   selectionSeedContainer:{
     backgroundColor: Colors.primaryGreen3,
-    marginVertical:10,
+    marginVertical:5,
     alignItems:'center'
   },
+  calculateBtnContainer:{
+    backgroundColor: Colors.primaryGreen3,
+    marginVertical:8,
+    paddingVertical:35,
+  }
 })
