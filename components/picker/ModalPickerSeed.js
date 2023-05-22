@@ -9,7 +9,7 @@ const HEIGHT = Dimensions.get('window').height;
 function ModalPickerSeed(props){
   var seedsDb =  props.seedDb; // Seeds data from Mongo Db
   
-  //Filter Algorithm do not need optimization because there is not much data
+  //Filter Algorithm 
   const extractSeedIds = () => {
     let seedIds=[]
     CATEGORIES.forEach((element, index) => {
@@ -22,11 +22,11 @@ function ModalPickerSeed(props){
     return seedIds
   }
 
-  //Filter Algorithm do not need optimization because there is not much data
+  //Filter Algorithm
   function getSeedsData(temp){
     let seedData=[{}]
       temp.forEach(element => {
-        //Can change "seedsDb" for Dummy-Data "SEED" for testing
+        //Can change "seedsDb" for Dummy-Data "SEED" for testing purposes
         seedsDb.forEach(element2 => {
           if(element == element2.id){
             seedData.push(element2)
@@ -36,9 +36,9 @@ function ModalPickerSeed(props){
     return seedData;
   }
 
-  var finalSeedData = getSeedsData(extractSeedIds()) //filtered data
+  var finalSeedData = getSeedsData(extractSeedIds()) //Final filtered data
 
-  // OnPress Item Handler Event
+  //OnPress Item Handler Event
   const onPressItem = (selectedOption,seedWeightData) => {
     props.changeModalVisibility(false)
     props.setData(selectedOption,seedWeightData) //Callback Function

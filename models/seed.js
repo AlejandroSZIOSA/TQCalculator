@@ -1,4 +1,4 @@
-// Data model external db
+// Data model working with external DB
 class Seed{
   constructor(id,name,weightPerSquareMeter){
     this.id=id;

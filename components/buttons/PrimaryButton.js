@@ -22,8 +22,8 @@ const styles=StyleSheet.create({
     borderColor:'black',
     paddingVertical:15,
     paddingHorizontal:16,
-    marginHorizontal:100, //fix problem with button size
-    margin:10, //fix problem with the border area
+    marginHorizontal:100,
+    margin:10,
   },
   buttonText:{
     fontSize:20,

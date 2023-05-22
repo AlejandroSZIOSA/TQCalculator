@@ -7,8 +7,8 @@ import mathCalculations from "../mathOperations/mCalculate";
 
 function ResultScreen({route}){
   //Route params
-  const {stateResults} = route.params; //Destructuring Obj
-  const [converted,unit] = mathCalculations.convertTotalSeeds(stateResults.weightResult); //Destructuring array
+  const {stateResults} = route.params; //Destructuring Object
+  const [converted,unit] = mathCalculations.convertTotalSeeds(stateResults.weightResult); //Destructuring Array
 
   return(
     <View style={styles.rootContainer}>

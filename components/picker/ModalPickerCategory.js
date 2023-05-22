@@ -2,14 +2,14 @@ import { StyleSheet,Text,View,TouchableOpacity,Dimensions,ScrollView} from "reac
 import Colors from "../../constants/colors";
 
 import { CATEGORIES } from "../../data/categories";
-
+//Some Modal attributes
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 
 function ModalPickerCategory(props){
   const onPressItem = (option) =>{
   props.changeModalVisibility(false)
-  props.setData(option) //callback function
+  props.setData(option) //Callback function
   }
   
   const option = CATEGORIES.map((item, index)=>{

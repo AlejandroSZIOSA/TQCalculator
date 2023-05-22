@@ -1,6 +1,6 @@
 function calculateArea(length, height){
   const area = (length*height)
-  //check if math operation is NaN. this means not numbers entries,
+  //Check if math operation is NaN. this means not numbers entries,
   if(isNaN(area)){
     return(0)
   } else {
@@ -33,4 +33,4 @@ function convertTotalSeeds(ts){
         return[converted,unit];
         }
 }
-export default {calculateArea,calculateTotalSeeds,convertTotalSeeds}; //export multiple functions at once
+export default {calculateArea,calculateTotalSeeds,convertTotalSeeds}; //Export multiple functions at once

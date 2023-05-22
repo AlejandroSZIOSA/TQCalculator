@@ -9,7 +9,7 @@ import onLoginBtnHandler from "../services/dbOperations/setUserLogIn";
 //CTX
 import { AuthContext } from "../context/AuthContext";
 import { TokenContext } from "../context/TokenContext";
-// Async Storage
+//Async Storage
 import { getUserKey } from "../utilities/storage/getUserKey";
 
 function LoginScreen({navigation}){
@@ -44,7 +44,7 @@ function LoginScreen({navigation}){
             })
           }
           initialValues={defaultUser} 
-          enableReinitialize //fix problem! update useState Formik :)
+          enableReinitialize //Fix problem! This updates useState Formik :)
         >
           <LoginForm />
         </Formik>  
@@ -62,7 +62,7 @@ export default LoginScreen;
 const styles= StyleSheet.create({
   rootContainer:{
     flex:1,
-    justifyContent:'top', //fix problem!
+    justifyContent:'top',
   },
   userImageContainer:{
     alignItems:'center',

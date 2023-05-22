@@ -27,7 +27,7 @@ style,seedDb}){
       <TouchableOpacity
         style={styles.TouchableOpacity}
         onPress={()=> changeModalVisibility(true)}
-        disabled={isPickerSeedDisabled} //working on!
+        disabled={isPickerSeedDisabled}
       >
         <Text style={styles.text}> {chooseData } </Text>
       </TouchableOpacity>

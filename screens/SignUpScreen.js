@@ -29,7 +29,7 @@ function SignUpScreen() {
                 .required('Required'),
               confirm:Yup.string()
                 .required('Required')
-                .oneOf([Yup.ref("password"), null], "Password doesn't match") //fix problem!
+                .oneOf([Yup.ref("password"), null], "Password doesn't match") //Fix problem!
             })
           }
           initialValues={{email:'',password:'',confirm:''}}

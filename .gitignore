@@ -9,7 +9,6 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
-Reedme.txt
 TodoList.txt
 # macOS
 .DS_Store

@@ -18,7 +18,7 @@ import { uiReducer,initialStateUi} from "../reducers/calculationSC/ui";
 
 function CalculationScreen({navigation}) {
   const {token}=useContext(TokenContext)
-  //const dbData= ([{}]) //works!
+  //const dbData= ([{}]) //test works!
   const [seedsDb,setSeedsDb]= useState()
   //Reducer
   const [stateResults, dispatchResults] = useReducer(resultsReducer,initialStateResults);
@@ -37,13 +37,12 @@ function CalculationScreen({navigation}) {
     enablePrimaryBtn();
   },[stateResults.resultArea,stateResults.productSelected]) //Fix rendering problem!
   
-  async function getSeedsDb(){ //fix problem inconsistent object 
-    const data = await fetchSeeds(token) //fix problem inconsistent returned object 
+  async function getSeedsDb(){ //Fix problem inconsistent object 
+    const data = await fetchSeeds(token) //Fix problem inconsistent returned object 
     setSeedsDb(data) 
   } 
 
   const enablePrimaryBtn = () =>{
-    //in test!
     if(stateResults.productSelected!="No Product Selected" && selectedCategory!="No Category Selected" && stateResults.resultArea!=0){
       dispatchUi({type:'DISABLED_PRIMARY_BTN', payload:false})
       dispatchUi({type:'CHANGE_PRIMARY_BTN_OPACITY', payload:1})
@@ -54,7 +53,7 @@ function CalculationScreen({navigation}) {
   }
 
   function onPrimaryBtnHandler(){
-    navigation.navigate('ResultSC',{stateResults}); //using Route params
+    navigation.navigate('ResultSC',{stateResults}); //Using Route params
   }
 
   /*  Callback Function:
@@ -68,9 +67,9 @@ function CalculationScreen({navigation}) {
     switch(currentStatusCode){
       case 0:  
         dispatchResults({type:'ADD_TOTAL_AREA', payload: 0})
-        dispatchUi({type:'DISABLED_PICKER_CATEGORIES', payload: true}) //fix problem!
+        dispatchUi({type:'DISABLED_PICKER_CATEGORIES', payload: true}) //Fix problem!
         dispatchUi({type:'CHANGE_PICKER_CATEGORIES_OPACITY', payload: 0.3})
-        dispatchUi({type:'DISABLED_PICKER_SEEDS', payload: true}) //can be active!
+        dispatchUi({type:'DISABLED_PICKER_SEEDS', payload: true}) //Can be active!
         dispatchUi({type:'CHANGE_PICKER_SEEDS_OPACITY', payload: 0.3})
         break;
       case 1:
@@ -82,7 +81,7 @@ function CalculationScreen({navigation}) {
       break;
       case 2: 
         setSelectedCategory(selectedData)
-        dispatchResults({type:'ADD_PRODUCT_SELECTED', payload: "No Product Selected"}) //fix problem
+        dispatchResults({type:'ADD_PRODUCT_SELECTED', payload: "No Product Selected"}) //Fix problem
         dispatchUi({type:'DISABLED_PICKER_SEEDS', payload: false})
         dispatchUi({type:'CHANGE_PICKER_SEEDS_OPACITY', payload: 1})
       break;

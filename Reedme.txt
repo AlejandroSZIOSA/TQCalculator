@@ -1,4 +1,4 @@
-Problem fixed!
+developer settings
 
--Making Contex funcional. changing states with a function :)
--Passing data from child to a parent component with a function :)
+-Simulator: iPhone 13 Pro
+-iOS version: 15.4

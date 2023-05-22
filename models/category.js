@@ -1,3 +1,4 @@
+// Data model working with Frontend app
 class Category{
   constructor(id,name,seedsIds){
     this.id=id;

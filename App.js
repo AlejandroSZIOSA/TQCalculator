@@ -1,32 +1,30 @@
 import { NavigationContainer } from "@react-navigation/native";
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import { useState,useMemo } from 'react';
-
 //CTX
 import { AuthContext } from './context/AuthContext';
 import { TokenProvider } from './context/ToKenProvider';
-
-// Navigation SC
+//Navigation stacks Screens
 import { UserStackScreens } from './navigation/UserStackScreens'; 
 import { CalculationStackScreens } from './navigation/CalculationStackScreens';
 
-// Root Stack Navigation Screens
+// Root Navigation
 const RootStack = createNativeStackNavigator();
 const RootStackScreens = ({isAuth}) => (
   <RootStack.Navigator
-    screenOptions={{headerShown:false}} //fixed Header problem!
+    screenOptions={{headerShown:false}} //Fixed Header problem!
   >
     {/* Conditional value switches Between "Stack Navigation" when User Is LogIn */}
     {
       !isAuth ?(<RootStack.Screen name="Auth" component={UserStackScreens}/>) :
-      (<RootStack.Screen name="Main" component={CalculationStackScreens}/>) //testing
+      (<RootStack.Screen name="Main" component={CalculationStackScreens}/>) //Fixed!
     }  
   </RootStack.Navigator>
 )
 
 // App 
 export default function App() {
-  const [isAuth, setIsAuth] = useState(false) //Can change this to true if you don't want to login
+  const [isAuth, setIsAuth] = useState(false) //Can change this to "true" if you don't want to login
   
   //CallBack function CTX used for check if user is authenticated
   const authContext = useMemo(() => {
@@ -40,7 +38,7 @@ export default function App() {
     <AuthContext.Provider value={authContext}>
       <TokenProvider>
         <NavigationContainer>
-          {/* passing props to Root stack screen */}
+          {/* Passing props to Root stack screen */}
           <RootStackScreens isAuth ={isAuth}/>
         </NavigationContainer>   
       </TokenProvider>

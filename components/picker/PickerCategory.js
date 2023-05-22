@@ -1,6 +1,5 @@
 import { StyleSheet,Text,Modal, TouchableOpacity, View } from "react-native";
 import Colors from "../../constants/colors";
-
 import { useState } from "react";
 
 import ModalPickerCategory from "./ModalPickerCategory";
@@ -13,9 +12,9 @@ function PickerCategory({onChangeCurrentOperationCode,isPickerCategoryDisabled,s
   setIsModalVisible(bool)
   }
 
-  //this first , when User select a zone 
+  //This is it the first when User select a zone 
   const setData = (option)=>{
-  setChooseData(option) //callback function
+  setChooseData(option) //Callback function
   onChangeCurrentOperationCode(2,option)
   }
 
@@ -24,7 +23,7 @@ function PickerCategory({onChangeCurrentOperationCode,isPickerCategoryDisabled,s
       <TouchableOpacity
         style={styles.TouchableOpacity}
         onPress={()=> changeModalVisibility(true)}
-        disabled={isPickerCategoryDisabled} //working on this
+        disabled={isPickerCategoryDisabled}
       >
         <Text style={styles.text}> {chooseData } </Text>
       </TouchableOpacity>

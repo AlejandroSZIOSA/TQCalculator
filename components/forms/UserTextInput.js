@@ -2,7 +2,7 @@ import { TextInput,Text,StyleSheet, View } from "react-native";
 import { useField } from "formik"; //Hooks get access to props type Formik
 
 function UserTextInput ({fieldName,...props}){
-  const[field, meta] = useField(fieldName); //destructuring.. :)
+  const[field, meta] = useField(fieldName); //Destructuring
 
   return (
   <>  

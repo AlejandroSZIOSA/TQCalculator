@@ -1,6 +1,6 @@
 import { StyleSheet,View } from "react-native";
 import { useState,useEffect } from "react";
-import { useFormikContext } from "formik"; //Formik Hook
+import { useFormikContext } from "formik"; //Formik
 import PrimaryButton from "../buttons/PrimaryButton";
 import UserTextInput from "./UserTextInput";
 import checkStorage from "../../utilities/storage/checkStorage";
@@ -50,7 +50,7 @@ export default LoginForm;
 
 const styles = StyleSheet.create({
   inputsContainer:{
-    marginHorizontal:5, //take left and right space
+    marginHorizontal:5,
     padding:10,
   },
   textInput:{
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     fontWeight:'semi-bold',
     textAlign:'center',
     backgroundColor:'white',
-    marginVertical: 8, //take top and bottom space
+    marginVertical: 8,
   },
   logInBtnContainer:{
     paddingTop:12,

@@ -2,7 +2,6 @@ import { View, Text,Pressable,StyleSheet } from "react-native";
 import Colors from "../../constants/colors";
 
 //Reset - Set / Secondary Buttons
-
 function SecondaryButton({children,onPress,disabled,style}){
   return(
     <View style={[styles.buttonContainer,style]}>
